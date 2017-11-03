@@ -2,5 +2,18 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#1ebeec</color>
+    <color name="dialog">#00ffffff</color>
+
+    <color name="color_383a41">#383a41</color>
+    <color name="color_a6a6a6">#a6a6a6</color>
+    <color name="color_1ebeec">#1ebeec</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_6a6a6a">#6a6a6a</color>
+    <color name="color_f1f1f1">#f1f1f1</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_2b2b2b">#2b2b2b</color>
+    <color name="color_e5e5e5">#e5e5e5</color>
+    <color name="color_acacac">#acacac</color>
 </resources>

@@ -1,0 +1,507 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.technology.yuyidoctorpad.fragment.CircleFragment">
+
+    <RelativeLayout
+        android:id="@+id/parent_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/title_head_rl"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#9c383a41">
+
+            <FrameLayout
+                android:id="@+id/information_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/inform" />
+
+                <ImageView
+                    android:id="@+id/red_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:src="@mipmap/circle_small_red" />
+            </FrameLayout>
+
+
+            <ImageView
+                android:id="@+id/search_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="50dp"
+                android:layout_toLeftOf="@+id/information_img"
+                android:src="@mipmap/search" />
+
+            <ImageView
+                android:id="@+id/post_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="50dp"
+                android:layout_toLeftOf="@+id/search_img"
+                android:src="@mipmap/posted" />
+        </RelativeLayout>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@id/title_head_rl">-->
+        <!--左边列表-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="8"-->
+        <!--android:background="@color/color_ffffff">-->
+
+        <RelativeLayout
+            android:id="@+id/left_rl"
+            android:layout_below="@id/title_head_rl"
+            android:layout_width="375dp"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/change_btn"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp">
+
+                <RelativeLayout
+                    android:id="@+id/today_relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_centerVertical="true"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp">
+
+                    <TextView
+                        android:id="@+id/circle_hot_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:gravity="center"
+                        android:text="@string/hot_tv"
+                        android:textColor="@color/color_1ebeec"
+                        android:textSize="17sp" />
+
+                    <View
+                        android:id="@+id/circle_hot_line"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_below="@id/circle_hot_tv"
+                        android:background="@color/color_1ebeec" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/new_relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/today_relative"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp">
+
+                    <TextView
+                        android:id="@+id/circle_select_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:gravity="center"
+                        android:text="@string/select_tv"
+                        android:textColor="@color/color_6a6a6a"
+                        android:textSize="17sp" />
+
+                    <View
+                        android:id="@+id/circle_select_line"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_below="@id/circle_select_tv"
+                        android:background="@color/color_1ebeec" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/new_relative"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp">
+
+                    <TextView
+                        android:id="@+id/circle_new_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:gravity="center"
+                        android:text="@string/new_tv"
+                        android:textColor="@color/color_6a6a6a"
+                        android:textSize="17sp" />
+
+                    <View
+
+                        android:id="@+id/circle_new_line"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_below="@id/circle_new_tv"
+                        android:background="@color/color_1ebeec" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/equip_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/change_btn"
+                android:background="@color/color_f1f1f1" />
+
+            <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_below="@+id/equip_line"-->
+            <!--android:scrollbars="none">-->
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <ListView
+                android:id="@+id/circle_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/equip_line"
+                android:divider="@color/color_f1f1f1"
+                android:dividerHeight="1dp"
+                android:scrollbars="none">
+
+            </ListView>
+
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/more_relative"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/circle_listview"-->
+            <!--android:background="@color/color_ffffff"-->
+            <!--android:visibility="gone">-->
+
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:background="@color/color_cccccc"-->
+
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/footer_tv"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:paddingBottom="15dp"-->
+            <!--android:paddingEnd="20dp"-->
+            <!--android:paddingStart="20dp"-->
+            <!--android:paddingTop="15dp"-->
+            <!--android:text="加载更多"-->
+            <!--android:textColor="@color/color_333333"-->
+            <!--android:textSize="13sp" />-->
+
+            <!--<ProgressBar-->
+            <!--android:id="@+id/pbLocate"-->
+            <!--style="?android:attr/progressBarStyleSmall"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_toEndOf="@+id/footer_tv"-->
+            <!--android:paddingTop="15dp"-->
+            <!--android:visibility="invisible" />-->
+
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:background="@color/color_cccccc"-->
+
+            <!--/>-->
+            <!--</RelativeLayout>-->
+            <!--</RelativeLayout>-->
+            <!--</ScrollView>-->
+
+        </RelativeLayout>
+
+        <!--</LinearLayout>-->
+
+        <View
+            android:layout_below="@id/title_head_rl"
+            android:layout_toRightOf="@id/left_rl"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_cccccc" />
+
+        <!--右边详情-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="10"-->
+            <!--android:background="@color/color_ffffff">-->
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+
+                <!--<ScrollView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_above="@+id/card_comment_box"-->
+                    <!--android:layout_marginBottom="20dp"-->
+                    <!--android:scrollbars="none">-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/scroll_relative"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent">-->
+
+                        <!--<RelativeLayout-->
+                            <!--android:id="@+id/user_message_rl"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_margin="20dp">-->
+
+                            <!--<com.technology.yuyidoctorpad.lhdUtils.RoundImageView-->
+                                <!--android:id="@+id/car_user_head_img"-->
+                                <!--android:layout_width="30dp"-->
+                                <!--android:layout_height="30dp" />-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/car_user_name"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginLeft="15dp"-->
+                                <!--android:layout_toRightOf="@id/car_user_head_img"-->
+                                <!--android:text=""-->
+                                <!--android:textColor="@color/color_6a6a6a"-->
+                                <!--android:textSize="12sp" />-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/car_user_time"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_below="@id/car_user_name"-->
+                                <!--android:layout_marginLeft="15dp"-->
+                                <!--android:layout_toRightOf="@id/car_user_head_img"-->
+                                <!--android:text=""-->
+                                <!--android:textColor="@color/color_cccccc"-->
+                                <!--android:textSize="11sp" />-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/car_user_praise_tv"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_alignParentEnd="true"-->
+                                <!--android:layout_centerVertical="true"-->
+                                <!--android:text=""-->
+                                <!--android:textColor="@color/color_cccccc"-->
+                                <!--android:textSize="11sp" />-->
+
+                            <!--<ImageView-->
+                                <!--android:id="@+id/car_user_praise_img"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_centerVertical="true"-->
+                                <!--android:layout_toLeftOf="@id/car_user_praise_tv"-->
+                                <!--android:padding="5dp" />-->
+
+
+                        <!--</RelativeLayout>-->
+
+                        <!--<RelativeLayout-->
+                            <!--android:id="@+id/card_mess_rl"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@id/user_message_rl"-->
+                            <!--android:layout_marginLeft="20dp"-->
+                            <!--android:layout_marginRight="20dp">-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/card_title"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:ellipsize="end"-->
+                                <!--android:maxLines="2"-->
+                                <!--android:text=""-->
+                                <!--android:textColor="@color/color_2b2b2b"-->
+                                <!--android:textSize="17sp" />-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/card_message"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_below="@id/card_title"-->
+                                <!--android:layout_marginTop="15dp"-->
+                                <!--android:text=""-->
+                                <!--android:textColor="@color/color_2b2b2b"-->
+                                <!--android:textSize="14sp" />-->
+                        <!--</RelativeLayout>-->
+
+                        <!--<com.technology.yuyidoctorpad.lhdUtils.InformationListView-->
+                            <!--android:id="@+id/card_img_listview"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_below="@id/card_mess_rl"-->
+                            <!--android:layout_marginBottom="30dp"-->
+                            <!--android:layout_marginTop="20dp"-->
+                            <!--android:divider="@null"-->
+                            <!--android:dividerHeight="5dp">-->
+
+                        <!--</com.technology.yuyidoctorpad.lhdUtils.InformationListView>-->
+
+                        <!--<View-->
+                            <!--android:id="@+id/line"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="5dp"-->
+                            <!--android:layout_below="@id/card_img_listview"-->
+                            <!--android:background="@color/color_f1f1f1" />-->
+
+                        <!--<RelativeLayout-->
+                            <!--android:id="@+id/card_comment_rl"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="44dp"-->
+                            <!--android:layout_below="@id/line"-->
+                            <!--android:layout_marginLeft="20dp">-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/card_comment_tv"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_centerVertical="true"-->
+                                <!--android:text="评论"-->
+                                <!--android:textColor="@color/color_cccccc"-->
+                                <!--android:textSize="12sp" />-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/card_comment_num"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_centerVertical="true"-->
+                                <!--android:layout_marginLeft="5dp"-->
+                                <!--android:layout_toRightOf="@id/card_comment_tv"-->
+                                <!--android:text=""-->
+                                <!--android:textColor="@color/color_cccccc"-->
+                                <!--android:textSize="12sp" />-->
+
+                            <!--<View-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="1dp"-->
+                                <!--android:layout_alignParentBottom="true"-->
+                                <!--android:background="@color/color_f1f1f1" />-->
+                        <!--</RelativeLayout>-->
+
+                        <!--<com.technology.yuyidoctorpad.lhdUtils.InformationListView-->
+                            <!--android:id="@+id/card_comment_listview"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_below="@id/card_comment_rl"-->
+                            <!--android:divider="@null">-->
+
+                        <!--</com.technology.yuyidoctorpad.lhdUtils.InformationListView>-->
+
+                        <!--<RelativeLayout-->
+                            <!--android:id="@+id/more_relative1"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@id/card_comment_listview"-->
+                            <!--android:background="@color/color_ffffff"-->
+                            <!--android:visibility="gone">-->
+
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/footer_tv1"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_centerHorizontal="true"-->
+                                <!--android:paddingBottom="15dp"-->
+                                <!--android:paddingEnd="20dp"-->
+                                <!--android:paddingStart="20dp"-->
+                                <!--android:paddingTop="15dp"-->
+                                <!--android:text="加载更多"-->
+                                <!--android:textColor="@color/color_333333"-->
+                                <!--android:textSize="13sp" />-->
+
+                            <!--<ProgressBar-->
+                                <!--android:id="@+id/pbLocate1"-->
+                                <!--style="?android:attr/progressBarStyleSmall"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_toEndOf="@+id/footer_tv1"-->
+                                <!--android:paddingTop="15dp"-->
+                                <!--android:visibility="invisible" />-->
+
+                            <!--<View-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="1dp"-->
+                                <!--android:layout_alignParentBottom="true"-->
+                                <!--android:background="@color/color_f1f1f1"-->
+
+                                <!--/>-->
+                        <!--</RelativeLayout>-->
+
+                    <!--</RelativeLayout>-->
+
+                <!--</ScrollView>-->
+
+                <!--<RelativeLayout-->
+                    <!--android:id="@id/card_comment_box"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:background="@drawable/comment_bg">-->
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/writing_img"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:src="@mipmap/writing" />-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/circle_edit"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="45dp"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_toRightOf="@id/writing_img"-->
+                        <!--android:background="@null"-->
+                        <!--android:hint="@string/comment_hint"-->
+                        <!--android:imeOptions="actionSend"-->
+                        <!--android:inputType="text"-->
+                        <!--android:maxLength="500"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:textColor="@color/color_333333"-->
+                        <!--android:textColorHint="@color/color_acacac"-->
+                        <!--android:textSize="15sp" />-->
+                <!--</RelativeLayout>-->
+            <!--</RelativeLayout>-->
+        <!--</LinearLayout>-->
+
+        <!--</LinearLayout>-->
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
