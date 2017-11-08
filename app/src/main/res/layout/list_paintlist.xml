@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#f1f1f1"
+    android:paddingLeft="93dp"
+    android:paddingRight="93dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:minWidth="673dp"
+        android:background="@drawable/style_whitec"
+        android:layout_width="match_parent"
+        android:layout_height="129dp"
+        android:layout_centerInParent="true">
+    <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+        android:id="@+id/paintlist_item_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp"
+        android:layout_centerVertical="true"
+        />
+        <TextView
+            android:id="@+id/paintlist_item_name"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            style="@style/TextS19C3Lwrap"
+            android:maxLength="10"
+            android:ellipsize="end"
+            android:layout_toRightOf="@+id/paintlist_item_image"/>
+        <ImageView style="@style/LayoutWrap"
+            android:layout_marginRight="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/arrow"/>
+    </RelativeLayout>
+</RelativeLayout>

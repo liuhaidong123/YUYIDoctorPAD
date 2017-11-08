@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_post"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    tools:context="com.technology.yuyidoctorpad.activity.MyPost.MyPostActivity">
+    <RelativeLayout
+        android:id="@+id/myPost_toplayout"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/white">
+        <TextView
+            android:text="我的帖子"
+            style="@style/TextS18C3Lwrap"
+            android:layout_centerInParent="true"
+            android:id="@+id/titleinclude_text"/>
+        <ImageView
+            android:layout_centerVertical="true"
+            android:src="@mipmap/posted"
+            android:id="@+id/myPost_eidt"
+            style="@style/LayoutWrap"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    <FrameLayout
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/myPost_toplayout"
+        style="@style/LayoutMatch">
+        <LinearLayout
+            style="@style/LayoutMatch"
+            android:orientation="horizontal">
+            <RelativeLayout android:layout_width="425dp"
+                android:background="@color/white"
+                android:layout_height="match_parent">
+                <com.technology.yuyidoctorpad.lzhUtils.MyListView
+                    style="@style/LayoutMatch"
+                    android:dividerHeight="10dp"
+                    android:scrollbarThumbHorizontal="@drawable/scrollbar"
+                    android:divider="#00ffffff"
+                    android:id="@+id/myPost_listView"
+                    android:listSelector="#00ffffff"
+                    />
+            </RelativeLayout>
+            <View android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <RelativeLayout style="@style/LayoutMatch"
+                android:background="@color/white"
+                android:id="@+id/myPost_FragLayout"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/myPost_empty"
+            style="@style/LayoutMatch"
+            android:background="#f2f2f2">
+            <ImageView android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/nopost"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/posts"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/nopost"
+                android:textSize="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_6a6a6a"
+                android:text="没有查询到数据！"/>
+            </RelativeLayout>
+        </FrameLayout>
+
+</RelativeLayout>

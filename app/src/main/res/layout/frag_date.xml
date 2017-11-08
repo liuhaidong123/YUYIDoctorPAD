@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/lin"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <RelativeLayout
+        android:layout_marginLeft="25dp"
+        android:id="@+id/rela_press"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        >
+        <ImageView android:id="@+id/image_press"
+            android:src="@drawable/img"
+            style="@style/LayoutWrap"
+            android:layout_centerVertical="true"/>
+        <TextView style="@style/TextS18C3Lwrap"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/image_press"
+            android:layout_centerVertical="true"
+            android:text="血压"/>
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginLeft="10dp"
+            android:id="@+id/rela_tem"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            >
+            <ImageView android:id="@+id/image_tem"
+                android:src="@drawable/img"
+                style="@style/LayoutWrap"
+                android:layout_centerVertical="true"/>
+            <TextView style="@style/TextS18C3Lwrap"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/image_tem"
+                android:layout_centerVertical="true"
+                android:text="体温"/>
+        </RelativeLayout>
+        </LinearLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/lin"
+        android:id="@+id/fg"
+        android:background="#e5e5e5"/>
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:id="@+id/paintmsg"
+        android:layout_below="@+id/lin"
+        android:layout_marginTop="1dp"
+        style="@style/LayoutWrap"
+        android:background="#ffffff"/>
+</RelativeLayout>

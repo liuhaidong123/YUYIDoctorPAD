@@ -1,7 +1,6 @@
 package com.technology.yuyidoctorpad.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -17,7 +16,6 @@ import com.technology.yuyidoctorpad.HttpTools.UrlTools;
 import com.technology.yuyidoctorpad.lhdUtils.TimeUtils;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 import com.technology.yuyidoctorpad.R;
-import com.technology.yuyidoctorpad.User.UserInfo;
 //import com.technology.yuyidoctorpad.activity.CardMessageActivity;
 import com.technology.yuyidoctorpad.bean.CircleBean.Rows;
 import com.technology.yuyidoctorpad.bean.InformationPraise.Root;

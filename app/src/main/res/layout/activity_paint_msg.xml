@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_paint_msg"
+    android:background="@color/colorbg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.technology.yuyidoctorpad.activity.PaintList.PaintMsgActivity">
+    <include layout="@layout/titleinclude"
+        android:id="@+id/paintmsg_include"/>
+    <RelativeLayout
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/paintmsg_include"
+        android:id="@+id/paintmsg_toplayout"
+        android:layout_width="match_parent"
+        android:layout_height="107.5dp"
+        android:background="@color/white">
+        <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+            android:src="@mipmap/erroruser"
+            android:id="@+id/paintmsg_userimage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="20dp"/>
+        <TextView android:layout_toRightOf="@+id/paintmsg_userimage"
+            android:maxLength="10"
+            android:text="LIU"
+            android:ellipsize="end"
+            android:layout_centerVertical="true"
+            style="@style/TextS19C3Lwrap"
+            android:id="@+id/paintmsg_username"/>
+        <TextView
+            android:layout_toRightOf="@+id/paintmsg_username"
+            android:maxLength="3"
+            android:text="23岁"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            style="@style/TextS19C3Lwrap"
+            android:id="@+id/paintmsg_userage"/>
+        <ImageView style="@style/LayoutWrap"
+            android:layout_toRightOf="@+id/paintmsg_userage"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/paintmsg_usersex"
+            android:layout_centerVertical="true"
+            android:src="@drawable/boygirl"
+            />
+        </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_below="@+id/paintmsg_toplayout"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="55dp">
+        <TextView android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="电子病历"
+            android:id="@+id/paintmsg_ele"
+            android:textColor="@drawable/painttext"
+            android:background="@drawable/paintrela"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        <TextView android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="患者数据"
+            android:id="@+id/paintmsg_data"
+            android:textColor="@drawable/painttext"
+            android:background="@drawable/paintrela"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        </LinearLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        style="@style/LayoutMatch"
+        android:id="@+id/fraglayout"
+        android:layout_below="@+id/layout"/>
+</RelativeLayout>

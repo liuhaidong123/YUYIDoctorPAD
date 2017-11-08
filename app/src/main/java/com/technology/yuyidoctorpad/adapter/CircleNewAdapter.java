@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import com.technology.yuyidoctorpad.HttpTools.HttpTools;
 import com.technology.yuyidoctorpad.HttpTools.UrlTools;
 import com.technology.yuyidoctorpad.R;
-import com.technology.yuyidoctorpad.User.UserInfo;
+import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.bean.CircleBean.Rows;
 import com.technology.yuyidoctorpad.bean.InformationPraise.Root;
 import com.technology.yuyidoctorpad.lhdUtils.TimeUtils;
@@ -153,7 +153,7 @@ public class CircleNewAdapter extends BaseAdapter {
                 mPosition = position;
                 finalConvertView.setFocusable(false);
                 //请求点赞接口
-                httpTools.circlePraise(handler, list.get(position).getId(), UserInfo.token);
+                httpTools.circlePraise(handler, list.get(position).getId(), User.token);
                 Log.e("IsLike-mPosition", position + "");
             }
         });

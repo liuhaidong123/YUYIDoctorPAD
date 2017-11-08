@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout style="@style/LayoutMatch">
+        <com.technology.yuyidoctorpad.lzhUtils.MyListView
+            android:id="@+id/paintEleListView"
+            style="@style/LayoutMatch"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp"
+            android:paddingBottom="20dp"
+            android:divider="#00ffffff"
+            android:dividerHeight="20dp"
+            android:listSelector="#00ffffff"
+            android:paddingTop="20dp"
+            />
+        </RelativeLayout>
+</RelativeLayout>

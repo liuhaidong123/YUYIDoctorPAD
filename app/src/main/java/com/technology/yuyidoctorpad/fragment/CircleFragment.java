@@ -20,15 +20,13 @@ import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.HttpTools.HttpTools;
 import com.technology.yuyidoctorpad.R;
-import com.technology.yuyidoctorpad.User.UserInfo;
+import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.adapter.CircleHotAdpater;
 import com.technology.yuyidoctorpad.adapter.CircleNewAdapter;
 import com.technology.yuyidoctorpad.adapter.CircleSelectAda;
 import com.technology.yuyidoctorpad.bean.CircleBean.Root;
 import com.technology.yuyidoctorpad.bean.CircleBean.Rows;
 import com.technology.yuyidoctorpad.bean.CircleBean.SelectBean.Result;
-import com.technology.yuyidoctorpad.lhdUtils.InformationListView;
-import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 
 import java.util.ArrayList;
@@ -157,7 +155,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_circle, container, false);
         mHttptools = HttpTools.getHttpToolsInstance();
-        mHttptools.circleHot(mHandler, mStart, mLimit, UserInfo.token); //刚进来显示热门
+        mHttptools.circleHot(mHandler, mStart, mLimit, User.token); //刚进来显示热门
         initUI(view);
         showHotLine();
         return view;
@@ -211,7 +209,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mList.clear();
             //mMany_Box.setVisibility(View.GONE);
             mListview.setVisibility(View.GONE);
-            mHttptools.circleHot(mHandler, mStart, mLimit, UserInfo.token);
+            mHttptools.circleHot(mHandler, mStart, mLimit, User.token);
             showHotLine();
         } else if (id == mSelect_tv.getId()) {//精选
             mSelect_tv.setClickable(false);
@@ -220,7 +218,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mSelectList.clear();
           //  mMany_Box.setVisibility(View.GONE);
             mListview.setVisibility(View.GONE);
-            mHttptools.circleSelect(mHandler, mStart, mLimit, UserInfo.token);
+            mHttptools.circleSelect(mHandler, mStart, mLimit, User.token);
             showSelectLine();
         } else if (id == mNew_tv.getId()) {//最新
             mNew_tv.setClickable(false);
@@ -229,17 +227,17 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mNewList.clear();
            // mMany_Box.setVisibility(View.GONE);
             mListview.setVisibility(View.GONE);
-            mHttptools.circleNew(mHandler, mStart, mLimit, UserInfo.token);
+            mHttptools.circleNew(mHandler, mStart, mLimit, User.token);
             showNewLine();
         } else if (id == mFooter.getId()) {//加载更多
             mStart += 10;
             mBar.setVisibility(View.VISIBLE);
             if (mFlag == 0) {//学术圈热门
-                mHttptools.circleHot(mHandler, mStart, mLimit, UserInfo.token);
+                mHttptools.circleHot(mHandler, mStart, mLimit, User.token);
             } else if (mFlag == 1) {//学术圈精选
-                mHttptools.circleSelect(mHandler, mStart, mLimit, UserInfo.token);
+                mHttptools.circleSelect(mHandler, mStart, mLimit, User.token);
             } else if (mFlag == 2) {//学术圈最新
-                mHttptools.circleNew(mHandler, mStart, mLimit, UserInfo.token);
+                mHttptools.circleNew(mHandler, mStart, mLimit, User.token);
             }
         }
     }
