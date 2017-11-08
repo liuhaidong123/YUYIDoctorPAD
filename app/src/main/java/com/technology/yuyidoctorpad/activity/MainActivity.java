@@ -13,8 +13,8 @@ import android.widget.TextView;
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.fragment.AskFragment;
 import com.technology.yuyidoctorpad.fragment.CircleFragment;
-import com.technology.yuyidoctorpad.fragment.MyFragment;
-import com.technology.yuyidoctorpad.fragment.PatientFragment;
+import com.technology.yuyidoctorpad.fragment.myFragment.MyFragment;
+import com.technology.yuyidoctorpad.fragment.paintFragment.PatientFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

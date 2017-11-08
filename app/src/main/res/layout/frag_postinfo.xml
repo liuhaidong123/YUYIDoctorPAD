@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        >
+    <View android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#f1f1f1"/>
+        <RelativeLayout
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/edit"
+            android:layout_height="44dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="35dp"
+            android:layout_centerInParent="true">
+            <ImageView
+                android:id="@+id/writingimg"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/writing"/>
+            <EditText
+                android:imeOptions="actionSend"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="100"
+                android:background="@null"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:hint="说点什么吧"
+                android:id="@+id/myPost_edit"
+                android:textColor="#333333"
+                android:textSize="@dimen/size15"
+                android:layout_toRightOf="@+id/writingimg"
+                />
+            </RelativeLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_above="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:id="@+id/scroll_relative"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:paddingLeft="25dp"
+                android:paddingRight="35dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/user_message_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+                    android:src="@mipmap/erroruser"
+                    android:id="@+id/car_user_head_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:id="@+id/car_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/car_user_head_img"
+                    android:text="111111111111"
+                    android:textColor="@color/color_6a6a6a"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/car_user_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/car_user_name"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/car_user_head_img"
+                    android:text="22222222"
+                    android:textColor="@color/color_cccccc"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/car_user_praise_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="eeeeeeeeee"
+                    android:textColor="@color/color_cccccc"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/car_user_praise_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/postdate"
+                    android:layout_toLeftOf="@id/car_user_praise_tv"
+                    android:padding="5dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:paddingLeft="25dp"
+                android:paddingRight="35dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/card_mess_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_message_rl"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/card_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="fefewfffffffffffffffffffffffffffffffffffffffffffffwefe"
+                    android:textColor="#2b2b2b"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/card_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_title"
+                    android:layout_marginTop="10dp"
+                    android:text="fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                    android:textColor="#2b2b2b"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <com.technology.yuyidoctorpad.lhdUtils.InformationListView
+                android:paddingLeft="25dp"
+                android:paddingRight="35dp"
+                android:id="@+id/card_img_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/card_mess_rl"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="20dp"
+                android:divider="@null"
+                android:listSelector="#00ffffff"
+                android:dividerHeight="5dp">
+
+            </com.technology.yuyidoctorpad.lhdUtils.InformationListView>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/card_img_listview"
+                android:background="@color/color_f1f1f1" />
+
+            <RelativeLayout
+                android:paddingLeft="25dp"
+                android:paddingRight="35dp"
+                android:id="@+id/card_comment_rl"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_below="@id/line"
+                android:layout_marginLeft="20dp">
+
+                <TextView
+                    android:id="@+id/card_comment_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="评论"
+                    android:textColor="@color/color_cccccc"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/card_comment_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/card_comment_tv"
+                    android:text="10"
+                    android:textColor="@color/color_cccccc"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_f1f1f1" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_below="@+id/card_comment_rl"
+                style="@style/LayoutMatch"
+                android:orientation="vertical">
+                <com.technology.yuyidoctorpad.lhdUtils.InformationListView
+                    android:paddingLeft="25dp"
+                    android:paddingRight="35dp"
+                    android:listSelector="#00ffffff"
+                    android:id="@+id/card_comment_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null">
+                </com.technology.yuyidoctorpad.lhdUtils.InformationListView>
+                <RelativeLayout
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:id="@+id/more_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_comment_listview"
+                    android:background="@color/white"
+                    >
+                    <RelativeLayout
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ProgressBar
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:id="@+id/pbLocate"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            />
+                        <TextView
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/pbLocate"
+                            android:layout_marginLeft="7dp"
+                            android:id="@+id/footer_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="加载更多"
+                            android:textColor="@color/color_333333"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+                </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

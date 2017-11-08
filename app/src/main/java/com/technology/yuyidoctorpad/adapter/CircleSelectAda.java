@@ -1,10 +1,8 @@
 package com.technology.yuyidoctorpad.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,7 @@ import com.technology.yuyidoctorpad.HttpTools.UrlTools;
 import com.technology.yuyidoctorpad.lhdUtils.TimeUtils;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 import com.technology.yuyidoctorpad.R;
-import com.technology.yuyidoctorpad.User.UserInfo;
+import com.technology.yuyidoctorpad.User.User;
 //import com.technology.yuyidoctorpad.activity.CardMessageActivity;
 import com.technology.yuyidoctorpad.bean.CircleBean.SelectBean.Result;
 import com.technology.yuyidoctorpad.bean.InformationPraise.Root;
@@ -152,7 +150,7 @@ public class CircleSelectAda extends BaseAdapter {
                 mPosition=position;
                 finalConvertView.setFocusable(false);
                 //请求点赞接口
-                httpTools.circlePraise(handler,list.get(position).getId(), UserInfo.token);
+                httpTools.circlePraise(handler,list.get(position).getId(), User.token);
             }
         });
 //        convertView.setOnClickListener(new View.OnClickListener() {

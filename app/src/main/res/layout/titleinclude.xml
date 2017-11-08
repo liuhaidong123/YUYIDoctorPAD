@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+        <TextView
+            android:text="标题"
+            style="@style/TextS18C3Lwrap"
+            android:layout_centerInParent="true"
+            android:id="@+id/titleinclude_text"/>
+    </RelativeLayout>
+</LinearLayout>

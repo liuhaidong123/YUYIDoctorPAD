@@ -1,13 +1,248 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.technology.yuyidoctorpad.fragment.MyFragment">
+    tools:context="com.technology.yuyidoctorpad.fragment.myFragment.MyFragment">
+     <RelativeLayout
+         android:background="@drawable/myrela"
+         android:id="@+id/my_top"
+         android:layout_width="match_parent"
+         android:layout_height="162dp">
+        <RelativeLayout android:layout_width="match_parent"
+            android:id="@+id/ms"
+            android:background="#e1383a41"
+            android:layout_height="42dp">
+            <FrameLayout style="@style/LayoutWrap"
+                android:id="@+id/my_newslayout"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+                <ImageView style="@style/LayoutWrap"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="1dp"
+                    android:src="@mipmap/inform"/>
+                <com.technology.yuyidoctorpad.lzhViews.NewsCircle
+                    android:visibility="gone"
+                    android:layout_width="6dp"
+                    android:id="@+id/my_newsCircle"
+                    android:layout_gravity="right|top"
+                    android:layout_height="6dp"/>
+                </FrameLayout>
+            </RelativeLayout>
+         <RelativeLayout
+             android:id="@+id/my_userMsg"
+             style="@style/LayoutMatch"
+             android:layout_below="@+id/ms">
+             <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+                 android:layout_width="80dp"
+                 android:src="@mipmap/erroruser"
+                 android:layout_height="80dp"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="25dp"
+                 android:id="@+id/my_userPhoto"/>
+             <LinearLayout
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="20dp"
+                 style="@style/LayoutWrap"
+                 android:layout_toRightOf="@+id/my_userPhoto"
+                 android:orientation="vertical">
+                 <RelativeLayout style="@style/LayoutWrap">
+                     <TextView style="@style/TextS14CfLwrap"
+                         android:text="姓名"
+                         android:id="@+id/my_userName"/>
+                     <TextView style="@style/TextS14CfLwrap"
+                         android:text="主任医师"
+                         android:layout_marginLeft="10dp"
+                         android:layout_toRightOf="@+id/my_userName"
+                         android:id="@+id/my_userZC"/>
+                     </RelativeLayout>
+                 <RelativeLayout
+                     android:layout_marginTop="10dp"
+                     style="@style/LayoutWrap">
+                     <TextView style="@style/TextS12CfLwrap"
+                         android:text="涿州市中医院"
+                         android:id="@+id/my_hospitalName"/>
+                     <TextView style="@style/TextS12CfLwrap"
+                         android:text="主任医师"
+                         android:layout_marginLeft="10dp"
+                         android:layout_toRightOf="@+id/my_hospitalName"
+                         android:id="@+id/my_userDepartment"/>
+                 </RelativeLayout>
+             </LinearLayout>
+             </RelativeLayout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+         </RelativeLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_below="@+id/my_top"
+        style="@style/LayoutMatch"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+             <!--我的忒子   -->
+            <RelativeLayout
+                android:id="@+id/my_post"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <LinearLayout style="@style/LayoutWrap"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView style="@style/LayoutWrap"
+                        android:src="@mipmap/posts"/>
+                    <TextView style="@style/TextS14C6aLwrap"
+                        android:layout_marginTop="25dp"
+                        android:text="我的帖子"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            <View android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"/>
+            <!--我的点赞   -->
+            <RelativeLayout
+                android:id="@+id/my_praise"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <LinearLayout style="@style/LayoutWrap"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView style="@style/LayoutWrap"
+                        android:src="@mipmap/likea"/>
+                    <TextView style="@style/TextS14C6aLwrap"
+                        android:layout_marginTop="25dp"
+                        android:text="我的点赞"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <View android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"/>
+            <!--咨询   -->
+            <RelativeLayout
+                android:id="@+id/my_consulting"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <LinearLayout style="@style/LayoutWrap"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView style="@style/LayoutWrap"
+                        android:src="@mipmap/consult"/>
+                    <TextView style="@style/TextS14C6aLwrap"
+                        android:layout_marginTop="25dp"
+                        android:text="咨询"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"/>
+            <!--查看数据   -->
+            <RelativeLayout
+                android:id="@+id/my_data"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <LinearLayout style="@style/LayoutWrap"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView style="@style/LayoutWrap"
+                        android:src="@mipmap/viewdata"/>
+                    <TextView style="@style/TextS14C6aLwrap"
+                        android:layout_marginTop="25dp"
+                        android:text="查看数据"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <!--挂号接收   -->
+            <RelativeLayout
+                android:id="@+id/my_register"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <LinearLayout style="@style/LayoutWrap"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView style="@style/LayoutWrap"
+                        android:src="@mipmap/registration"/>
+                    <TextView style="@style/TextS14C6aLwrap"
+                        android:layout_marginTop="25dp"
+                        android:text="挂号接收"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"/>
+            <!--病历添加   -->
+            <RelativeLayout
+                android:id="@+id/my_addPaintRecord"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <LinearLayout style="@style/LayoutWrap"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView style="@style/LayoutWrap"
+                        android:src="@mipmap/addcase"/>
+                    <TextView style="@style/TextS14C6aLwrap"
+                        android:layout_marginTop="25dp"
+                        android:text="病例添加"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <View android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"/>
+            <!--咨询   -->
+            <RelativeLayout
+                android:id="@+id/my_settings"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <LinearLayout style="@style/LayoutWrap"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:gravity="center">
+                    <ImageView style="@style/LayoutWrap"
+                        android:src="@mipmap/settings"/>
+                    <TextView style="@style/TextS14C6aLwrap"
+                        android:layout_marginTop="25dp"
+                        android:text="设置"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"/>
+            <!--查看数据   -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+            </RelativeLayout>
+        </LinearLayout>
+        </LinearLayout>
+</RelativeLayout>
