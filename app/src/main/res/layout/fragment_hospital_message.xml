@@ -1,0 +1,209 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.technology.yuyidoctorpad.fragment.HospitalFragment.HospitalMessageFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp">
+        <!--名称-->
+        <RelativeLayout
+            android:id="@+id/hospital_name_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+
+            <TextView
+                android:id="@+id/hospital_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hospital_name"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/hospital_name_edit"
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/hospital_name_tv"
+                android:background="@drawable/hospital_bg"
+                android:inputType="text"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hospital_grade_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/hospital_name_rl"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/hospital_grade_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hospital_grade"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/hospital_grade_edit"
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/hospital_grade_tv"
+                android:background="@drawable/hospital_bg"
+                android:inputType="text"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hospital_content_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/hospital_grade_rl"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/hospital_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hospital_content"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/hospital_content_edit"
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/hospital_content_tv"
+                android:background="@drawable/hospital_bg"
+                android:inputType="text"
+                android:maxLength="500"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/hospital_max_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/hospital_content_edit"
+                android:text="0/500"
+                android:textColor="@color/color_555555"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hospital_telephone_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/hospital_content_rl"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/hospital_telephone_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hospital_telephone"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/hospital_telephone_edit"
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/hospital_telephone_tv"
+                android:background="@drawable/hospital_bg"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hospital_picture_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hospital_telephone_rl"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/hospital_picture_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hospital_picture"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/hospital_picture_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/hospital_picture_tv"
+                android:src="@mipmap/hospital_add" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hospital_book_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hospital_picture_rl"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/hospital_book_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hospital_book"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/hospital_book_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/hospital_book_tv"
+                android:src="@mipmap/hospital_add" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/hospital_next_btn"
+            android:layout_width="250dp"
+            android:layout_height="44dp"
+            android:layout_below="@+id/hospital_book_rl"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/hospital_next_bg"
+            android:gravity="center"
+            android:text="@string/hospital_next"
+            android:textColor="@color/color_ffffff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

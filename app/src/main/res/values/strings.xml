@@ -8,4 +8,19 @@
     <string name="hot_tv">热门</string>
     <string name="select_tv">精选</string>
     <string name="comment_hint">说点什么吧...</string>
+    <string name="hospital_name">医院名称</string>
+    <string name="hospital_grade">医院等级</string>
+    <string name="hospital_content">医院简介</string>
+    <string name="hospital_telephone">固定电话</string>
+    <string name="hospital_picture">医院图片</string>
+    <string name="hospital_book">相关证书</string>
+    <string name="hospital_next">下一步</string>
+    <string name="manager_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
+    <string name="manager_job">职&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;位</string>
+    <string name="manager_email">邮&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;箱</string>
+    <string name="manager_phone">联系电话</string>
+    <string name="submit_success">提交审核成功</string>
+    <string name="submit_time">需2一7个工作日的审核时间</string>
+    <string name="submit_phone">有疑问请拨打电话: 0321-3850331</string>
+    <string name="submit_back">返回</string>
 </resources>

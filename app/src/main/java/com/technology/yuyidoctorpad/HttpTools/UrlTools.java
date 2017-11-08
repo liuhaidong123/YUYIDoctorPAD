@@ -5,8 +5,8 @@ package com.technology.yuyidoctorpad.HttpTools;
  */
 
 public class UrlTools {
-   //  public static final String BASE="http://192.168.1.168:8082/yuyi";
-   public static final String BASE = "http://59.110.169.148:8080";
+     public static final String BASE="http://192.168.1.44:8080/yuyi";
+   //public static final String BASE = "http://59.110.169.148:8080";
     public static final String URL_AD = "/doctorlyinformation/getall.do";//广告数据
     public static final String URL_AD_MESSAGE = "/doctorlyinformation/get.do?";//广告,今日，最新，热门数据详情（需传id=,token）
     public static final String URL_TODAY_RECOMMEND = "/doctorlyinformation/getTodayAll.do?";//今日推荐（需传start，limit）
@@ -21,7 +21,7 @@ public class UrlTools {
     public static final String URL_CIRCLE_SELECT = "/academicpaper/Selected.do?";//学术圈精选（start=0&limit=6token=）
     public static final String URL_CIRCLE_NEW = "/academicpaper/findtime.do?";//学术圈最新（start=0&limit=6token=）
     public static final String URL_NEW_SELECT_HOT_MESSAGE = "/academicpaper/academicpaperComment.do?";//token=start=0&limit=2&id=1热门，精选，最新详情
-
+ public static final String URL_POST_CARD="/academicpaper/AddAcademicpaper.do?";
     public static final String URL_CIRCLE_PRAISE = "/likes/LikeNum.do?";//id=1&token=820F140709A478E3358AB5DA911C91E6 学术圈点赞接口
 
     public static final String URL_PATIENT_DATA = "/homeuser/findOnePh.do?";//token=EA62E69E02FABA4E4C9A0FDC1C7CAE10&humeuserId=1患者详情中的患者数据

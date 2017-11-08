@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
 
 /**
  * Created by liuhaidong on 2017/3/7.
@@ -70,8 +71,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "广告数据获取失败" + strMsg.toString());
                 handler.sendEmptyMessage(100);
@@ -84,7 +85,7 @@ public class HttpTools {
      */
 
     public void getADMessageDetial(final Handler handler, long id, String token) {
-        String url = UrlTools.BASE + UrlTools.URL_AD_MESSAGE + "id=" + id+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_AD_MESSAGE + "id=" + id + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -112,8 +113,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "广告详情失败" + strMsg.toString());
                 handler.sendEmptyMessage(101);
@@ -158,8 +159,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "今日推荐失败" + strMsg.toString());
                 handler.sendEmptyMessage(102);
@@ -202,8 +203,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "最新" + strMsg.toString());
                 handler.sendEmptyMessage(102);
@@ -247,8 +248,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "热门" + strMsg.toString());
                 handler.sendEmptyMessage(102);
@@ -292,8 +293,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "获取评论列表失败" + strMsg.toString());
                 handler.sendEmptyMessage(103);
@@ -307,7 +308,7 @@ public class HttpTools {
      * 提交评论
      */
     public void submitCommentContent(final Handler handler, long telephone, long content_id, String content) {
-        String url = UrlTools.BASE + UrlTools.URL_COMMEND + "telephone="+telephone+"&content_id="+content_id+"&Content="+content;
+        String url = UrlTools.BASE + UrlTools.URL_COMMEND + "telephone=" + telephone + "&content_id=" + content_id + "&Content=" + content;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -337,8 +338,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "提交评论失败" + strMsg.toString());
                 handler.sendEmptyMessage(104);
@@ -346,11 +347,12 @@ public class HttpTools {
         });
 
     }
+
     /**
      * 资讯点赞接口
      */
     public void informationPraise(final Handler handler, long id, String token) {
-        String url = UrlTools.BASE + UrlTools.URL_PRAISE + "id="+id+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_PRAISE + "id=" + id + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -379,8 +381,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "资讯点赞失败" + strMsg.toString());
                 handler.sendEmptyMessage(105);
@@ -392,7 +394,7 @@ public class HttpTools {
      * 学术圈热门
      */
     public void circleHot(final Handler handler, int start, int limit, String token) {
-        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_HOT +"start="+start+"&limit="+limit+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_HOT + "start=" + start + "&limit=" + limit + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -421,8 +423,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 学术圈热门失败" + strMsg.toString());
                 handler.sendEmptyMessage(106);
@@ -434,7 +436,7 @@ public class HttpTools {
      * 学术圈精选
      */
     public void circleSelect(final Handler handler, int start, int limit, String token) {
-        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_SELECT +"start="+start+"&limit="+limit+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_SELECT + "start=" + start + "&limit=" + limit + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -463,19 +465,20 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 学术圈精选失败" + strMsg.toString());
                 handler.sendEmptyMessage(107);
             }
         });
     }
+
     /**
      * 学术圈最新
      */
     public void circleNew(final Handler handler, int start, int limit, String token) {
-        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_NEW +"start="+start+"&limit="+limit+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_NEW + "start=" + start + "&limit=" + limit + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -504,19 +507,20 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 学术圈最新失败" + strMsg.toString());
                 handler.sendEmptyMessage(106);
             }
         });
     }
+
     /**
      * 学术圈最新,精选，热门详情
      */
     public void getHotSelectNewMessage(final Handler handler, String token, long start, long limit, long id) {
-        String url = UrlTools.BASE + UrlTools.URL_NEW_SELECT_HOT_MESSAGE +"start="+start+"&limit="+limit+"&id="+id+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_NEW_SELECT_HOT_MESSAGE + "start=" + start + "&limit=" + limit + "&id=" + id + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -532,7 +536,7 @@ public class HttpTools {
                 try {
                     com.technology.yuyidoctorpad.bean.CircleMessageBean.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.CircleMessageBean.Root.class);
                     Message m = new Message();
-                    m.what = 8;
+                    m.what = 1012;
                     m.obj = root;
                     handler.sendMessage(m);
 
@@ -545,8 +549,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "  学术圈最新,精选，热门详情" + strMsg.toString());
                 handler.sendEmptyMessage(108);
@@ -558,7 +562,7 @@ public class HttpTools {
      * 学术圈最新,精选，热门点赞接口
      */
     public void circlePraise(final Handler handler, long id, String token) {
-        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_PRAISE +"id="+id+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_PRAISE + "id=" + id + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -587,8 +591,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", "  学术圈最新,精选，热门点赞" + strMsg.toString());
                 handler.sendEmptyMessage(109);
@@ -601,7 +605,7 @@ public class HttpTools {
      * 患者数据接口
      */
     public void getPatientData(final Handler handler, String token, long humeuserId) {
-        String url = UrlTools.BASE + UrlTools.URL_PATIENT_DATA +"token="+token+"&humeuserId="+humeuserId;
+        String url = UrlTools.BASE + UrlTools.URL_PATIENT_DATA + "token=" + token + "&humeuserId=" + humeuserId;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -630,8 +634,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 患者数据接口" + strMsg.toString());
                 handler.sendEmptyMessage(110);
@@ -643,7 +647,7 @@ public class HttpTools {
      * 患者电子病历
      */
     public void getPatientEle(final Handler handler, String token, long humeuserId) {
-        String url = UrlTools.BASE + UrlTools.URL_PATIENT_ELE +"token="+token+"&humeuserId="+humeuserId;
+        String url = UrlTools.BASE + UrlTools.URL_PATIENT_ELE + "token=" + token + "&humeuserId=" + humeuserId;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -672,8 +676,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 患者电子病历" + strMsg.toString());
                 handler.sendEmptyMessage(111);
@@ -685,7 +689,7 @@ public class HttpTools {
      * 学术圈详情评论  telephone=18782931355&content_id=1&Content=haha
      */
     public void submitCircleComment(final Handler handler, long telephone, long content_id, String Content) {
-        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_COMMEND +"telephone="+telephone+"&content_id="+content_id+"&Content="+Content;
+        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_COMMEND + "telephone=" + telephone + "&content_id=" + content_id + "&Content=" + Content;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -714,8 +718,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 学术圈详情评论" + strMsg.toString());
                 handler.sendEmptyMessage(112);
@@ -727,7 +731,7 @@ public class HttpTools {
      * 学术圈详情评论点赞  id=1&token=CEDA9F4E7D5FEC556E1BB035FA18E54E
      */
     public void circleCommendPrise(final Handler handler, long id, String token) {
-        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_COMMEND_PRAISE +"id="+id+"&token="+token;
+        String url = UrlTools.BASE + UrlTools.URL_CIRCLE_COMMEND_PRAISE + "id=" + id + "&token=" + token;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -756,8 +760,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 学术圈详情评论点赞" + strMsg.toString());
                 handler.sendEmptyMessage(113);
@@ -769,7 +773,7 @@ public class HttpTools {
      * 我的患者接口  token=EA62E69E02FABA4E4C9A0FDC1C7CAE10&start=0&limit=5
      */
     public void myPatient(final Handler handler, String token, int strat, int limit) {
-        String url = UrlTools.BASE + UrlTools.URL_MY_PATIENT +"token="+token+"&start="+strat+"&limit="+limit;
+        String url = UrlTools.BASE + UrlTools.URL_MY_PATIENT + "token=" + token + "&start=" + strat + "&limit=" + limit;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -798,8 +802,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 我的患者接口" + strMsg.toString());
                 handler.sendEmptyMessage(114);
@@ -811,11 +815,11 @@ public class HttpTools {
     /**
      * 帖子详情分享接口
      * 参数：token  String
-     shareType  Integer 1=微信，2=新浪微博,3=QQ
-     id   Long   帖子编号
+     * shareType  Integer 1=微信，2=新浪微博,3=QQ
+     * id   Long   帖子编号
      */
     public void shareCard(final Handler handler, long id, String token, int shareType) {
-        String url = UrlTools.BASE + UrlTools.URL_SHARE_CARD +"id="+id+"&token="+token+"&shareType="+shareType;
+        String url = UrlTools.BASE + UrlTools.URL_SHARE_CARD + "id=" + id + "&token=" + token + "&shareType=" + shareType;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -844,8 +848,8 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 帖子详情分享接口" + strMsg.toString());
                 handler.sendEmptyMessage(115);
@@ -856,11 +860,11 @@ public class HttpTools {
     /**
      * 资讯详情分享接口
      * 参数：token  String
-     shareType  Integer 1=微信，2=新浪微博,3=QQ
-     id   Long   帖子编号
+     * shareType  Integer 1=微信，2=新浪微博,3=QQ
+     * id   Long   帖子编号
      */
     public void shareInformation(final Handler handler, long id, String token, int shareType) {
-        String url = UrlTools.BASE + UrlTools.URL_SHARE_INFORMATION +"id="+id+"&token="+token+"&shareType="+shareType;
+        String url = UrlTools.BASE + UrlTools.URL_SHARE_INFORMATION + "id=" + id + "&token=" + token + "&shareType=" + shareType;
 
         mFinalHttp.get(url, new AjaxCallBack<String>() {
             @Override
@@ -889,12 +893,44 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                if (strMsg==null){
-                    strMsg="--null";
+                if (strMsg == null) {
+                    strMsg = "--null";
                 }
                 Log.e("onFailure", " 资讯详情分享接口" + strMsg.toString());
                 handler.sendEmptyMessage(116);
             }
         });
+    }
+
+    /**
+     * 学术圈发帖
+     */
+    public void postCirclrCard(final Handler handler, String token, AjaxParams ajaxParams) {
+        String url = UrlTools.BASE + UrlTools.URL_POST_CARD;
+        mFinalHttp.addHeader("Cookie", "token=" + token);
+        mFinalHttp.post(url, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                Log.e("发帖失败",strMsg.toString());
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                com.technology.yuyidoctorpad.bean.CirclePostCard.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.CirclePostCard.Root.class);
+                Message m = new Message();
+                m.obj=root;
+                m.what=17;
+                handler.sendMessage(m);
+                Log.e("发帖成功",s);
+            }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+            }
+        });
+
     }
 }

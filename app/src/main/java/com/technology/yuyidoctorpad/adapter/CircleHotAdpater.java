@@ -98,7 +98,7 @@ public class CircleHotAdpater extends BaseAdapter {
     public View getView( int position, View convertView, ViewGroup parent) {
         CircleHolder circleHolder;
         count++;
-        Log.e("count===",""+count);
+        Log.e("数据",""+count);
         if (convertView == null) {
             circleHolder = new CircleHolder();
             convertView = mInflater.inflate(R.layout.circle_listview_item, null);
@@ -175,7 +175,6 @@ public class CircleHotAdpater extends BaseAdapter {
 //            }
 //        });
 
-        Log.e("123333","快步000");
         return convertView;
     }
 

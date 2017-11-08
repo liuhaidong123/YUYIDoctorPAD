@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_write_hospital_message"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    tools:context="com.technology.yuyidoctorpad.activity.WriteHospitalMessageActivity">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color_ffffff">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:id="@+id/hospital_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/hospital_mess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="医院信息填写"
+                    android:textColor="@color/color_333333"
+                    android:textSize="19sp" />
+
+                <ImageView
+                    android:id="@+id/hospital_sanjiao_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/hospital_mess"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:src="@mipmap/sanjiao"
+
+                    />
+
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/hospital_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/hospital_rl"
+                android:src="@mipmap/lineselected" />
+
+            <RelativeLayout
+                android:id="@+id/manager_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/hospital_line"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/manager_mess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="管理员信息填写"
+                    android:textColor="@color/color_c5c5c5"
+                    android:textSize="19sp" />
+
+                <ImageView
+                    android:id="@+id/manager_sanjiao_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/manager_mess"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:src="@mipmap/sanjiao"
+
+                    />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/manager_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/manager_rl"
+                android:src="@mipmap/line" />
+
+            <RelativeLayout
+                android:id="@+id/submit_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/manager_line"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/submit_mess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="提交审核"
+                    android:textColor="@color/color_c5c5c5"
+                    android:textSize="19sp" />
+
+                <ImageView
+                    android:id="@+id/submit_sanjiao_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/submit_mess"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:src="@mipmap/sanjiao"
+
+                    />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_c5c5c5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hospital_fragment_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title">
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
