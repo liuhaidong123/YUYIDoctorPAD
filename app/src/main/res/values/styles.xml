@@ -31,6 +31,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="LayoutMatch">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -41,32 +42,50 @@
         <item name="android:textSize">@dimen/size18</item>
         <item name="android:textColor">@color/color_333333</item>
     </style>
+
     <style name="TextS19C3Lwrap" parent="@style/LayoutWrap">
         <item name="android:textSize">@dimen/size19</item>
         <item name="android:textColor">@color/color_333333</item>
     </style>
+
     <style name="TextS15C3Lwrap" parent="@style/LayoutWrap">
         <item name="android:textSize">@dimen/size15</item>
         <item name="android:textColor">@color/color_333333</item>
     </style>
+
     <style name="TextS10C6Lwrap" parent="@style/LayoutWrap">
         <item name="android:textSize">@dimen/size10</item>
         <item name="android:textColor">#666666</item>
     </style>
+
     <style name="TextS15C6Lwrap" parent="@style/LayoutWrap">
         <item name="android:textSize">@dimen/size15</item>
         <item name="android:textColor">#666666</item>
     </style>
+
     <style name="TextS14C6aLwrap" parent="@style/LayoutWrap">
         <item name="android:textSize">@dimen/size14</item>
         <item name="android:textColor">#6a6a6a</item>
     </style>
+
     <style name="TextS14CfLwrap" parent="@style/LayoutWrap">
         <item name="android:textSize">@dimen/size14</item>
         <item name="android:textColor">#ffffff</item>
     </style>
+
     <style name="TextS12CfLwrap" parent="@style/LayoutWrap">
         <item name="android:textSize">@dimen/size12</item>
         <item name="android:textColor">#ffffff</item>
     </style>
+    <style name="TextS17C6aLWrap" parent="@style/LayoutWrap">
+    <item name="android:textSize">@dimen/size17</item>
+    <item name="android:textColor">#6a6a6a</item>
+</style>
+    <style name="TextS17C1ebeecLWrap" parent="@style/LayoutWrap">
+        <item name="android:textSize">@dimen/size17</item>
+        <item name="android:textColor">#1ebeec</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_message"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    tools:context="com.technology.yuyidoctorpad.activity.Message.MessageActivity">
+    <include android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/message_top"
+        layout="@layout/titleinclude"/>
+    <RelativeLayout style="@style/LayoutMatch"
+        android:layout_below="@+id/message_top">
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/style_whitec"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:id="@+id/message_notifi"
+            android:layout_height="120dp">
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:id="@+id/leftlin"
+                android:orientation="horizontal">
+                <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+                    android:layout_width="40dp"
+                    android:src="@mipmap/inform1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/message_infor"
+                    android:layout_height="40dp" />
+                    <TextView style="@style/TextS15C3Lwrap"
+                        android:layout_marginRight="20dp"
+                        android:text="宇医公告"/>
+                </LinearLayout>
+                <View
+                    android:id="@+id/fg3"
+                    android:layout_height="match_parent"
+                    android:layout_width="1dp"
+                    android:background="#f1f1f1"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toRightOf="@+id/leftlin"/>
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@+id/fg3">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView style="@style/TextS15C3Lwrap"
+                        android:id="@+id/message_title"
+                        android:text="更新通知"/>
+                        <TextView style="@style/TextS15C3Lwrap"
+                            android:textColor="#888888"
+                            android:id="@+id/message_time"
+                            android:layout_alignParentRight="true"
+                            android:text="12:00"/>
+                        </RelativeLayout>
+                        <TextView style="@style/TextS15C3Lwrap"
+                            android:layout_marginTop="15dp"
+                            android:maxLines="2"
+                            android:text=""
+                            android:id="@+id/message_content"
+                            android:ellipsize="end"
+                            />
+                    </LinearLayout>
+            </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            style="@style/LayoutMatch"
+            android:layout_below="@+id/message_notifi">
+            <com.technology.yuyidoctorpad.lzhUtils.MyListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:id="@+id/messageListView"
+                android:dividerHeight="10dp"
+                android:listSelector="#00ffffff"
+                >
+            </com.technology.yuyidoctorpad.lzhUtils.MyListView>
+            </RelativeLayout>
+        </RelativeLayout>
+</RelativeLayout>

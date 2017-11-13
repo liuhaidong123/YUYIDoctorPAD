@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f1f1f1"
+    android:paddingBottom="40dp"
+    tools:context="com.technology.yuyidoctorpad.activity.Settings.SettingActivity">
+    <include layout="@layout/titleinclude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingLayout"></include>
+    <TextView
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/settingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="意见反馈"
+        style="@style/TextS17C6aLWrap"
+        android:id="@+id/setting_contact"
+        android:background="@drawable/style_whitec"/>
+
+    <TextView
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/setting_contact"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="关于宇医"
+        style="@style/TextS17C6aLWrap"
+        android:id="@+id/setting_about"
+        android:background="@drawable/style_whitec"/>
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:text="退出登录"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:textColor="#e00610"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/exit"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/setting_exit"/>
+</RelativeLayout>

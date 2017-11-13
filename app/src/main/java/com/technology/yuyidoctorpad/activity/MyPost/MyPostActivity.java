@@ -1,6 +1,10 @@
 package com.technology.yuyidoctorpad.activity.MyPost;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
@@ -20,6 +24,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MyPostActivity extends MyActivity implements IListener,MyListView.IonScrollBottomListener,AdapterView.OnItemClickListener{
+    private static final int READ_WRITE_PERMISS_CODE = 123;
     @BindView(R.id.myPost_empty)RelativeLayout myPost_empty;//没有数据时显示
     boolean isFirst=true;//刚进入页面时，请求到数据后加载第一条数据到详情
     MyPostPresenter presenter;
@@ -46,8 +51,44 @@ public class MyPostActivity extends MyActivity implements IListener,MyListView.I
     public void click(View vi){
         switch (vi.getId()){
             case R.id.myPost_eidt://发帖按钮
-
+                presenter.showWindow(this,findViewById(R.id.activity_my_post),this);
                  break;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case READ_WRITE_PERMISS_CODE:
+                //点击了允许，授权成功
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                  presenter.startSelectImgActivity(MyPostActivity.this);
+                    //点击了拒绝，授权失败
+                } else {
+
+
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            ArrayList<String> list = data.getStringArrayListExtra("imgList");
+            if (presenter.mCardListImg.size() != 6) {
+                for (int i = 0; i < list.size(); i++) {
+                    presenter.mCardListImg.add(list.get(i));
+                    Log.e("路经", list.get(i));
+                    if (presenter.mCardListImg.size() == 6) {
+                        break;
+                    }
+                }
+                presenter.setImgList();
+
+            }
         }
     }
     @Override
@@ -98,6 +139,21 @@ public class MyPostActivity extends MyActivity implements IListener,MyListView.I
     @Override
     public void onPraise(boolean isLike, int pos) {
         presenter.setPraise(isLike,pos);
+    }
+    //发帖成功
+    @Override
+    public void onMakCommentSuccess() {
+            toast.toast(this,"发布成功！");
+            start=0;
+            list.clear();
+            adapter.notifyDataSetChanged();
+            myPost_listView.setScroll(true);
+            presenter.getMyPost(start,limit,this);
+    }
+    //发帖失败
+    @Override
+    public void onMakeCommentError(String msg) {
+    toast.toast(this,msg);
     }
 
     @Override

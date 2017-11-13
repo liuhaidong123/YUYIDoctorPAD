@@ -912,6 +912,7 @@ public class HttpTools {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                handler.sendEmptyMessage(-1);
                 Log.e("发帖失败",strMsg.toString());
             }
 

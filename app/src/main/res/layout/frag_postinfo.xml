@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/writing"/>
             <EditText
+                android:focusableInTouchMode="true"
                 android:imeOptions="actionSend"
                 android:inputType="text"
                 android:maxLines="1"
@@ -84,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@id/car_user_head_img"
-                    android:text="111111111111"
+                    android:text=""
                     android:textColor="@color/color_6a6a6a"
                     android:textSize="12sp" />
 
@@ -95,7 +96,7 @@
                     android:layout_below="@id/car_user_name"
                     android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@id/car_user_head_img"
-                    android:text="22222222"
+                    android:text=""
                     android:textColor="@color/color_cccccc"
                     android:textSize="11sp" />
 
@@ -105,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:text="eeeeeeeeee"
+                    android:text="0"
                     android:textColor="@color/color_cccccc"
                     android:textSize="12sp" />
 
@@ -120,44 +121,13 @@
                     />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:paddingLeft="25dp"
-                android:paddingRight="35dp"
-                android:layout_marginTop="15dp"
-                android:id="@+id/card_mess_rl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_message_rl"
-                android:layout_marginRight="20dp">
-
-                <TextView
-                    android:id="@+id/card_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:text="fefewfffffffffffffffffffffffffffffffffffffffffffffwefe"
-                    android:textColor="#2b2b2b"
-                    android:textSize="17sp" />
-
-                <TextView
-                    android:id="@+id/card_message"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/card_title"
-                    android:layout_marginTop="10dp"
-                    android:text="fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-                    android:textColor="#2b2b2b"
-                    android:textSize="14sp" />
-            </RelativeLayout>
-
             <com.technology.yuyidoctorpad.lhdUtils.InformationListView
                 android:paddingLeft="25dp"
                 android:paddingRight="35dp"
                 android:id="@+id/card_img_listview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/card_mess_rl"
+                android:layout_below="@+id/card_mess_rl"
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="20dp"
                 android:divider="@null"
@@ -198,7 +168,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@id/card_comment_tv"
-                    android:text="10"
+                    android:text="0"
                     android:textColor="@color/color_cccccc"
                     android:textSize="12sp" />
 
@@ -249,12 +219,44 @@
                             android:id="@+id/footer_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="加载更多"
+                            android:text="正在加载。。。"
                             android:textColor="@color/color_333333"
                             android:textSize="13sp" />
                     </RelativeLayout>
                 </RelativeLayout>
                 </LinearLayout>
+
+            <RelativeLayout
+                android:paddingLeft="25dp"
+                android:paddingRight="35dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/card_mess_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/user_message_rl"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:id="@+id/card_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text=""
+                    android:textColor="#2b2b2b"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/card_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_title"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="#2b2b2b"
+                    android:textSize="14sp" />
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

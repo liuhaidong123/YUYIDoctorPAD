@@ -16,12 +16,11 @@ public class UrlTools {
     public static final String URL_COMMEND = "/comment/AddConment.do?";//评论(需telephone=18782931355&content_id=1&Content=haha)
     public static final String URL_PRAISE = "/likes/UpdateLikeNum.do?";//点赞接口（需：id=&token=）
 
-
     public static final String URL_CIRCLE_HOT = "/academicpaper/findhot.do?";//学术圈热门（start=0&limit=6,token=）
     public static final String URL_CIRCLE_SELECT = "/academicpaper/Selected.do?";//学术圈精选（start=0&limit=6token=）
     public static final String URL_CIRCLE_NEW = "/academicpaper/findtime.do?";//学术圈最新（start=0&limit=6token=）
     public static final String URL_NEW_SELECT_HOT_MESSAGE = "/academicpaper/academicpaperComment.do?";//token=start=0&limit=2&id=1热门，精选，最新详情
- public static final String URL_POST_CARD="/academicpaper/AddAcademicpaper.do?";
+    public static final String URL_POST_CARD="/academicpaper/AddAcademicpaper.do?";
     public static final String URL_CIRCLE_PRAISE = "/likes/LikeNum.do?";//id=1&token=820F140709A478E3358AB5DA911C91E6 学术圈点赞接口
 
     public static final String URL_PATIENT_DATA = "/homeuser/findOnePh.do?";//token=EA62E69E02FABA4E4C9A0FDC1C7CAE10&humeuserId=1患者详情中的患者数据

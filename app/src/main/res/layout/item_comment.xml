@@ -26,7 +26,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/head_img"
-            android:text="1111111"
+            android:text=""
             android:textColor="@color/color_drumall"
             android:textSize="12sp" />
 
@@ -37,7 +37,7 @@
             android:layout_below="@id/name"
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/head_img"
-            android:text="22222"
+            android:text=""
             android:textColor="@color/color_bg"
             android:textSize="11sp" />
         <LinearLayout
@@ -62,7 +62,7 @@
                 android:id="@+id/card_user_praise_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3333333"
+                android:text="0"
                 android:layout_centerVertical="true"
                 android:paddingTop="5dp"
                 android:layout_marginRight="20dp"
@@ -81,7 +81,7 @@
             android:layout_below="@id/time"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:text="233333333333333"
+            android:text=""
             android:textColor="@color/color_drumall"
             android:textSize="12sp" />
 

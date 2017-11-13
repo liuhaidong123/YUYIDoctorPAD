@@ -85,6 +85,22 @@ public class PicturePhotoUtils {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(outputImage));
         ac.startActivityForResult(intent, RSCode.rCode_CutPicture);
     }
+
+    //浏览相册后的选取
+    public void cutPhoto_Search222(Activity ac,File outputImage,Intent data){
+        //此处启动裁剪程序
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(data.getData(), "image/*");
+        intent.putExtra("scale", true);
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("outputX", 600);//宽度
+        intent.putExtra("outputY", 600);//高度
+        intent.putExtra("return-data", true);
+        intent.putExtra("noFaceDetection", true);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(outputImage));
+        ac.startActivityForResult(intent, RSCode.rCode_CutPicture);
+    }
     //拍照后的选取
     public void cutPhoto_Camera(Activity ac,Uri uri,File file){
         //此处启动裁剪程序

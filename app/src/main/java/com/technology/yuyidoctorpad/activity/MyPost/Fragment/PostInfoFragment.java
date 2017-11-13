@@ -69,7 +69,6 @@ public class PostInfoFragment extends BaseFragment implements IPostInfo{
     @BindView(R.id.more_relative)RelativeLayout more_relative;//加载更多的layout
     @BindView(R.id.pbLocate)ProgressBar pbLocate;
     @BindView(R.id.footer_tv)TextView footer_tv;//加载更多的text
-//    /likes/LikeNum.do?
 
     @BindView(R.id.myPost_edit)EditText myPost_edit;//编辑的editext
     boolean isLoading=false;//是否已经加载完毕
@@ -93,6 +92,7 @@ public class PostInfoFragment extends BaseFragment implements IPostInfo{
                     } else {
                         if (id!=-1){
                             presenter.submitCircleComment(postId,myPost_edit.getText().toString(),PostInfoFragment.this);
+                            myPost_edit.setText("");
                             //隐藏软键盘
                             ((InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                         }else {
@@ -143,7 +143,7 @@ public class PostInfoFragment extends BaseFragment implements IPostInfo{
      enum LoadingState{
         Loading,Complete;//正在加载，加完完毕
     }
-
+    //用与Activity向fragment传递当前的帖子的id刷新页面
     public void setPostId(int CurrentPos,String id){
         if (id.equals(postId)){
             return;
