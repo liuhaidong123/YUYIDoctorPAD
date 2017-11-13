@@ -4,7 +4,6 @@ package com.technology.yuyidoctorpad.fragment.myFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,10 @@ import com.squareup.picasso.Picasso;
 import com.technology.yuyidoctorpad.Enum.IntentValue;
 import com.technology.yuyidoctorpad.Net.Ip;
 import com.technology.yuyidoctorpad.R;
+import com.technology.yuyidoctorpad.activity.Message.MessageActivity;
 import com.technology.yuyidoctorpad.activity.MyPost.MyPostActivity;
+import com.technology.yuyidoctorpad.activity.MyPraise.MyPraiseActivity;
+import com.technology.yuyidoctorpad.activity.Settings.SettingActivity;
 import com.technology.yuyidoctorpad.activity.UserInfo.UserInfoActivity;
 import com.technology.yuyidoctorpad.code.ExitLogin;
 import com.technology.yuyidoctorpad.lhdUtils.RoundImageView;
@@ -55,6 +57,8 @@ public class MyFragment extends BaseFragment implements IListener{
         switch (vi.getId()){
             case R.id.my_newslayout://消息
                 my_newsCircle.setVisibility(View.GONE);//隐藏消息圆点
+                intent.setClass(getActivity(), MessageActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_userMsg://用户信息
                 if (us!=null){
@@ -72,6 +76,8 @@ public class MyFragment extends BaseFragment implements IListener{
                 break;
 
             case R.id.my_praise://我的点赞
+                intent.setClass(getActivity(), MyPraiseActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.my_consulting://咨询
@@ -87,6 +93,8 @@ public class MyFragment extends BaseFragment implements IListener{
                 break;
 
             case R.id.my_settings://设置
+                intent.setClass(getActivity(), SettingActivity.class);
+                startActivity(intent);
                 break;
 
         }
@@ -111,10 +119,8 @@ public class MyFragment extends BaseFragment implements IListener{
 
     @Override
     public void HaveUnReadMsg(boolean flag) {
-        Log.e("aaaaaaaaaaa",flag+"");
         my_newsCircle.setVisibility(flag?View.VISIBLE:View.INVISIBLE);
     }
-
     private void initView(UserBean user) {
         this.us=user;
         Picasso.with(getActivity()).load(Ip.imagePath+user.getPhysician().getAvatar()).placeholder(R.mipmap.erroruser).error(R.mipmap.erroruser).into(my_userPhoto);

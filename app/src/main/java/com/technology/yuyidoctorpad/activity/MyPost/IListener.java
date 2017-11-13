@@ -11,4 +11,7 @@ public interface IListener {
     void onGetPostListError(String msg);
     void onGetPostListSuccess(Bean_MyPostData bean);
     void onPraise(boolean isLike,int pos);//当前的点赞状态
+
+    void onMakCommentSuccess();
+    void onMakeCommentError(String msg);
 }

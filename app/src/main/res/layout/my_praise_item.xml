@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:paddingLeft="40dp"
-    android:paddingRight="50dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:background="@color/white"
+        android:padding="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
+            android:id="@+id/toplayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
                 android:layout_width="30dp"
-                android:id="@+id/forumpost_listitem_Image"
+                android:id="@+id/forumpost_listitem_praise_Image"
                 android:src="@mipmap/erroruser"
                 android:layout_height="30dp" />
             <TextView
-                android:id="@+id/forumpost_listitem_Name"
+                android:id="@+id/forumpost_listitem_praise_Name"
                 android:layout_marginLeft="10dp"
                 android:textColor="#2b2b2b"
                 android:textSize="14sp"
@@ -32,25 +30,19 @@
                 android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/forumpost_listitem_Image"/>
+                android:layout_toRightOf="@+id/forumpost_listitem_praise_Image"/>
         </RelativeLayout>
-
-
-
         <TextView
             android:layout_marginTop="10dp"
             android:gravity="left"
             android:text=""
             android:textSize="@dimen/size14"
-            android:maxLength="20"
-            android:maxLines="1"
+            android:maxLines="2"
             android:ellipsize="end"
-            android:id="@+id/forumpost_listitem_title"
+            android:id="@+id/forumpost_listitem_title_praise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#2b2b2b"/>
-
-
         <LinearLayout
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -58,24 +50,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:scaleType="centerCrop"
-                android:id="@+id/forumposts_listview_item_photoImage"
+                android:layout_marginTop="3dp"
+                android:id="@+id/forumposts_listview_item_photoImage_praise"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/errorpicture"
                 android:layout_marginRight="10dp"
                 />
             <TextView
-                android:layout_gravity="top|left"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="3"
                 android:ellipsize="end"
+                android:gravity="top|left"
                 android:textColor="#6a6a6a"
                 android:textSize="13sp"
                 android:lineSpacingExtra="2dp"
                 android:text=""
-                android:id="@+id/forumpost_listitem_content"/>
+                android:id="@+id/forumpost_listitem_content_praise"/>
 
         </LinearLayout>
 
@@ -83,28 +76,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
-
+            <TextView
+                android:text=""
+                android:textColor="#cccccc"
+                android:textSize="11sp"
+                android:id="@+id/forumpost_listitem_time_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                />
             <LinearLayout
-            android:orientation="horizontal"
-            android:layout_alignParentRight="true"
-            android:id="@+id/forumpost_listitem_layout_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:id="@+id/forumpost_listitem_layout_msg_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-            android:layout_centerVertical="true">
-            <ImageView
-                android:layout_marginRight="7dp"
-                android:src="@mipmap/comment2"
-                android:id="@+id/forumposts_listview_item_msgImage"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
-
+                android:layout_centerVertical="true">
+                <ImageView
+                    android:layout_marginRight="7dp"
+                    android:src="@mipmap/comment2"
+                    android:id="@+id/forumposts_listview_item_msgImage_praise"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#cccccc"
                     android:text="0"
-                    android:id="@+id/forumposts_listview_item_msgNum"
+                    android:id="@+id/forumposts_listview_item_msgNum_praise"
                     android:textSize="11sp"
                     />
             </LinearLayout>
@@ -112,9 +112,9 @@
             <LinearLayout
                 android:gravity="center_vertical"
                 android:layout_marginRight="15dp"
-                android:layout_toLeftOf="@+id/forumpost_listitem_layout_msg"
+                android:layout_toLeftOf="@+id/forumpost_listitem_layout_msg_praise"
                 android:orientation="horizontal"
-                android:id="@+id/forumpost_listitem_layout_post"
+                android:id="@+id/forumpost_listitem_layout_post_praise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true">
@@ -122,12 +122,12 @@
                 <ImageView
                     android:layout_marginRight="7dp"
                     android:background="@drawable/postdate"
-                    android:id="@+id/forumposts_listview_item_postImage"
+                    android:id="@+id/forumposts_listview_item_postImage_praise"
                     android:layout_width="20dp"
                     android:layout_height="18dp" />
 
                 <TextView
-                    android:id="@+id/forumposts_listview_item_postNum"
+                    android:id="@+id/forumposts_listview_item_postNum_praise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#cccccc"
@@ -135,16 +135,6 @@
                     android:textSize="11sp"
                     />
             </LinearLayout>
-
-            <TextView
-                android:text=""
-                android:textColor="#cccccc"
-                android:textSize="11sp"
-                android:id="@+id/forumpost_listitem_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true" />
         </RelativeLayout>
     </LinearLayout>
 
