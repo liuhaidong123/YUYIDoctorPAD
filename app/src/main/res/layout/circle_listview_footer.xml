@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <RelativeLayout
         android:id="@+id/more_relative"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:background="@color/color_ffffff">
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_alignParentTop="true"
             android:background="@color/color_cccccc"
 
@@ -37,13 +38,12 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/footer_tv"
-            android:paddingTop="15dp"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/footer_tv"
             android:background="@color/color_cccccc"
 
             />

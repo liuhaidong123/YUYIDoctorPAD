@@ -22,7 +22,7 @@
             android:id="@+id/loading_textView"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
-            android:text="正在加载。。。"
+            android:text="加载更多"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"/>

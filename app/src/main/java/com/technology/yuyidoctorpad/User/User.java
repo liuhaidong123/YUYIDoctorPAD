@@ -9,8 +9,8 @@ import com.technology.yuyidoctorpad.lzhUtils.Empty;
  * Created by liuhaidong on 2017/11/1.
  */
 public class User {
-    public static String token = "2BA9A707D7191E777CB5834D44AC1943";//服务器返回的token
-    public static String tele = "17743516301";//用户名（手机号）
+    public static String token = "10A469C89A8FCD58C22EA483BED8AF3C";//服务器返回的token
+    public static String tele = "18335277251";//用户名（手机号）
     public static boolean isLogin(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("USER", Context.MODE_APPEND);
         String userToken = preferences.getString("userToken", "0");

@@ -75,7 +75,7 @@ public class PostCardAdapter extends BaseAdapter {
                 //imgHolder.add_tv.setVisibility(View.GONE);
             }else {
                 //imgHolder.add_tv.setVisibility(View.GONE);
-                Picasso.with(mContext).load(mList.get(i)).resize(ImgUitls.getWith(mContext)/6,ImgUitls.getWith(mContext)/6).error(R.mipmap.error_big).into(imgHolder.img);
+                Picasso.with(mContext).load(mList.get(i)).resize(ImgUitls.getWith(mContext)/6,ImgUitls.getWith(mContext)/6).error(R.mipmap.errorpicture).into(imgHolder.img);
             }
 
 

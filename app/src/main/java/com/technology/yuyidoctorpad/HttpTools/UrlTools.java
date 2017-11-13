@@ -5,7 +5,7 @@ package com.technology.yuyidoctorpad.HttpTools;
  */
 
 public class UrlTools {
-     public static final String BASE="http://192.168.1.44:8080/yuyi";
+    public static final String BASE="http://192.168.1.44:8080/yuyi";
    //public static final String BASE = "http://59.110.169.148:8080";
     public static final String URL_AD = "/doctorlyinformation/getall.do";//广告数据
     public static final String URL_AD_MESSAGE = "/doctorlyinformation/get.do?";//广告,今日，最新，热门数据详情（需传id=,token）

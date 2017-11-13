@@ -13,10 +13,10 @@ import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.HttpTools.HttpTools;
 import com.technology.yuyidoctorpad.HttpTools.UrlTools;
+import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.lhdUtils.TimeUtils;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 import com.technology.yuyidoctorpad.R;
-import com.technology.yuyidoctorpad.User.UserInfo;
 import com.technology.yuyidoctorpad.bean.CircleMessageBean.CommentList;
 import com.technology.yuyidoctorpad.bean.InformationPraise.Root;
 import com.technology.yuyidoctorpad.lhdUtils.RoundImageView;
@@ -114,7 +114,7 @@ public class CardMessageCommentAdapter extends BaseAdapter {
             holder = (CardCommentHolder) convertView.getTag();
         }
 
-        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.error_small).into(holder.img);
+        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.errorpicture).into(holder.img);
         holder.name.setText(list.get(position).getTrueName());
         holder.time.setText(TimeUtils.getTime(list.get(position).getCreateTimeString()));
 //        String str="";
@@ -141,9 +141,9 @@ public class CardMessageCommentAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 mPosition = position;
-                httpTools.circleCommendPrise(handler,list.get(position).getId(), UserInfo.token);
+                httpTools.circleCommendPrise(handler,list.get(position).getId(), User.token);
                 Log.e("id",list.get(position).getId()+"");
-                Log.e("token",UserInfo.token);
+                Log.e("token",User.token);
             }
         });
 
