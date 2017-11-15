@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 import com.technology.yuyidoctorpad.HttpTools.HttpTools;
 import com.technology.yuyidoctorpad.R;
-import com.technology.yuyidoctorpad.User.UserInfo;
+import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.activity.MyPost.Fragment.PostInfoFragment;
 import com.technology.yuyidoctorpad.activity.SelectImgActivity;
 import com.technology.yuyidoctorpad.adapter.PostCardAdapter;
@@ -222,7 +222,7 @@ public class MyPostPresenter implements View.OnClickListener{
                 AjaxParams ajaxParams = new AjaxParams();
                 ajaxParams.put("title", mTitle_Edit.getText().toString());
                 ajaxParams.put("content",mContent_Edit.getText().toString());
-                ajaxParams.put("token", UserInfo.token);
+                ajaxParams.put("token", User.token);
                 if (mCardListImg.size() == 0) {
                     Log.e("没有上传图片", "---");
                 } else {
@@ -236,7 +236,7 @@ public class MyPostPresenter implements View.OnClickListener{
                             e.printStackTrace();
                         }
                     }
-                    mHttptools.postCirclrCard(mHandler, UserInfo.token, ajaxParams);
+                    mHttptools.postCirclrCard(mHandler, User.token, ajaxParams);
                 }
             }
 

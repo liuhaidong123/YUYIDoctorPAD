@@ -23,6 +23,11 @@
     <string name="submit_time">需2一7个工作日的审核时间</string>
     <string name="submit_phone">有疑问请拨打电话: 0321-3850331</string>
     <string name="submit_back">返回</string>
+    <string name="imformation_recommend">推荐</string>
+    <string name="imformation_new">最新</string>
+    <string name="comment_hint_edit">写评论</string>
+
+
     <string name="_90mmhg_140mmhg"><![CDATA[90mmHg<收缩压<140mmHg]]></string>
     <string name="_60mmhg_90mmhg"><![CDATA[60mmHg<舒张压<90mmHg]]></string>
     <string name="title_activity_setting">SettingActivity</string>

@@ -112,14 +112,14 @@ public class CircleSelectAda extends BaseAdapter {
         circleHolder.title.setText(list.get(position).getTitle());
         circleHolder.content_tv.setText(list.get(position).getContent());
         circleHolder.time.setText(TimeUtils.getTime(list.get(position).getCreateTimeString()));
-        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.error_small).into(circleHolder.head_img);
+        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.errorpicture).into(circleHolder.head_img);
         circleHolder.trueName.setText(list.get(position).getTrueName());
         //设置图片
         if (list.get(position).getPicture().equals("")){
             circleHolder.img.setVisibility(View.GONE);
         }else {
             circleHolder.img.setVisibility(View.VISIBLE);
-            Picasso.with(mContext).load(UrlTools.BASE+list.get(position).getPicture()).error(R.mipmap.error_small).into(circleHolder.img);
+            Picasso.with(mContext).load(UrlTools.BASE+list.get(position).getPicture()).error(R.mipmap.errorpicture).into(circleHolder.img);
         }
         //点赞设值
         if (list.get(position).getLikeNum() == null) {

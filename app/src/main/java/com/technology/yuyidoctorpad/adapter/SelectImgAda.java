@@ -59,7 +59,7 @@ public class SelectImgAda extends BaseAdapter {
             holder= (SelectImgHolder) convertView.getTag();
         }
         Picasso.with(mContext).load(mList.get(position)).centerCrop().resize(ImgUitls.getWith(mContext)/3,
-                ImgUitls.getWith(mContext)/3).error(R.mipmap.error_small).into(holder.img);
+                ImgUitls.getWith(mContext)/3).error(R.mipmap.errorpicture).into(holder.img);
 
 
         return convertView;

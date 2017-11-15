@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMy_Img = (ImageView) findViewById(R.id.my_image);
 
         mFragmentManager = getSupportFragmentManager();
+        showInformationFragment();
     }
 
     @Override

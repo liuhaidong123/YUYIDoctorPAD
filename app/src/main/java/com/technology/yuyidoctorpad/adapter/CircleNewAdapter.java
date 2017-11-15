@@ -111,7 +111,7 @@ public class CircleNewAdapter extends BaseAdapter {
         } else {
             circleHolder = (CircleNewHolder) convertView.getTag();
         }
-        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.error_small).into(circleHolder.head_img);
+        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.errorpicture).into(circleHolder.head_img);
         circleHolder.trueName.setText(list.get(position).getTrueName());
         circleHolder.title.setText(list.get(position).getTitle());
         circleHolder.content_tv.setText(list.get(position).getContent());
@@ -122,7 +122,7 @@ public class CircleNewAdapter extends BaseAdapter {
         } else {
             circleHolder.img.setVisibility(View.VISIBLE);
             String[] str = list.get(position).getPicture().split(";");
-            Picasso.with(mContext).load(UrlTools.BASE + str[0]).error(R.mipmap.error_small).into(circleHolder.img);
+            Picasso.with(mContext).load(UrlTools.BASE + str[0]).error(R.mipmap.errorpicture).into(circleHolder.img);
         }
         //点赞设值
         if (list.get(position).getLikeNum() == null) {
