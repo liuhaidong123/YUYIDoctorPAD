@@ -1,5 +1,6 @@
 package com.technology.yuyidoctorpad.activity.PaintList.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import com.technology.yuyidoctorpad.activity.PaintList.Adapter.ElectronicMessLis
 import com.technology.yuyidoctorpad.activity.PaintList.Bean.bean_MedicalRecordList;
 import com.technology.yuyidoctorpad.activity.PaintList.Model.EleModel;
 import com.technology.yuyidoctorpad.activity.PaintList.Model.IEle;
+import com.technology.yuyidoctorpad.activity.PaintList.PaintEleMsgActivity;
 import com.technology.yuyidoctorpad.lzhUtils.MyListView;
 import com.technology.yuyidoctorpad.lzhViews.BaseFragment;
 
@@ -41,6 +43,7 @@ public class EleFragment extends BaseFragment implements MyListView.IonScrollBot
         li=new ArrayList<>();
         adapter=new ElectronicMessListViewAdapter(getActivity(),li);
         paintEleListView.setAdapter(adapter);
+        paintEleListView.setOnItemClickListener(this);
         paintEleListView.setOnScrollBottomListener(this);
         model=new EleModel();
         model.getEleDate(this,id);
@@ -57,7 +60,9 @@ public class EleFragment extends BaseFragment implements MyListView.IonScrollBot
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Intent intent=new Intent(getActivity(), PaintEleMsgActivity.class);
+                intent.putExtra("data",li.get(i));
+                startActivity(intent);
     }
 
     @Override

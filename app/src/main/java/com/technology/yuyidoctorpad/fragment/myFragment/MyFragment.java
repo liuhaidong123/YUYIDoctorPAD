@@ -16,6 +16,8 @@ import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.activity.Message.MessageActivity;
 import com.technology.yuyidoctorpad.activity.MyPost.MyPostActivity;
 import com.technology.yuyidoctorpad.activity.MyPraise.MyPraiseActivity;
+import com.technology.yuyidoctorpad.activity.PaintData.PaintDataListActivity;
+import com.technology.yuyidoctorpad.activity.Registion.RegistionActivity;
 import com.technology.yuyidoctorpad.activity.Settings.SettingActivity;
 import com.technology.yuyidoctorpad.activity.UserInfo.UserInfoActivity;
 import com.technology.yuyidoctorpad.code.ExitLogin;
@@ -84,9 +86,13 @@ public class MyFragment extends BaseFragment implements IListener{
                 break;
 
             case R.id.my_data://查看数据
+                intent.setClass(getActivity(), PaintDataListActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.my_register://挂号接收
+                intent.setClass(getActivity(), RegistionActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.my_addPaintRecord://病历添加

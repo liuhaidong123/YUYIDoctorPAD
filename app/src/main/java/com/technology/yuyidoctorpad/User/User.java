@@ -11,8 +11,9 @@ import static com.technology.yuyidoctorpad.User.User.LoginTP.HOS;
  */
 public class User {
     public static LoginTP lTp;//0医生，1医院(当前登录的类型)
-    public static String token = "2BA9A707D7191E777CB5834D44AC1943";//服务器返回的token
-    public static String tele = "17743516301";//用户名（手机号）
+    public static String HospitalId="-1";//医院的id（默认值为：-1)
+    public static String token = "";//服务器返回的token
+    public static String tele = "";//用户名（手机号）
     public static boolean isLogin(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("USER", Context.MODE_APPEND);
         String userToken = preferences.getString("userToken", "0");
@@ -34,11 +35,24 @@ public class User {
                     token=userToken;
                     tele="1";
                     flag=true;
+                    String hosId=preferences.getString("HospitalId","-1");
+                    if ("-1".equals(hosId)){
+                        flag=false;
+                    }
+                    HospitalId=hosId;
                     break;
             }
             return flag;
         }
         return false;
+    }
+    //保存医院id
+    public static void saveHospitalId(Context con,String hosId){
+        SharedPreferences pre = con.getSharedPreferences("USER",Context.MODE_APPEND);
+        SharedPreferences.Editor edi = pre.edit();
+        edi.putString("HospitalId",hosId);
+        User.HospitalId=hosId;
+        edi.commit();
     }
     //type：
     public static void saveLogin(Context con,String UsToken, String UsTele,LoginTP tp){
@@ -64,6 +78,7 @@ public class User {
         SharedPreferences.Editor edi = pre.edit();
         edi.remove("userToken");
         edi.remove("telePhone");
+        edi.remove("HospitalId");
         edi.remove("type");
         edi.remove("JPSH");//是否注册过激光的别名
         edi.commit();

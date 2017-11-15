@@ -24,22 +24,22 @@ import java.util.Map;
 
 public class myModel {
     IListener listener;
-    String resStr;
+    String resStr1,resStr2;
     Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what){
                 case -1:
-                    resStr=IDbUtlis.getInstance().getOkhttpString(MyApplication.activityCurrent,Ip.interface_UserInfo);
-                    UserBean infos= gson.gson.fromJson(resStr,UserBean.class);
+                    resStr1=IDbUtlis.getInstance().getOkhttpString(MyApplication.activityCurrent,Ip.interface_UserInfo);
+                    UserBean infos= gson.gson.fromJson(resStr1,UserBean.class);
                     listener.onError("网络异常！",infos);
                     break;
                 case 1:
                     try{
-                       UserBean info= gson.gson.fromJson(resStr,UserBean.class);
+                       UserBean info= gson.gson.fromJson(resStr1,UserBean.class);
                         if (info!=null&&"0".equals(info.getCode())){
-                            IDbUtlis.getInstance().saveOkhttpString(MyApplication.activityCurrent,Ip.interface_UserInfo,resStr);
+                            IDbUtlis.getInstance().saveOkhttpString(MyApplication.activityCurrent,Ip.interface_UserInfo,resStr1);
                             listener.onSuccess(info);
                         }
                         else {
@@ -57,7 +57,7 @@ public class myModel {
                     break;
                 case 2:
                     try{
-                        Msg ms=gson.gson.fromJson(resStr,Msg.class);
+                        Msg ms=gson.gson.fromJson(resStr2,Msg.class);
                         if (ms!=null){
                             if ("0".equals(ms.getCode())){
                                 listener.HaveUnReadMsg(ms.hasMessage);
@@ -83,8 +83,8 @@ public class myModel {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr=response.body().string();
-                Log.i("获取个人信息---",resStr);
+                resStr1=response.body().string();
+                Log.i("获取个人信息---",resStr1);
                 handler.sendEmptyMessage(1);
             }
         });
@@ -104,8 +104,8 @@ public class myModel {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr=response.body().string();
-                Log.i("有无未读消息---",resStr);
+                resStr2=response.body().string();
+                Log.i("有无未读消息---",resStr2);
                 handler.sendEmptyMessage(2);
             }
         });

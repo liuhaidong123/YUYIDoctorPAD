@@ -24,10 +24,12 @@
                     <RelativeLayout
                         android:id="@+id/rela"
                         style="@style/LayoutWrap">
-                        <ImageView style="@style/LayoutWrap"
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:id="@+id/press_image"
                             android:layout_centerVertical="true"
-                            android:src="@mipmap/a_normal"/>
+                            android:src="@mipmap/a_unmesure"/>
                         <LinearLayout android:layout_centerVertical="true"
                             android:layout_toRightOf="@+id/press_image"
                             android:layout_marginLeft="15dp"
@@ -40,7 +42,7 @@
                                 android:orientation="vertical">
                                 <TextView style="@style/TextS15C3Lwrap"
                                     android:id="@+id/highPress"
-                                    android:text="120"
+                                    android:text="0"
                                     />
                                 <TextView
                                 style="@style/TextS10C6Lwrap"
@@ -56,7 +58,7 @@
                                 android:orientation="vertical">
                                 <TextView style="@style/TextS15C3Lwrap"
                                     android:id="@+id/lowPress"
-                                    android:text="70"
+                                    android:text="0"
                                     />
                                 <TextView style="@style/TextS10C6Lwrap"
                                     android:text="舒张压（低压）"

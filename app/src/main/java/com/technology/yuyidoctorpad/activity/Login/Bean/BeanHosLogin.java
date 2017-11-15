@@ -31,6 +31,15 @@ public class BeanHosLogin {
     private String code;
     private int State;
 
+    public String getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(String hospitalId) {
+        this.hospitalId = hospitalId;
+    }
+
+    String hospitalId;
     public String getResult() {
         return result;
     }

@@ -34,7 +34,7 @@
             android:name=".activity.Login.LoginActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity android:name=".activity.SelectImgActivity" />
         <activity android:name=".activity.WriteHospitalMessageActivity" />
         <activity
@@ -59,15 +59,39 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.Settings.SettingActivity"
-            android:label="@string/title_activity_setting"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:label="@string/title_activity_setting"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.MyPraise.MyPraiseActivity"
+        <activity
+            android:name=".activity.MyPraise.MyPraiseActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.Registion.RegistionActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.PaintData.PaintDataListActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.PaintData.PaintDataSearchActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.Registion.My_registration_Info_Activity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.Settings.AboutActivity" />
+        <activity android:name=".activity.Settings.FeedActivity" />
+        <activity android:name=".activity.PaintList.PaintEleMsgActivity"></activity>
     </application>
 
 </manifest>

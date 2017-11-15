@@ -1,11 +1,13 @@
 package com.technology.yuyidoctorpad.activity.Settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
+import com.technology.yuyidoctorpad.activity.Login.LoginActivity;
 import com.technology.yuyidoctorpad.lzhUtils.MyApplication;
 import com.technology.yuyidoctorpad.lzhViews.MyActivity;
 
@@ -23,15 +25,16 @@ public class SettingActivity extends MyActivity {
     @OnClick({R.id.setting_contact,R.id.setting_about,R.id.setting_exit})
     public void click(View vi){
         switch (vi.getId()){
-            case R.id.setting_contact://联系我们
-
+            case R.id.setting_contact://意见反馈
+                startActivity(new Intent(this,FeedActivity.class));
                 break;
             case R.id.setting_about://关于我们
-
+                startActivity(new Intent(this,AboutActivity.class));
                 break;
             case R.id.setting_exit://退出登录
                 User.clearLogin(this);
                 MyApplication.removeActivity();
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
         }
     }

@@ -12,7 +12,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import com.technology.yuyidoctorpad.R;
 
 import java.util.ArrayList;
@@ -91,6 +90,7 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
     }
     //已经没有数据了
     public void setLoadingComplete(){
+        setEmpey("没有查询到数据！");
         //当有数据时才显示底部加载当信息
         if (this.getAdapter()!=null&&this.getAdapter().getCount()!=0){
             canListenerScrollBottom=false;//不在响应底部监听
@@ -110,7 +110,7 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
     }
     //设置不显示footView，到底部时自动刷新
     public void setFooterViewVisiable(boolean visi){
-        if (!visi){
+        if (visi==false){
             removeFooterView(footerView);
             }
         else {
@@ -118,6 +118,14 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
                 addFooterView(footerView);
             }
         }
+    }
+    //设置加载状态
+    public void setLoading(){
+        if (this.getFooterViewsCount()==0){
+            addFooterView(footerView);
+        }
+        loading_progressBar.setVisibility(VISIBLE);
+        loading_textView.setText("正在加载。。。");
     }
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {

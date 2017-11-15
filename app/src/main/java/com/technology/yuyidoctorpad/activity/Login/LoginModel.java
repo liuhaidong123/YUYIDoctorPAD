@@ -34,7 +34,7 @@ public class LoginModel {
             super.handleMessage(msg);
             switch (msg.what){
                 case -2://医生获取验证码
-                    listener.onError("网络异常！");
+                    listener.getSMSCodeError("网络异常！");
                     break;
                 case 2://医生获取验证码
                     try {
