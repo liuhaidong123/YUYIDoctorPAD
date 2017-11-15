@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_paint_data_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f2f2f2"
+    tools:context="com.technology.yuyidoctorpad.activity.PaintData.PaintDataListActivity">
+    <include layout="@layout/titleinclude"
+        android:layout_width="match_parent"
+        android:id="@+id/paintList_include"
+        android:layout_height="wrap_content">
+    </include>
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white">
+        <RelativeLayout
+            android:id="@+id/paintList_SearchLayout"
+            android:layout_centerInParent="true"
+            android:background="@drawable/textb"
+            android:layout_width="623dp"
+            android:layout_height="30dp">
+                <ImageView
+                    android:id="@+id/paintList_img"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/searchd"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+            <TextView
+                android:layout_centerVertical="true"
+                style="@style/TextS15C3Lwrap"
+                android:textColor="#999999"
+                android:layout_toRightOf="@+id/paintList_img"
+                android:text="搜索患者"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    <RelativeLayout style="@style/LayoutMatch">
+        <com.technology.yuyidoctorpad.lzhUtils.MyListView
+            android:dividerHeight="15dp"
+            android:divider="#00ffffff"
+            android:paddingTop="15dp"
+            android:listSelector="#00ffffff"
+            android:id="@+id/paintList_ListView"
+            style="@style/LayoutMatch"/>
+        </RelativeLayout>
+</LinearLayout>

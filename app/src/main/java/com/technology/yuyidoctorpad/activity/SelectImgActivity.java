@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.adapter.SelectImgAda;
+import com.technology.yuyidoctorpad.fragment.myFragment.MyFragment;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class SelectImgActivity extends AppCompatActivity implements View.OnClick
     private ArrayList<String> mImgList = new ArrayList<>();
     private Cursor cursor;
     private int num = 0;
+    MyFragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import static com.technology.yuyidoctorpad.User.User.LoginTP.DOC;
+import static com.technology.yuyidoctorpad.User.User.LoginTP.DOC;
 import static com.technology.yuyidoctorpad.User.User.LoginTP.HOS;
 
 /**

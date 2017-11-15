@@ -15,4 +15,7 @@
 
     <dimen name="textSize9">9sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="wheelViewHeight">40dp</dimen>
+    <dimen name="wheelViewTextSize">20sp</dimen>
+    <dimen name="wheelViewTextSizeLarge">23sp</dimen>
 </resources>

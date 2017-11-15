@@ -5,8 +5,9 @@ package com.technology.yuyidoctorpad.Net;
  */
 
 public interface Ip {
-//    "http://59.110.169.148:8080/
-    String path="http://192.168.1.168:8082/yuyi";
+//    "http://59.110.169.148:8080
+//    http://192.168.1.168:8082/yuyi
+    String path="http://59.110.169.148:8080";
     String imagePath="http://59.110.169.148:8080";
     String path_F="http://192.168.1.44:8080/yuyi";
 //    http://192.168.1.168:8080/smarthome/mobileapi/
@@ -47,4 +48,17 @@ public interface Ip {
     String interface_SMSCodeHospital="/hospital/vcode.do?";
     //http://localhost:8080/yuyi/hospital/AdministratorLogin.do?administratorsTelephone=18782931356&vcode=524740
     String interface_HospitalLogin="/hospital/AdministratorLogin.do?";
+
+    //获取挂号列表接口http://192.168.1.55:8080/yuyi/register/findList.do?token=EA62E69E02FABA4E4C9A0FDC1C7CAE10&start=0&limit=5&departmentId=1&clinicId=1
+    String interface_MyRegisterGH="/register/findList.do?";
+    //获取挂号中所有科室的列表:http://192.168.1.55:8080/yuyi/department/getallph.do?token=EA62E69E02FABA4E4C9A0FDC1C7CAE10
+    String interface_MyRegisterKS="/department/getallph.do?";
+    //获取患者列表
+    String interface_MyPaintList="/homeuser/findAllUserList.do?";
+    //病历详情
+    String interface_MyRegisterGH_Msg="/register/get.do?";
+    //关于我们
+    String interface_AboutUs="/aboutUs/getph.do";
+    //意见反馈
+    String interface_MySetting_FeadUs="/feedback/saveforph.do?";
 }

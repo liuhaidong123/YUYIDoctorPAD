@@ -41,4 +41,20 @@
     <color name="colorBackground">#30323a</color>
     <color name="firstTextColor">#c81dbeec</color>
     <color name="otherTextColor">#c87ed66b</color>
+
+    <!--色值-->
+    <color name="L_color_dinkwhite">#e1dddd</color>
+    <color name="L_color_fg">#f2f2f2</color>
+    <color name="e5">#e5e5e5</color>
+    <color name="L_color_textNomol">#6a6a6a</color>
+    <color name="L_color_white">#ffffff</color>
+    <color name="L_color_titleText">#333333</color>
+    <color name="L_color_exit_back">#e00610</color>
+    <color name="background">#f2f2f2</color>
+    <color name="color_ms_home_titleclolr">#333333</color>
+    <color name="drawbackground">#791e1e1e</color>
+    <color name="un">#00aaeeaa</color>
+    <color name="wheelTextColorDink">#999999</color>
+    <color name="wheelTextColor">#333333</color>
+    <color name="wheel_line">#00ffffff</color>
 </resources>

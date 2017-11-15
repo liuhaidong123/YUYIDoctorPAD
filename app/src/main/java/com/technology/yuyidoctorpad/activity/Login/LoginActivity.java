@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
-import com.technology.yuyidoctorpad.activity.HospitalHomePageActivity;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanDoc;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanHosLogin;
 import com.technology.yuyidoctorpad.activity.MainActivity;
@@ -21,6 +20,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class LoginActivity extends MyActivity implements ILogin{
+    int successSMScount=0;//获取验证码成功的次数（大于5次时，该用户违法，不能再继续获取验证码，防止用户过多的获取）
+    boolean SMS=true;
     LoginType type=LoginType.DOCTOR;//当前登录方式
     LoginPresenter presenter;
     @BindView(R.id.loginTitle)TextView loginTitle;//登录标题
@@ -53,6 +54,10 @@ public class LoginActivity extends MyActivity implements ILogin{
                 presenter.onLogin(my_userlogin_edit_name.getText().toString(),my_userlogin_edit_smdCode.getText().toString(),this,type);
                 break;
             case R.id.my_userlogin_getSMScode://获取验证码按钮
+                if (SMS==false){
+                    toast.toast(this,"您请求验证码的次数过多，请退出后重试！");
+                    return;
+                }
                 my_userlogin_getSMScode.setClickable(false);
                 my_userlogin_getSMScode.setBackground(getResources().getDrawable(R.drawable.my_userlogin_unclick));
                 presenter.onGetSmsCode(my_userlogin_edit_name.getText().toString(),this,type);
@@ -87,8 +92,8 @@ public class LoginActivity extends MyActivity implements ILogin{
                     break;
                 case 1://通过审核的（已经注册过的）
                     toast.toast(this,"通过审核");
-                    User.saveLogin(LoginActivity.this,bean.getResult(),"", User.LoginTP.HOS);
-                    startActivity(new Intent(this,HospitalHomePageActivity.class));
+                    User.saveHospitalId(this,bean.getHospitalId());//保存医院id
+                    User.saveLogin(this,bean.getResult(),"", User.LoginTP.HOS);
                     break;
                 case 2://审核中
                     showDialog("资料审核中","您上次提交的资料还在审核中，是否重新填写审核信息？",2);
@@ -124,6 +129,10 @@ public class LoginActivity extends MyActivity implements ILogin{
 
     @Override
     public void getSMSCodeSuccess(){
+        successSMScount++;
+        if (successSMScount==5){
+            SMS=false;
+        }
         presenter.onTimer(this);
     }
 
