@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
+import com.technology.yuyidoctorpad.activity.HospitalHomePageActivity;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanDoc;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanHosLogin;
 import com.technology.yuyidoctorpad.activity.MainActivity;
@@ -87,6 +88,7 @@ public class LoginActivity extends MyActivity implements ILogin{
                 case 1://通过审核的（已经注册过的）
                     toast.toast(this,"通过审核");
                     User.saveLogin(LoginActivity.this,bean.getResult(),"", User.LoginTP.HOS);
+                    startActivity(new Intent(this,HospitalHomePageActivity.class));
                     break;
                 case 2://审核中
                     showDialog("资料审核中","您上次提交的资料还在审核中，是否重新填写审核信息？",2);

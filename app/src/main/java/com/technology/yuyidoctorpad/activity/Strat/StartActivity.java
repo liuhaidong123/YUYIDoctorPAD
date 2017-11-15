@@ -7,6 +7,7 @@ import android.os.Message;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
+import com.technology.yuyidoctorpad.activity.HospitalHomePageActivity;
 import com.technology.yuyidoctorpad.activity.Login.LoginActivity;
 import com.technology.yuyidoctorpad.activity.MainActivity;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
@@ -26,7 +27,7 @@ public class StartActivity extends MyActivity {
                                 finish();
                                 break;
                             case HOS:
-                                toast.toast(StartActivity.this,"界面未搭建");
+                                startActivity(new Intent(getApplicationContext(),HospitalHomePageActivity.class));
                                 break;
                         }
                     }

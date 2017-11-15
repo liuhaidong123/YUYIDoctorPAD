@@ -84,7 +84,7 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
     private UMImage image;
     private UMImage thumb;
     private UMWeb umWeb;
-    private RelativeLayout mRight_Rl,mRight_NoData_Rl;
+    private RelativeLayout mRight_Rl,mRight_NoData_Rl,mLeft_NoData_Rl;
     private Handler mHttpHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -103,9 +103,17 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
                         mFirstPageAdapter.setmList(mList);
                         mFirstPageAdapter.notifyDataSetChanged();
                         if (mList.size() != 0) {
+                            mMyListview.setVisibility(View.VISIBLE);
+                            mLeft_NoData_Rl.setVisibility(View.GONE);
+                            mRight_Rl.setVisibility(View.VISIBLE);
+                            mRight_NoData_Rl.setVisibility(View.GONE);
                             mHttptools.getADMessageDetial(mHttpHandler, mList.get(mPostion).getId(),User.token);//获取今日推荐，最新，热门资讯详情
                             mHttptools.getCommendList(mHttpHandler, mList.get(mPostion).getId(), mCommentStart, mCommentLimit);//获取评论列表
                         } else {
+                            mMyListview.setVisibility(View.GONE);
+                            mLeft_NoData_Rl.setVisibility(View.VISIBLE);
+                            mRight_Rl.setVisibility(View.GONE);
+                            mRight_NoData_Rl.setVisibility(View.VISIBLE);
                             ToastUtils.myToast(getContext(), "抱歉，没有帖子哦");
                         }
                         if (list.size() < 10) {//隐藏加载更多
@@ -124,6 +132,7 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
                 Object o = msg.obj;
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.AdMessageDetial.Root) {
                     com.technology.yuyidoctorpad.bean.AdMessageDetial.Root root = (com.technology.yuyidoctorpad.bean.AdMessageDetial.Root) o;
+
                     //分享时需要的图片和内容
                     image = new UMImage(getContext(), UrlTools.BASE + root.getPicture());//设置要分享的图片
                     thumb = new UMImage(getContext(), UrlTools.BASE + root.getPicture());//设置分享图片的缩略图
@@ -210,6 +219,11 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
     private void initUI(View view) {
         mHttptools = HttpTools.getHttpToolsInstance();
         mHttptools.getTodayRecommend(mHttpHandler, mStart, mLimit);//今日推荐
+
+        mRight_Rl=view.findViewById(R.id.right_rl);
+        mRight_NoData_Rl=view.findViewById(R.id.right_no_data);
+        mLeft_NoData_Rl=view.findViewById(R.id.left_no_data_rl);
+
         //今日推荐，最新，热门
         mRecommend_ll = (LinearLayout) view.findViewById(R.id.recommend_ll);
         mNew_LL = (LinearLayout) view.findViewById(R.id.new_ll);

@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    tools:context="com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.HomePageFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp">
+
+
+        <View
+            android:id="@+id/h_line2"
+            android:layout_width="5dp"
+            android:layout_height="80dp"
+            android:background="@color/color_1ebeec" />
+
+        <TextView
+            android:id="@+id/h_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/h_line2"
+            android:text="涿州市中医医院"
+            android:textColor="@color/color_333333"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/h_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/h_name"
+            android:layout_below="@+id/h_name"
+            android:layout_marginTop="15dp"
+            android:text="三级甲等"
+            android:textColor="@color/color_333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/h_telephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/h_name"
+            android:layout_below="@+id/h_grade"
+            android:layout_marginTop="15dp"
+            android:text="联系电话：0321-0000000"
+            android:textColor="@color/color_333333"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/h_img"
+            android:layout_width="370dp"
+            android:layout_height="206dp"
+            android:layout_below="@+id/h_telephone"
+            android:layout_marginTop="30dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/errorpicture" />
+
+        <TextView
+            android:id="@+id/h_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_toRightOf="@+id/h_img"
+            android:text="医院简介"
+            android:textColor="@color/color_333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:scrollbars="vertical"
+            android:singleLine="false"
+            android:id="@+id/h_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/h_message"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/h_img"
+            android:lineSpacingExtra="15dp"
+            android:text="我是一名教师，闲暇时我喜欢读书，读书不仅可以增长我的知识，而且可以丰富我的生活，感受书中的乐趣。
+
+    读书是生活的一部分，但是对不同的人而言有不同的理解，有人说：读书时可以感受书中的意境，体会作者的心情，
+ 理解当时大社会下人民的生活方式和生活环境；也有人说：读书可以开旷自己的视野，增长自己的见识，学会为人处世之理，待人之道。每一个人的见解不一样，得到的答案也就不一样，但总之，读书，可以给每一个人带来或是物质，或是生活，或是精神上的满足。
+
+   古人常说：书中自有黄金屋，书中自有颜如玉。读书可以改变生活，改变命运，指引我们奋力前进，是我们人生中的指路明灯，可以视通四海，思接千古，与智者交谈，与伟人对话。做一个读书人，就是做一个幸福的人。
+
+  读书能让我们由世界之大看到自己的渺小，让我们在思考过程中摆脱心的寂寞，让我们对世界万物充满好奇与敬畏，让我们在与他人的交往中懂得体恤共情，让我们的内心笃定却又不会过于固执，让我们看见他人眼中的世界，也让我们清楚认识自己。我们可以在《悯农》中体会人们的生活疾苦，可以在《九月九日忆山东兄弟》中体会诗人的思乡之情，可以在《钢铁是怎样炼成的》品味保尔.柯察金的精神，也可以在莎士比亚的四大悲剧中品味每个主人公的人生经历。
+
+
+  读书好处多 纵观中国古今, 横看世界各国, 有哪一位名人不酷爱读书? 又有哪一个不爱读书的人获的了成功? “读一本好书, 就是和许多高尚的人谈话。”坚持不懈地读书学习,便会懂得人生的真谛充满对美好生活和光明未来的热爱和想往; 就会树立远大的理想和崇高的奋斗目标, 因而就会有终生不衰的前进动力; 就会使我们的精神世界得到充实, 思想境界得到提高, 道德情操得到陶冶, 从而使我们的一切言行皆能有益于社会, 有益于人类, 我们自己也就成为受人欢迎和尊敬的人, 成为社会有用的一员。
+
+  我们正是集中精力学习知识的黄金时代, 千万不要白白地浪费掉。古话说: “少壮不努力,老大徒伤悲”。待到自己在曲折的人生中悟出应该多学本事的道理, 想学的时候, 由于年龄的增长, 记忆力衰退, 由于家庭的重负, 精力集中不起来, 那时想学也学不好了。与其那时悔恨终生, 倒不如现在就努力学习，多读书，多看书，让我们的人生变得有价值，有意义。
+
+  读书完美了我们的生活，充实了我们的精神，让我们在大千世界中对人生充满了美好的向往,让我们不再虚度年华，让我们知道，仅有壮实的躯体, 不是生命; 仅有年轻的容貌,也不是青春。
+
+
+  趁我们还年轻，一起读书吧，不要等到我们老了，再去抱怨整个人生平平淡淡，碌碌无为！！！"
+            android:textColor="@color/color_333333"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

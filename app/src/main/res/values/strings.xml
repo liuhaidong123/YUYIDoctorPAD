@@ -26,6 +26,20 @@
     <string name="imformation_recommend">推荐</string>
     <string name="imformation_new">最新</string>
     <string name="comment_hint_edit">写评论</string>
+    <string name="hospital_homepage">医院主页</string>
+    <string name="hospital_department">科室信息</string>
+    <string name="hospital_doctor">医生信息</string>
+    <string name="hospital_num_set">挂号设置</string>
+    <string name="hospital_information">资讯发布</string>
+
+    <string name="add_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
+    <string name="add_job">职&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;称</string>
+    <string name="add_department">科&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;室</string>
+    <string name="add_telephone">手机号码</string>
+    <string name="add_power">权限设置</string>
+    <string name="add_ask">咨询权限</string>
+    <string name="add_data">查看数据权限</string>
+    <string name="add_num">挂号接受权限</string>
 
 
     <string name="_90mmhg_140mmhg"><![CDATA[90mmHg<收缩压<140mmHg]]></string>

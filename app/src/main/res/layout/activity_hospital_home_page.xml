@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_hospital_home_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    tools:context="com.technology.yuyidoctorpad.activity.HospitalHomePageActivity">
+
+    <TextView
+        android:id="@+id/h_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="@string/hospital_homepage"
+        android:textColor="@color/color_333333"
+        android:textSize="19sp" />
+
+    <ImageView
+        android:id="@+id/h_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:paddingRight="30dp"
+        android:src="@mipmap/hospital_menu"
+
+        />
+
+    <View
+        android:id="@+id/h_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/h_title"
+        android:background="@color/color_cccccc" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/h_line">
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/h_type_listview"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/h_line"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/hospital_type_bg"
+        android:divider="@color/color_cecece"
+        android:dividerHeight="0.5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:visibility="gone">
+
+    </ListView>
+</RelativeLayout>

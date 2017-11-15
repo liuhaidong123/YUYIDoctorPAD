@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.technology.yuyidoctorpad">
-
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
     <application
         android:name=".lzhUtils.MyApplication"
         android:allowBackup="true"
@@ -40,9 +40,17 @@
             android:name=".activity.Login.LoginActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".activity.SelectImgActivity" />
-        <activity android:name=".activity.WriteHospitalMessageActivity" />
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.SelectImgActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTop"
+            />
+        <activity android:name=".activity.WriteHospitalMessageActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTop"
+            />
         <activity
             android:name=".activity.PaintList.PaintMsgActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
@@ -53,7 +61,6 @@
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".activity.MyPost.MyPostActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
@@ -66,80 +73,81 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.Settings.SettingActivity"
-            android:label="@string/title_activity_setting"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:label="@string/title_activity_setting"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.MyPraise.MyPraiseActivity"
+        <activity
+            android:name=".activity.MyPraise.MyPraiseActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
 
-        <!--友盟分享-->
-        <activity android:name=".wxapi.WXEntryActivity">
-
-        </activity>
-        <!--微博-->
+        <!-- 友盟分享 -->
+        <activity android:name=".wxapi.WXEntryActivity"></activity>
+        <!-- 微博 -->
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:exported="false"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+        <activity
+            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
             android:launchMode="singleTask"
-            android:name="com.sina.weibo.sdk.share.WbShareTransActivity">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
+
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"
             android:exported="false" />
-        <!--微博-->
+        <!-- 微博 -->
 
 
-        <!--qq-->
+        <!-- qq -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
-
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent100424468" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
-        <!--qq-->
-<!--appkey-->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- qq -->
+        <!-- appkey -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a0903a6b27b0a05fa00005f" >
-        </meta-data>
+            android:value="5a0903a6b27b0a05fa00005f"></meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="Umeng" />
-        <!--友盟分享-->
+        <!-- 友盟分享 -->
+        <activity android:name=".activity.HospitalHomePageActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTop"
+            ></activity>
     </application>
 
 </manifest>

@@ -34,16 +34,15 @@ public class PostCardPopUtils {
        // mPopupwindow = new PopupWindow(itemView);
         //设置弹框的款，高
         mPopupwindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        mPopupwindow.setHeight(height);
-        mPopupwindow.setWidth(width);
+        mPopupwindow.setHeight(dip2px(activity,height));
+        mPopupwindow.setWidth(dip2px(activity,width));
         mPopupwindow.setBackgroundDrawable(new ColorDrawable(Color.argb(000, 255, 255, 255)));
         mPopupwindow.setFocusable(true);//如果有交互需要设置焦点为true
         mPopupwindow.setOutsideTouchable(false);//设置内容外可以点击
 
         //mPopupwindow.setAnimationStyle(R.style.popup3_anim);
         //相对于父控件的位置
-        mPopupwindow.showAtLocation(parent, Gravity.CENTER,0,0);
-        //mPopupwindow.showAsDropDown(parent);
+        mPopupwindow.showAtLocation(parent,Gravity.CENTER,0,0);
         //当弹框销毁时，将透明度初始化，否则弹框销毁后，所依附的activity页面背景将会改变
         mPopupwindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -56,9 +55,16 @@ public class PostCardPopUtils {
         });
     }
 
-//    public static void dissPop(PopupWindow popupWindow){
-//        if (popupWindow!=null){
-//            popupWindow.dismiss();
-//        }
-//    }
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     *
+     * @param context
+     * @param dpValue
+     * @return
+     *
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
 }
