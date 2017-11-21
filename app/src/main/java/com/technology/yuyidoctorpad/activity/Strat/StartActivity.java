@@ -10,7 +10,6 @@ import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.activity.HospitalHomePageActivity;
 import com.technology.yuyidoctorpad.activity.Login.LoginActivity;
 import com.technology.yuyidoctorpad.activity.MainActivity;
-import com.technology.yuyidoctorpad.lzhUtils.toast;
 import com.technology.yuyidoctorpad.lzhViews.MyActivity;
 
 public class StartActivity extends MyActivity {

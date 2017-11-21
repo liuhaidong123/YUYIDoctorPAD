@@ -55,6 +55,7 @@ public class OkUtils {
                 bString=bString.substring(0,bString.length()-1);
                 uri = uri +bString;
             }
+            System.out.println(uri);
             Log.i("url--okHttpPost--",uri);
             //测试用----------yishang--------
             FormEncodingBuilder builder = new FormEncodingBuilder();

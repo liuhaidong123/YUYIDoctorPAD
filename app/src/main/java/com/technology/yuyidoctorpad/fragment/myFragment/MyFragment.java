@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import com.technology.yuyidoctorpad.Enum.IntentValue;
 import com.technology.yuyidoctorpad.Net.Ip;
 import com.technology.yuyidoctorpad.R;
+import com.technology.yuyidoctorpad.activity.AddPaintRecord.PaintRecordAddActicity;
 import com.technology.yuyidoctorpad.activity.Message.MessageActivity;
 import com.technology.yuyidoctorpad.activity.MyPost.MyPostActivity;
 import com.technology.yuyidoctorpad.activity.MyPraise.MyPraiseActivity;
@@ -96,6 +97,8 @@ public class MyFragment extends BaseFragment implements IListener{
                 break;
 
             case R.id.my_addPaintRecord://病历添加
+                intent.setClass(getActivity(), PaintRecordAddActicity.class);
+                startActivity(intent);
                 break;
 
             case R.id.my_settings://设置

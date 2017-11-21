@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.technology.yuyidoctorpad">
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -41,16 +42,16 @@
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.SelectImgActivity"
+        <activity
+            android:name=".activity.SelectImgActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
             android:launchMode="singleTop"
-            />
-        <activity android:name=".activity.WriteHospitalMessageActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.WriteHospitalMessageActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
             android:launchMode="singleTop"
-            />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.PaintList.PaintMsgActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
@@ -73,12 +74,13 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.Settings.SettingActivity"
-            android:label="@string/title_activity_setting"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:label="@string/title_activity_setting"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.MyPraise.MyPraiseActivity"
+        <activity
+            android:name=".activity.MyPraise.MyPraiseActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
@@ -104,23 +106,22 @@
             android:screenOrientation="landscape" />
         <activity android:name=".activity.Settings.AboutActivity" />
         <activity android:name=".activity.Settings.FeedActivity" />
-        <activity android:name=".activity.PaintList.PaintEleMsgActivity"></activity>
-
+        <activity android:name=".activity.PaintList.PaintEleMsgActivity" />
 
         <!-- 友盟分享 -->
-        <activity android:name=".wxapi.WXEntryActivity"></activity>
+        <activity android:name=".wxapi.WXEntryActivity" />
         <!-- 微博 -->
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
             android:launchMode="singleTask"
@@ -161,15 +162,37 @@
         <!-- appkey -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a0903a6b27b0a05fa00005f"></meta-data>
+            android:value="5a0903a6b27b0a05fa00005f" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="Umeng" />
         <!-- 友盟分享 -->
-        <activity android:name=".activity.HospitalHomePageActivity"
+        <activity
+            android:name=".activity.HospitalHomePageActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
             android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.Hospital.HospitalAddDepartActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.Hospital.HospitalEditActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activity.AddPaintRecord.PaintRecordAddActicity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activity.AddPaintRecord.PhotoSelect.Post_SelectPhotoActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"
             ></activity>
     </application>
 

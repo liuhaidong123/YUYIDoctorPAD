@@ -21,6 +21,19 @@ public enum  UserSex {
         }
         return sx;
     }
+    public static  String getSexName(UserSex sex){
+        String text="女";
+        switch (sex){
+            case GIRL:
+                text="女";
+            break ;
+            case BOY:
+                text="男";
+                break ;
+        }
+        return  text;
+    }
+
     public static int UserSexToInt(UserSex sex){
         int se=0;
         switch (sex){
@@ -30,7 +43,7 @@ public enum  UserSex {
             case BOY:
                 se=1;
                 break;
-        }
+            }
         return se;
     }
 }

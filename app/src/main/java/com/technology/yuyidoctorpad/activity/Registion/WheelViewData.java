@@ -36,4 +36,18 @@ public class WheelViewData {
         return li;
     }
 
+    //返回今天以及之后的6天共7天的年月日
+    public List<String>getDate(){
+        List<String> li=new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+        Date date = calendar.getTime();
+        li.add(sdf.format(date));
+        for (int i=0;i<6;i++){
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+            date = calendar.getTime();
+            li.add(sdf.format(date));
+        }
+        return li;
+    }
 }

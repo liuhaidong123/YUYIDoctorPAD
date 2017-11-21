@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.activity.WriteHospitalMessageActivity;
-
+//编辑医院信息
 /**
  * A simple {@link Fragment} subclass.
  */
