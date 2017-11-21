@@ -61,4 +61,20 @@ public interface Ip {
     String interface_AboutUs="/aboutUs/getph.do";
     //意见反馈
     String interface_MySetting_FeadUs="/feedback/saveforph.do?";
+    //获取科室列表（医院方）
+    String interface_getDepartment="/department/getdepartment.do?";
+    //添加科室门诊
+    String interface_addDepart="/department/saveBatch.do?";
+    //删除科室http://192.168.1.44:8080/yuyi/department/DeleteDepartmentId.do?DepartmentId=5&hospitalId=1
+    String interface_deleteDepart="/department/DeleteDepartmentId.do?";
+    //修改科室http://192.168.1.44:8080/yuyi/department/ClinicUpdateAndDelete.do?
+    String interface_eidtDepart="/department/ClinicUpdateAndDelete.do?";
+    //获取科室的所有医生http://192.168.1.44:8080/yuyi/physician/findList.do?hospitalId=1&departmentId=1
+    String interface_getDepartmentDoctors="/physician/findList.do?";
+    //获取科室挂号信息
+    String interface_getDepartRecord="/datenumber/findnumber.do?";
+    //挂号设置
+    String interface_getDepart="/datenumber/saveNumber.do?";
+    //添加病历http://localhost:8080/yuyi/medical/SaveMedical.do?telethone=
+    String interface_addRecord="/medical/SaveMedical.do?";
 }

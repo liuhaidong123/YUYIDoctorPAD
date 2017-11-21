@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="popWidth">300dp</dimen>
+    <dimen name="grid">100dp</dimen>
     <dimen name="size19">19sp</dimen>
     <dimen name="size18">18sp</dimen>
     <dimen name="size17">17sp</dimen>

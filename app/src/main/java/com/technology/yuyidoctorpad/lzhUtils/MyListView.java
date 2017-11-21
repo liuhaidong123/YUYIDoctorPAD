@@ -76,11 +76,22 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
             emptyView.setLayoutParams(new ViewGroup.LayoutParams(this.getMeasuredWidth(),this.getMeasuredHeight()));
             emptyTextView= (TextView) emptyView.findViewById(R.id.MyListView_HeadView_Text);
             emptyTextView.setText(emText);
-            ((ViewGroup)getParent()).addView(emptyView);
             }
+        if (emptyView.getParent()!=null){
+            ((ViewGroup)getParent()).removeView(emptyView);
+        }
+        ((ViewGroup)getParent()).addView(emptyView);
         setEmptyView(emptyView);
     }
 
+    public void removeEmptyView(){
+        if (emptyView==null){
+            return;
+        }
+        else {
+            ((ViewGroup)getParent()).removeView(emptyView);
+        }
+    }
 
     @Override
     public void setAdapter(ListAdapter adapter) {
@@ -124,6 +135,7 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
         if (this.getFooterViewsCount()==0){
             addFooterView(footerView);
         }
+        footerView.setVisibility(VISIBLE);
         loading_progressBar.setVisibility(VISIBLE);
         loading_textView.setText("正在加载。。。");
     }

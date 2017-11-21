@@ -180,9 +180,17 @@
         <activity android:name=".activity.DoctorDetilsActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.Hospital.HospitalAddDepartActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
             android:screenOrientation="landscape"
             />
         <activity android:name=".activity.DoctorSearchActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.Hospital.HospitalEditActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
@@ -199,6 +207,19 @@
             >
 
         </activity>
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activity.AddPaintRecord.PaintRecordAddActicity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activity.AddPaintRecord.PhotoSelect.Post_SelectPhotoActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"
+            ></activity>
     </application>
 
 </manifest>

@@ -187,4 +187,5 @@ public class MyPostActivity extends MyActivity implements IListener,MyListView.I
         list.get(CurrentPos).setIsLike(isLike);
         adapter.notifyDataSetChanged();
     }
+
 }

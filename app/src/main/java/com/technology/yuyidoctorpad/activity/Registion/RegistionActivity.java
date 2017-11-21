@@ -68,11 +68,9 @@ public class RegistionActivity extends MyActivity implements IonScrollBottomList
     String month="";
     String year="";
     PopupWindow pop;
-    MyWheelView pop_wheel_time;//上下午
     MyWheelAdapter adapterTime;
     List<String> listTime;
 
-    MyWheelView pop_wheel_date;//日期（某月的天）
     MyWheelAdapter adapterdate;
     List<String>listDate;
 

@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
-import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.DepartmentFragment;
+
+import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Depart.DepartmentFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.DoctorFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.HomePageFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.InformationPostFragment;
-import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.RegisterNumFragment;
+import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Registe.RegisterNumFragment;
+;
 
 import java.util.ArrayList;
 import java.util.List;
