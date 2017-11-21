@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_information_post"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    tools:context="com.technology.yuyidoctorpad.activity.InformationPostActivity">
+
+    <TextView
+        android:id="@+id/h_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="发布资讯"
+        android:textColor="@color/color_333333"
+        android:textSize="19sp" />
+
+    <View
+        android:id="@+id/h_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/h_title"
+        android:background="@color/color_cccccc" />
+
+    <RelativeLayout
+        android:id="@+id/data_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/h_line"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/post_img_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/post_img"
+            android:textColor="@color/color_555555"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/post_img_btn"
+            android:layout_width="86dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/post_img_tv"
+            android:src="@mipmap/addpost" />
+
+        <TextView
+            android:id="@+id/post_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/post_img_tv"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/post_title"
+            android:textColor="@color/color_555555"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/post_img_tv"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/post_title_tv"
+            android:background="@drawable/hospital_bg">
+
+            <TextView
+                android:id="@+id/post_title_lenth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="0/20"
+
+                />
+
+            <EditText
+                android:id="@+id/post_title_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/post_title_lenth"
+                android:background="@null"
+                android:inputType="text"
+                android:maxLength="20" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/post_small_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/post_title_tv"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/post_small_title"
+            android:textColor="@color/color_555555"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/post_title_tv"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/post_small_title_tv"
+            android:background="@drawable/hospital_bg">
+
+            <TextView
+                android:id="@+id/post_title_small_lenth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="0/20"
+
+                />
+
+            <EditText
+                android:id="@+id/post_small_title_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/post_title_small_lenth"
+                android:background="@null"
+                android:inputType="text"
+                android:maxLength="20" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/post_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_below="@+id/post_small_title_tv"
+            android:layout_marginTop="20dp"
+            android:text="@string/post_content"
+            android:textColor="@color/color_555555"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@+id/post_small_title_tv"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/post_small_title_tv"
+            android:background="@drawable/hospital_bg">
+
+
+            <EditText
+                android:id="@+id/post_content_edit"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginBottom="5dp"
+                android:background="@null"
+                android:gravity="left|top"
+                android:maxLength="1000" />
+
+            <TextView
+                android:id="@+id/post_content_lenth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/post_content_edit"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="15dp"
+                android:gravity="right"
+                android:text="0/1000"
+
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/post_way_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@+id/post_content_tv"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/post_way"
+            android:textColor="@color/color_555555"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:id="@+id/post_yuyi"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_below="@id/post_content_tv"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/post_way_tv"
+            android:background="@drawable/hospital_next_bg"
+            android:gravity="center"
+            android:text="宇医"
+            android:textColor="@color/color_ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/post_yuyidoctor"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_below="@id/post_content_tv"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/post_yuyi"
+            android:background="@drawable/yuyidoctor_bg"
+            android:gravity="center"
+            android:text="宇医医生"
+            android:textColor="@color/color_999999"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/post_submit_btn"
+            android:layout_width="250dp"
+            android:layout_height="44dp"
+            android:layout_below="@+id/post_yuyi"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/hospital_next_bg"
+            android:gravity="center"
+            android:text="提交审核"
+            android:textColor="@color/color_ffffff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

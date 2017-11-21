@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
+import com.technology.yuyidoctorpad.bean.DepartmentBean.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.List;
  */
 
 public class DepartmentAda extends BaseAdapter {
-    private List<String> list = new ArrayList<>();
+    private List<Result> list = new ArrayList<>();
     private Context context;
     private LayoutInflater inflater;
 
-    public DepartmentAda(List<String> list, Context context) {
+    public DepartmentAda(List<Result> list, Context context) {
         this.list = list;
         this.context = context;
         this.inflater = LayoutInflater.from(context);
@@ -55,7 +56,7 @@ public class DepartmentAda extends BaseAdapter {
             dHolder = (DHolder) view.getTag();
         }
 
-        dHolder.textView.setText(list.get(i));
+        dHolder.textView.setText(list.get(i).getDepartmentName());
         return view;
     }
 

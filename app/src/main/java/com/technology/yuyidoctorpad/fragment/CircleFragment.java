@@ -390,7 +390,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private GridView mImg_GridView;
     private PostCardAdapter mCardImgAda;
     private List<String> mCardListImg = new ArrayList<>();
-    private RelativeLayout mPopParentView;
+    private RelativeLayout mPopParentView,mleft_rl;
     private PopupWindow popupWindow;
     private static final int READ_WRITE_PERMISS_CODE = 123;
     private AlertDialog.Builder builder;

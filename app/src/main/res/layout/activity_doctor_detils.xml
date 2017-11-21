@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_doctor_detils"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    tools:context="com.technology.yuyidoctorpad.activity.DoctorDetilsActivity">
+
+    <TextView
+        android:id="@+id/h_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="医生信息详情"
+        android:textColor="@color/color_333333"
+        android:textSize="19sp" />
+
+    <View
+        android:id="@+id/h_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/h_title"
+        android:background="@color/color_cccccc" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/h_line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp">
+
+        <RelativeLayout
+            android:id="@+id/title_one"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp">
+
+            <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+                android:id="@+id/details_head"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop" />
+
+            <RelativeLayout
+                android:id="@+id/details_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="65dp"
+                android:layout_toRightOf="@+id/details_head">
+
+                <TextView
+                    android:id="@+id/details_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/details_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/details_name"
+                    android:layout_marginTop="25dp"
+                    android:text=""
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/details_department"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/details_name"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@+id/details_job"
+                    android:text=""
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/edit_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/details_head"
+                android:layout_marginLeft="50dp"
+                android:layout_toRightOf="@+id/details_rl" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/details_telephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_one"
+            android:layout_marginLeft="165dp"
+            android:layout_marginTop="55dp"
+            android:text=""
+            android:textColor="@color/color_333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/details_power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details_telephone"
+            android:layout_marginLeft="165dp"
+            android:layout_marginTop="50dp"
+            android:text=""
+            android:textColor="@color/color_333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/details_askpower1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details_telephone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@+id/details_power"
+            android:background="@drawable/power_bg"
+            android:text=""
+            android:textColor="@color/color_ffffff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/details_lookpower2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details_telephone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@+id/details_askpower1"
+            android:background="@drawable/power_bg"
+            android:text=""
+            android:textColor="@color/color_ffffff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/details_registerpower3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details_telephone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@+id/details_lookpower2"
+            android:background="@drawable/power_bg"
+            android:text=""
+            android:textColor="@color/color_ffffff"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/no_net_work"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/h_line">
+
+        <ImageView
+            android:id="@+id/no_net_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/nonetwork" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no_net_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_acacac"
+            android:text="没有网络连接哦！！！"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

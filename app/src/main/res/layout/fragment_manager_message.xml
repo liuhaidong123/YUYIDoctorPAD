@@ -33,6 +33,7 @@
                 android:layout_toRightOf="@+id/maneger_name_tv"
                 android:background="@drawable/hospital_bg"
                 android:inputType="text"
+                android:maxLength="20"
                 android:textColor="@color/color_333333"
                 android:textSize="15sp" />
 
@@ -64,6 +65,7 @@
                 android:layout_toRightOf="@+id/maneger_job_tv"
                 android:background="@drawable/hospital_bg"
                 android:inputType="text"
+                android:maxLength="20"
                 android:textColor="@color/color_333333"
                 android:textSize="15sp" />
 
@@ -124,6 +126,7 @@
                 android:layout_toRightOf="@+id/maneger_phone_tv"
                 android:background="@drawable/hospital_bg"
                 android:inputType="number"
+                android:maxLength="11"
                 android:textColor="@color/color_333333"
                 android:textSize="15sp" />
 

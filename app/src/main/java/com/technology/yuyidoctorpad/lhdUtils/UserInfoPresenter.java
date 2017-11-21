@@ -42,6 +42,9 @@ public class UserInfoPresenter implements View.OnClickListener{
         usereditor_pop_layout.setLayoutParams(param);
     }
 
+
+
+
     @Override
     public void onClick(View view) {
         if (pop!=null&&pop.isShowing()){

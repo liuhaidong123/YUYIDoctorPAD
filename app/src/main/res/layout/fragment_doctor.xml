@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
-                android:text="全部"
+                android:text=""
                 android:textColor="@color/color_333333"
                 android:textSize="15sp" />
 
@@ -77,21 +77,46 @@
     </RelativeLayout>
 
 
-
     <ListView
-        android:background="@color/color_ffffff"
         android:id="@+id/doctor_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/select_department_rl"
+        android:background="@color/color_ffffff"
         android:divider="@color/color_e3e3e3"
         android:dividerHeight="0.5dp"
         android:scrollbars="none">
 
     </ListView>
 
+
+
+
+    <RelativeLayout
+        android:id="@+id/nodata_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/select_department_rl"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/no_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/nothing" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="抱歉没有查到医生信息"
+            android:textColor="@color/color_cecece" />
+    </RelativeLayout>
+
     <ListView
-        android:visibility="gone"
         android:id="@+id/department_listview"
         android:layout_width="696dp"
         android:layout_height="wrap_content"
@@ -102,7 +127,7 @@
         android:divider="@color/color_e3e3e3"
         android:dividerHeight="10dp"
         android:paddingLeft="20dp"
-        >
+        android:visibility="gone">
 
     </ListView>
 </RelativeLayout>

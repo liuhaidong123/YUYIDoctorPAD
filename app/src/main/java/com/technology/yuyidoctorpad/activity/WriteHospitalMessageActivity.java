@@ -15,6 +15,9 @@ import com.technology.yuyidoctorpad.fragment.HospitalFragment.HospitalMessageFra
 import com.technology.yuyidoctorpad.fragment.HospitalFragment.ManagerMessageFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalFragment.SubmitMessageFragment;
 
+import java.io.File;
+import java.util.List;
+
 public class WriteHospitalMessageActivity extends AppCompatActivity {
 
     private RelativeLayout mFragment_Rl;
@@ -81,16 +84,18 @@ public class WriteHospitalMessageActivity extends AppCompatActivity {
         mSubmit_Sanjiao_img.setVisibility(View.INVISIBLE);
     }
 
-    public void showManagerFragment() {
+    public void showManagerFragment(String name, String grade, String jj, String tele, File hospitalFile, List<File> bookFileList,String address) {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         HospitalMessageFragment hospitalMessageFragment = (HospitalMessageFragment) mFragmentManager.findFragmentByTag(hospitalTag);
         ManagerMessageFragment managerMessageFragment = (ManagerMessageFragment) mFragmentManager.findFragmentByTag(managerTag);
         SubmitMessageFragment submitMessageFragment = (SubmitMessageFragment) mFragmentManager.findFragmentByTag(submitTag);
 
         if (managerMessageFragment != null) {
+            managerMessageFragment.setHospitalMsg(name,grade,jj,tele,hospitalFile,bookFileList,address);//设置数据
             fragmentTransaction.show(managerMessageFragment);
         } else {
             ManagerMessageFragment managerFragment = new ManagerMessageFragment();
+            managerFragment.setHospitalMsg(name,grade,jj,tele,hospitalFile,bookFileList,address);//设置数据
             fragmentTransaction.add(mFragment_Rl.getId(), managerFragment, managerTag);
         }
         if (hospitalMessageFragment != null) {

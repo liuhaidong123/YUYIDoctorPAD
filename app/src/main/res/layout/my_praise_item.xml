@@ -14,11 +14,7 @@
             android:id="@+id/toplayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
-                android:layout_width="30dp"
-                android:id="@+id/forumpost_listitem_praise_Image"
-                android:src="@mipmap/erroruser"
-                android:layout_height="30dp" />
+
             <TextView
                 android:id="@+id/forumpost_listitem_praise_Name"
                 android:layout_marginLeft="10dp"
@@ -31,6 +27,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/forumpost_listitem_praise_Image"/>
+
+            <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+                android:layout_width="30dp"
+                android:id="@+id/forumpost_listitem_praise_Image"
+                android:src="@mipmap/erroruser"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
         </RelativeLayout>
         <TextView
             android:layout_marginTop="10dp"

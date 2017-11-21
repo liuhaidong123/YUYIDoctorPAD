@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_dcotor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    tools:context="com.technology.yuyidoctorpad.activity.AddDcotorActivity">
+
+    <TextView
+        android:id="@+id/h_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="添加医生信息"
+        android:textColor="@color/color_333333"
+        android:textSize="19sp" />
+
+    <View
+        android:id="@+id/h_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/h_title"
+        android:background="@color/color_cccccc" />
+
+
+    <RelativeLayout
+        android:id="@+id/wai_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/h_line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <com.technology.yuyidoctorpad.lhdUtils.RoundImageView
+            android:id="@+id/add_head_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/add_doc" />
+
+        <RelativeLayout
+            android:id="@+id/name_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="65dp"
+            android:layout_toRightOf="@id/add_head_img">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_name"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp"
+
+                />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/name"
+                android:background="@drawable/add_doctor_bg"
+                android:inputType="text"
+                android:maxLength="8"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/job_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/name_rl"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/add_head_img">
+
+            <TextView
+                android:id="@+id/job"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_job"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/job"
+                android:background="@drawable/add_doctor_bg">
+
+                <TextView
+                    android:id="@+id/job_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="25dp"
+                    android:text=""
+                    android:textColor="@color/color_333333"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/pulldown" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/department_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/job_rl"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/add_head_img">
+
+            <TextView
+                android:id="@+id/department"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_department"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/department"
+                android:background="@drawable/add_doctor_bg">
+
+                <TextView
+                    android:id="@+id/department_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="25dp"
+                    android:text=""
+                    android:textColor="@color/color_333333"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/pulldown" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/telephone_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/department_rl"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/add_head_img">
+
+            <TextView
+                android:id="@+id/telephone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_telephone"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp"
+
+                />
+
+            <EditText
+                android:id="@+id/edit_telephone"
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/telephone"
+                android:background="@drawable/add_doctor_bg"
+                android:inputType="number"
+                android:maxLength="11"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/power_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/telephone_rl"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/add_head_img">
+
+            <TextView
+                android:id="@+id/power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/add_power"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp"
+
+                />
+
+            <ImageView
+                android:id="@+id/ask_aggre_img1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/power"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/power"
+                android:src="@mipmap/agree_no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/ask_aggre_img1"
+                android:text="@string/add_ask"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/ask_aggre_img2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ask_aggre_img1"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/power"
+                android:src="@mipmap/agree_no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/ask_aggre_img2"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/ask_aggre_img2"
+                android:text="@string/add_data"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/ask_aggre_img3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ask_aggre_img2"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/power"
+                android:src="@mipmap/agree_no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/ask_aggre_img3"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/ask_aggre_img3"
+                android:text="@string/add_num"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sure_btn"
+            android:layout_width="250dp"
+            android:layout_height="44dp"
+            android:layout_below="@+id/power_rl"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/hospital_next_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/color_ffffff"
+            android:textSize="18sp" />
+
+        <ListView
+            android:id="@+id/job_listview"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/job_rl"
+            android:layout_below="@+id/job_rl"
+            android:background="@drawable/add_doctor_bg"
+            android:divider="@color/color_eaeaea"
+            android:dividerHeight="0.5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:visibility="gone">
+
+        </ListView>
+
+        <ExpandableListView
+
+            android:id="@+id/department_listview"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/job_rl"
+            android:layout_below="@+id/department_rl"
+            android:background="@drawable/add_doctor_bg"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:scrollbars="none"
+            android:visibility="gone">
+
+        </ExpandableListView>
+
+
+        <!--<ListView-->
+        <!--android:id="@+id/department_listview"-->
+        <!--android:layout_width="225dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignRight="@+id/department_rl"-->
+        <!--android:layout_below="@+id/department_rl"-->
+        <!--android:background="@drawable/add_doctor_bg"-->
+        <!--android:divider="@color/color_eaeaea"-->
+        <!--android:dividerHeight="0.5dp"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:paddingRight="15dp"-->
+        <!--android:visibility="gone">-->
+
+        <!--</ListView>-->
+
+    </RelativeLayout>
+</RelativeLayout>

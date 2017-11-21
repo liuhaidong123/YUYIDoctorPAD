@@ -1,13 +1,162 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
     tools:context="com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.InformationPostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/i_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/i_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:text="@string/infor_time"
+            android:textColor="@color/color_333333"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/pull_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/i_time"
+            android:background="@drawable/pull_bg1"
+            android:padding="10dp"
+            android:src="@mipmap/pulldown" />
+
+        <ImageView
+
+            android:id="@+id/pull_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/pull_bottom"
+            android:background="@drawable/pull_bg2"
+            android:padding="10dp"
+            android:src="@mipmap/pulltop" />
+
+        <TextView
+            android:id="@+id/i_way"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/pull_top"
+            android:text="@string/infor_way"
+            android:textColor="@color/color_333333"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:id="@+id/i_select_way_rl"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/i_way"
+            android:background="@drawable/pull_bg1">
+
+            <TextView
+                android:id="@+id/i_wat_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="宇医"
+                android:textColor="@color/color_333333"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/pulldown" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/post_rl"
+            android:layout_marginRight="50dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp">
+
+            <ImageView
+                android:id="@+id/add_zx"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/addzx"
+                />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/add_zx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发布资讯"
+                />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="#f9f8f8" />
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/i_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@+id/i_title"
+        android:divider="@null"
+        android:scrollbars="none">
 
-</FrameLayout>
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/two_way_rl"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/i_title"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="-15dp"
+        android:background="@drawable/pull_bg1"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/yuyi_tv"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="宇医"
+            android:textColor="@color/color_333333"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/yuyidoctor_tv"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/yuyi_tv"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="宇医医生"
+            android:textColor="@color/color_333333"
+            android:textSize="13sp" />
+    </RelativeLayout>
+</RelativeLayout>

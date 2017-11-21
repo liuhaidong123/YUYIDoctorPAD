@@ -26,6 +26,7 @@ import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.lhdUtils.RoundImageView;
 import com.technology.yuyidoctorpad.lzhUtils.DataUtils;
+import com.technology.yuyidoctorpad.lzhUtils.Empty;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
 
 import java.io.IOException;
@@ -207,8 +208,10 @@ public class My_PraiseAdapter extends BaseAdapter {
         });
             hodler.forumposts_listview_item_postImage_praise.setSelected(true);
             hodler.forumpost_listitem_praise_Name.setText(list.get(position).getTrueName());
-            Picasso.with(context).load(Ip.imagePath+list.get(position).getAvatar()).error(R.mipmap.erroruser).placeholder(R.mipmap.erroruser).into(hodler.forumpost_listitem_praise_Image);
-             Log.i("头像:",Ip.imagePath+list.get(position).getAvatar());
+            if (Empty.notEmpty(list.get(position).getAvatar())){
+                Picasso.with(context).load(Ip.imagePath+list.get(position).getAvatar()).error(R.mipmap.erroruser).placeholder(R.mipmap.erroruser).into(hodler.forumpost_listitem_praise_Image);
+                Log.i("头像:",Ip.imagePath+list.get(position).getAvatar());
+            }
             if (list.get(position).getLikeType()==1L){//1L咨询，不显示头像
                 hodler.toplayout.setVisibility(View.GONE);
             }

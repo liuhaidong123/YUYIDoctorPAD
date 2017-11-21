@@ -301,17 +301,16 @@
         </ListView>
 
         <ExpandableListView
-            android:scrollbars="none"
+
             android:id="@+id/department_listview"
             android:layout_width="225dp"
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/job_rl"
             android:layout_below="@+id/department_rl"
             android:background="@drawable/add_doctor_bg"
-            android:divider="@color/color_eaeaea"
-            android:dividerHeight="0.5dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
+            android:scrollbars="none"
             android:visibility="gone">
 
         </ExpandableListView>

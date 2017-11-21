@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
+import com.technology.yuyidoctorpad.activity.HospitalHomePageActivity;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanDoc;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanHosLogin;
 import com.technology.yuyidoctorpad.activity.MainActivity;
+import com.technology.yuyidoctorpad.activity.WriteHospitalMessageActivity;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
 import com.technology.yuyidoctorpad.lzhViews.MyActivity;
 
@@ -88,12 +90,13 @@ public class LoginActivity extends MyActivity implements ILogin{
         int state= bean.getState();
             switch (state){
                 case 0:
-                    toast.toast(this,"从未注册过");
+                    startActivity(new Intent(LoginActivity.this, WriteHospitalMessageActivity.class));
                     break;
                 case 1://通过审核的（已经注册过的）
                     toast.toast(this,"通过审核");
                     User.saveHospitalId(this,bean.getHospitalId());//保存医院id
                     User.saveLogin(this,bean.getResult(),"", User.LoginTP.HOS);
+                    startActivity(new Intent(LoginActivity.this, HospitalHomePageActivity.class));
                     break;
                 case 2://审核中
                     showDialog("资料审核中","您上次提交的资料还在审核中，是否重新填写审核信息？",2);
@@ -114,15 +117,7 @@ public class LoginActivity extends MyActivity implements ILogin{
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
-                        toast.toast(LoginActivity.this,"重新提交资料");
-//                        switch (tp){
-//                            case 2://审核中
-//
-//                                break;
-//                            case 3://未通过审核
-//
-//                                break;
-//                        }
+                       startActivity(new Intent(LoginActivity.this, WriteHospitalMessageActivity.class));
                     }
                 }).show();
     }

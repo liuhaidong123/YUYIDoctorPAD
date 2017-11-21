@@ -913,7 +913,7 @@ public class HttpTools {
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
                 handler.sendEmptyMessage(-1);
-                Log.e("发帖失败",strMsg.toString());
+                Log.e("发帖失败", strMsg.toString());
             }
 
             @Override
@@ -921,10 +921,10 @@ public class HttpTools {
                 super.onSuccess(s);
                 com.technology.yuyidoctorpad.bean.CirclePostCard.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.CirclePostCard.Root.class);
                 Message m = new Message();
-                m.obj=root;
-                m.what=17;
+                m.obj = root;
+                m.what = 17;
                 handler.sendMessage(m);
-                Log.e("发帖成功",s);
+                Log.e("发帖成功", s);
             }
 
             @Override
@@ -933,5 +933,375 @@ public class HttpTools {
             }
         });
 
+    }
+
+    //获取科室信息
+    public void getDepartmentMessage(final Handler handler, String hospitalID) {
+
+        String url = UrlTools.BASE + UrlTools.URL_DEPARTMENT_LIST + "hospitalId=" + hospitalID;
+        mFinalHttp.get(url, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("获取科室开始", "--");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("获取科室开始成功", "" + s);
+                com.technology.yuyidoctorpad.bean.DepartmentBean.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.DepartmentBean.Root.class);
+                Message m = new Message();
+                m.obj = root;
+                m.what = 55;
+                handler.sendMessage(m);
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "--null";
+                }
+                Log.e("onFailure", "获取科室开始 " + strMsg.toString());
+            }
+        });
+
+    }
+
+    //添加医生
+    public void submitAddDoctor(final Handler handler, AjaxParams ajax) {
+        String url = UrlTools.BASE + UrlTools.URL_SUBMIT_DOCTOR;
+        mFinalHttp.post(url, ajax, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("添加医生开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root.class);
+                Message m = new Message();
+                m.obj = root;
+                m.what = 56;
+                handler.sendMessage(m);
+                Log.e("添加医生成功", "-" + s);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "--null";
+                }
+                Log.e("添加医生失败", "-" + strMsg);
+            }
+        });
+
+    }
+
+    //获取医生列表
+    public void getDoctorList(final Handler handler, long hospitalId, long departmentId, int start, int limit) {
+        String url = UrlTools.BASE + UrlTools.URL_DOCTOR_LIST + "hospitalId=" + hospitalId + "&departmentId=" + departmentId + "&start=" + start + "&limit=" + limit;
+
+        mFinalHttp.get(url, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("获取医生列表开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("获取医生列表成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.DoctorList.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.DoctorList.Root.class);
+                Message m = new Message();
+                m.what = 57;
+                m.obj = root;
+                handler.sendMessage(m);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "-null";
+                }
+                Log.e("获取医生列表失败", "-" + strMsg);
+            }
+        });
+    }
+
+    //获取单个医生详情
+    public void getDoctorDetails(final Handler handler, long doctorId) {
+        String url = UrlTools.BASE + UrlTools.URL_DOCTOR_DETAILS + "physicianid=" + doctorId;
+        mFinalHttp.get(url, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("获取单个医生详情开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("获取单个医生详情成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.DoctorDetails.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.DoctorDetails.Root.class);
+                Message m = new Message();
+                m.obj = root;
+                m.what = 58;
+                handler.sendMessage(m);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "=null";
+                }
+                Log.e("获取单个医生详情成功", "-" + strMsg);
+            }
+        });
+    }
+
+    //搜索医生接口
+    public void searchDoctor(final Handler handler, long hospitalId, String name) {
+        String url = UrlTools.BASE + UrlTools.URL_SEARCH_DOCTOR + "hospitalId=" + hospitalId + "&truename=" + name;
+        mFinalHttp.get(url, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("搜索医生接口开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("搜索医生接口成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.DoctorSrarchResult.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.DoctorSrarchResult.Root.class);
+                Message m = new Message();
+                m.what = 59;
+                m.obj = root;
+                handler.sendMessage(m);
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "-null";
+                }
+                Log.e("搜索医生接口失败", "-" + strMsg);
+            }
+        });
+    }
+
+    //资讯列表
+    public void getHospitalInfomationLIst(final Handler handler, int time, int way, int start, int limit) {
+        String url = UrlTools.BASE + UrlTools.URL_HOSPITAL_INFOMATION_LIST + "Publishchannel=" + way + "&time=" + time + "&start=" + start + "&limit=" + limit;
+
+        mFinalHttp.get(url, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("资讯列表开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("资讯列表成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.HospitalInformation.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.HospitalInformation.Root.class);
+                Message m = new Message();
+                m.what = 60;
+                m.obj = root;
+                handler.sendMessage(m);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "--null";
+                }
+                Log.e("资讯列表失败", "-" + strMsg);
+            }
+        });
+
+    }
+
+
+    //资讯详情
+    public void getHospitalInfomationDetails(final Handler handler, long id) {
+        String url = UrlTools.BASE + UrlTools.URL_INFORMATION_DATAILS + "id=" + id;
+
+        mFinalHttp.get(url, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("资讯详情开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("资讯详情成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.HospitalInformationDetails.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.HospitalInformationDetails.Root.class);
+                Message m = new Message();
+                m.what = 61;
+                m.obj = root;
+                handler.sendMessage(m);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "--null";
+                }
+                Log.e("资讯详情失败", "-" + strMsg);
+            }
+        });
+
+    }
+
+    //发布资讯
+    public void postInformation(final Handler handler, AjaxParams ajaxParams) {
+        String url = UrlTools.BASE + UrlTools.URL_POST_INFOR;
+        mFinalHttp.post(url, ajaxParams, new AjaxCallBack<String>() {
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("发布资讯开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("发布资讯成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.HospitalInformationPost.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.HospitalInformationPost.Root.class);
+                Message m = new Message();
+                m.obj = root;
+                m.what = 62;
+                handler.sendMessage(m);
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "null";
+                }
+                Log.e("发布资讯失败", strMsg);
+            }
+        });
+
+    }
+
+
+//    医院主页
+
+    public void getHospitalHomePage(final Handler handler, long hospitalId) {
+
+        String url = UrlTools.BASE + UrlTools.URL_HOSPITAL_HOMEPAGE + "id=" + hospitalId;
+
+        mFinalHttp.get(url, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e(" 医院主页开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e(" 医院主页成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.HospitalHomePage.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.HospitalHomePage.Root.class);
+                Message message = new Message();
+                message.obj = root;
+                message.what = 63;
+                handler.sendMessage(message);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                Log.e(" 医院主页失败", "-" + strMsg);
+            }
+        });
+    }
+
+    //修改医生
+    public void submitUpdateDoctor(final Handler handler, AjaxParams ajax) {
+        String url = UrlTools.BASE + UrlTools.URL_UPDATE_DOCTOR;
+        mFinalHttp.post(url, ajax, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("修改医生开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root.class);
+                Message m = new Message();
+                m.obj = root;
+                m.what = 64;
+                handler.sendMessage(m);
+                Log.e("修改医生成功", "-" + s);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "--null";
+                }
+                Log.e("修改医生失败", "-" + strMsg);
+            }
+        });
+    }
+
+    //提交管理员信息
+    public void submitManagerMsg(final Handler handler, AjaxParams ajaxParams) {
+        String url = UrlTools.BASE + UrlTools.URL_SUBMIT_MANAGER_MSG;
+
+        mFinalHttp.post(url, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                Log.e("提交管理员信息开始", "-");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                Log.e("提交管理员信息成功", "-" + s);
+                com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root root = mGson.fromJson(s, com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root.class);
+                Message m = new Message();
+                m.what = 65;
+                m.obj = root;
+                handler.sendMessage(m);
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                if (strMsg == null) {
+                    strMsg = "-null";
+                }
+                Log.e("提交管理员信息失败", strMsg);
+            }
+        });
     }
 }

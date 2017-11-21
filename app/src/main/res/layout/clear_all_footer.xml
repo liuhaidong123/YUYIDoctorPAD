@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <!--<view-->
+        <!--android:id="@+id/line1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="#eeeeee" />-->
+
+    <!--<TextView-->
+        <!--android:layout_below="@+id/line1"-->
+        <!--android:id="@+id/clear_btn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:text="清除全部"-->
+        <!--android:textColor="@color/color_1ebeec"-->
+        <!--android:textSize="15sp" />-->
+
+    <!--<view-->
+        <!--android:layout_below="@+id/clear_btn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="#eeeeee" />-->
+</RelativeLayout>

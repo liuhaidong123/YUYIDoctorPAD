@@ -31,7 +31,6 @@
     <string name="hospital_doctor">医生信息</string>
     <string name="hospital_num_set">挂号设置</string>
     <string name="hospital_information">资讯发布</string>
-
     <string name="add_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
     <string name="add_job">职&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;称</string>
     <string name="add_department">科&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;室</string>
@@ -40,6 +39,13 @@
     <string name="add_ask">咨询权限</string>
     <string name="add_data">查看数据权限</string>
     <string name="add_num">挂号接受权限</string>
+    <string name="infor_time">时间排序</string>
+    <string name="infor_way">发布渠道</string>
+    <string name="post_img">图&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;片</string>
+    <string name="post_title">标&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;题</string>
+    <string name="post_small_title">小&#160;&#160;标&#160;&#160;题</string>
+    <string name="post_content">内&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;容</string>
+    <string name="post_way">发布渠道</string>
 
 
     <string name="_90mmhg_140mmhg"><![CDATA[90mmHg<收缩压<140mmHg]]></string>

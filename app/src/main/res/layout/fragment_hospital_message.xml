@@ -5,6 +5,7 @@
     tools:context="com.technology.yuyidoctorpad.fragment.HospitalFragment.HospitalMessageFragment">
 
     <RelativeLayout
+        android:id="@+id/data_rl"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
@@ -32,6 +33,7 @@
                 android:layout_toRightOf="@+id/hospital_name_tv"
                 android:background="@drawable/hospital_bg"
                 android:inputType="text"
+                android:maxLength="50"
                 android:textColor="@color/color_333333"
                 android:textSize="15sp" />
 
@@ -62,6 +64,7 @@
                 android:layout_toRightOf="@+id/hospital_grade_tv"
                 android:background="@drawable/hospital_bg"
                 android:inputType="text"
+                android:maxLength="20"
                 android:textColor="@color/color_333333"
                 android:textSize="15sp" />
 
@@ -140,11 +143,44 @@
 
         </RelativeLayout>
 
+
+        <RelativeLayout
+            android:id="@+id/hospital_address_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/hospital_telephone_rl"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/hospital_address_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="医院地址"
+                android:textColor="@color/color_555555"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/hospital_address_edit"
+                android:layout_width="225dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/hospital_address_tv"
+                android:background="@drawable/hospital_bg"
+                android:inputType="text"
+                android:maxLength="100"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+
         <RelativeLayout
             android:id="@+id/hospital_picture_rl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/hospital_telephone_rl"
+            android:layout_below="@id/hospital_address_rl"
             android:layout_marginTop="25dp">
 
             <TextView
@@ -158,8 +194,8 @@
 
             <ImageView
                 android:id="@+id/hospital_picture_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/hospital_picture_tv"
                 android:src="@mipmap/hospital_add" />
@@ -183,13 +219,14 @@
                 android:textColor="@color/color_555555"
                 android:textSize="13sp" />
 
-            <ImageView
-                android:id="@+id/hospital_book_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <GridView
+                android:id="@+id/hospital_book_gridview"
+                android:layout_width="225dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/hospital_book_tv"
-                android:src="@mipmap/hospital_add" />
+                android:numColumns="4"
+                android:verticalSpacing="5dp" />
         </RelativeLayout>
 
         <TextView
@@ -204,6 +241,7 @@
             android:text="@string/hospital_next"
             android:textColor="@color/color_ffffff"
             android:textSize="18sp" />
+
     </RelativeLayout>
 
 </RelativeLayout>
