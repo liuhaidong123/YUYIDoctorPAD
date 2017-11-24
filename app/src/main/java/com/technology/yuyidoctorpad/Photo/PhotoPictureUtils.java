@@ -138,7 +138,7 @@ public class PhotoPictureUtils {
         }
         else {
             PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
-            if (PHOTO.exists()){
+            if (PHOTO!=null&&PHOTO.exists()){
                 PHOTO.delete();
             }
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
