@@ -1,7 +1,6 @@
 package com.technology.yuyidoctorpad.lhdUtils;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.technology.yuyidoctorpad.Photo.PhotoPictureUtils;
 import com.technology.yuyidoctorpad.R;
 
 import java.io.File;
@@ -55,10 +55,10 @@ public class UserInfoPresenter2 implements View.OnClickListener{
         }
         switch (view.getId()){
             case R.id.usereditor_textv_picture://图库选取头像
-                PicturePhotoUtils.getInstance().searchPhto(activity,outImage);
+                PhotoPictureUtils.getInstance().searchPicture(activity);
                 break;
             case R.id.usereditor_textv_camera://拍照头像
-                PicturePhotoUtils.getInstance().takePhoto(activity,outImage);
+                PhotoPictureUtils.getInstance().takePhoto(activity);
                 break;
             case R.id.usereditor_textv_cancle://取消
                 break;

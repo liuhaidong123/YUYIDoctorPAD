@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/debug/raw/voip_outgoing_ring.mp3",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/src/main/res/raw/voip_outgoing_ring.mp3"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/debug/raw/voip_outgoing_ring.mp3",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/main/res/raw/voip_outgoing_ring.mp3"
+    }
+]

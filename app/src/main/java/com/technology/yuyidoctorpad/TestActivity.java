@@ -2,30 +2,25 @@ package com.technology.yuyidoctorpad;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.technology.yuyidoctorpad.PermissionCheck.PicturePhotoUtils;
-import com.technology.yuyidoctorpad.code.RSCode;
+import com.technology.yuyidoctorpad.Photo.PhotoPictureUtils;
+import com.technology.yuyidoctorpad.Photo.PhotoRSCode;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
 
 import java.io.File;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity implements PhotoPictureUtils.OnSavePictureListener{
     Unbinder unbinder;
     @BindView(R.id.img1)ImageView img1;
     @BindView(R.id.img2)ImageView img2;
@@ -43,129 +38,76 @@ public class TestActivity extends AppCompatActivity {
         switch (vi.getId()){
             case R.id.img1:
                 stat=1;
-                outImage1= new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + "1.jpg");
-                PicturePhotoUtils.getInstance().searchPhto(this,outImage1);
+                PhotoPictureUtils.getInstance().searchPicture(this);
                 break;
             case R.id.img2:
                 stat=2;
-                outImage2= new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + "2.jpg");
-                PicturePhotoUtils.getInstance().searchPhto(this,outImage2);
-
+                PhotoPictureUtils.getInstance().searchPicture(this);
                 break;
             case R.id.img3:
                 stat=3;
-                outImage3= new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + "3.jpg");
-                PicturePhotoUtils.getInstance().searchPhto(this,outImage3);
+                PhotoPictureUtils.getInstance().takePhoto(this);
                 break;
             case R.id.myBtn:
-                sendMsg();
                 break;
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case RSCode.priCode_SearchPicture://图库
-                if (grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    if (stat==1){
-                        PicturePhotoUtils.getInstance().searchPhto(this,outImage1);
-                    }
-                    else if (stat==2){
-                        PicturePhotoUtils.getInstance().searchPhto(this,outImage2);
-                    }
-                    else if(stat==3){
-                        PicturePhotoUtils.getInstance().searchPhto(this,outImage3);
-                    }
-                }
-                else {
-                    toast.toast(this,"存储权限被禁用，无法获取相册信息");
-                }
-                break;
+        if (requestCode== PhotoRSCode.requestCode_SearchPermission){//选取图片的权限请求
+            if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                PhotoPictureUtils.getInstance().searchPicture(this);
+            }
+            else {
+                Toast.makeText(this,"请打开存储卡权限！",Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if (requestCode==PhotoRSCode.requestCode_CameraPermission){//拍照的权限请求
+            if (grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                PhotoPictureUtils.getInstance().takePhoto(this);
+            }
+            else {
+                Toast.makeText(this,"请打开相机权限！",Toast.LENGTH_SHORT).show();
+            }
         }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==RESULT_OK){
-            switch (requestCode){
-                case RSCode.rCode_SearchPicture://浏览相册
-                    if (stat==1){
-                        outImage1=new File(getExternalFilesDir("DCIM").getAbsolutePath(),new Date().getTime()+"1.jpg");
-                        PicturePhotoUtils.getInstance().cutPhoto_Search(this,outImage1,data);
-                    }
-                    else if (stat==2){
-                        outImage2=new File(getExternalFilesDir("DCIM").getAbsolutePath(),new Date().getTime()+"2.jpg");
-                        PicturePhotoUtils.getInstance().cutPhoto_Search(this,outImage2,data);
-                    }
-                    else if (stat==3){
-                        outImage3=new File(getExternalFilesDir("DCIM").getAbsolutePath(),new Date().getTime()+"3.jpg");
-                        PicturePhotoUtils.getInstance().cutPhoto_Search(this,outImage3,data);
-                    }
+        if (resultCode==RESULT_OK) {
+            switch (requestCode) {
+                case PhotoRSCode.requestCode_Search://相册选取返回
+                    PhotoPictureUtils.getInstance().savaPictureSearch(data.getData(),this,this);
                     break;
-                case RSCode.rCode_CutPicture://裁剪
-                    try{
-                        //将output_image.jpg对象解析成Bitmap对象，然后设置到ImageView中显示出来
-                        if (stat==1){
-                            Bitmap bitmap = BitmapFactory.decodeFile(outImage1.getAbsolutePath());
-                            if (bitmap!=null){
-                                img1.setImageBitmap(bitmap);
-                            }
-                            else {
-                                Toast.makeText(this,"照片截取失败",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                      else if (stat==2){
-                            Bitmap bitmap = BitmapFactory.decodeFile(outImage2.getAbsolutePath());
-                            if (bitmap!=null){
-                                img2.setImageBitmap(bitmap);
-                            }
-                            else {
-                                Toast.makeText(this,"照片截取失败",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else {
-                            Bitmap bitmap = BitmapFactory.decodeFile(outImage3.getAbsolutePath());
-                            if (bitmap!=null){
-                                img3.setImageBitmap(bitmap);
-                            }
-                            else {
-                                Toast.makeText(this,"照片截取失败",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
-                        Toast.makeText(this,"照片截取失败",Toast.LENGTH_SHORT).show();
-                    }
+                case PhotoRSCode.requestCode_Camera://拍照
+                    //cameraFile为保存后的文件，mImg：需要显示图片的ImageView
+                    PhotoPictureUtils.getInstance().savaPictureCamera(this,this);
                     break;
             }
         }
     }
-
-    public void sendMsg(){
-        Map<String,String>mp=new HashMap<>();
-        mp.put("hospitalName","医院名称");
-        mp.put("gradeString","1");
-        mp.put("introduction","医院介绍");
-        mp.put("administratorsName","管理员名称");
-        mp.put("administratorsPosition","管理员职位");
-        mp.put("administratorsTelephone","管理员电话号");
-        mp.put("administratorsEmail","管理员邮箱");
-        mp.put("address","医院地址");
-        mp.put("tell","医院电话");
-//        OkUtils.getFile(mp,outImage1,outImage2,outImage3,"http://192.168.1.44:8080/yuyi/hospital/AddHospitaInformation.do?").enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Request request, IOException e) {
-//                e.printStackTrace();
-//                Log.e("医院注册失败：","--------efawefw-----");
-//            }
-//
-//            @Override
-//            public void onResponse(Response response) throws IOException {
-//                Log.e("医院注册：",response.body().string());
-//            }
-//        });
+    @Override
+    public void onSavePicture(boolean isSuccess, File result) {
+        if (isSuccess){
+            switch (stat){
+                case 1:
+                    outImage1=result;
+                    img1.setImageBitmap(BitmapFactory.decodeFile(outImage1.getAbsolutePath()));
+                    break;
+                case 2:
+                    outImage2=result;
+                    img2.setImageBitmap(BitmapFactory.decodeFile(outImage2.getAbsolutePath()));
+                    break;
+                case 3:
+                    outImage3=result;
+                    img3.setImageBitmap(BitmapFactory.decodeFile(outImage3.getAbsolutePath()));
+                    break;
+            }
+        }
+       else {
+            toast.toast(this,"无法获取到图片！");
+        }
     }
 }

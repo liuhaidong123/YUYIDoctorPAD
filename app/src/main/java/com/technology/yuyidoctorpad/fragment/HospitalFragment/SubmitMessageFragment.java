@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.activity.HospitalHomePageActivity;
+import com.technology.yuyidoctorpad.activity.Login.LoginActivity;
 import com.technology.yuyidoctorpad.activity.WriteHospitalMessageActivity;
 
 /**
@@ -43,7 +44,7 @@ public class SubmitMessageFragment extends Fragment implements View.OnClickListe
     public void onClick(View view) {
         int id=view.getId();
         if (id==mBack_Btn.getId()){
-            startActivity(new Intent(getContext(), HospitalHomePageActivity.class));
+            startActivity(new Intent(getContext(), LoginActivity.class));
         }
     }
 }

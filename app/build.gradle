@@ -10,13 +10,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
         sourceSets {
             main {
                 jniLibs.srcDirs = ['libs']
             }
         }
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -32,6 +36,7 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:multidex:'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -62,4 +67,10 @@ dependencies {
     compile files('libs/open_sdk_r5788_lite.jar')
     compile files('libs/gson-2.6.2.jar')
     compile files('libs/afinal_0.5.1_bin.jar')
+    compile project(':CallKit')
+    compile project(':CallLib')
+    compile project(':IMKit')
+    compile project(':IMLib')
+    compile files('libs/jcore-android-1.1.8.jar')
+    compile files('libs/jpush-android-3.1.0.jar')
 }

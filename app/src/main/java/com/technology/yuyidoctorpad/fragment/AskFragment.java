@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -521,8 +520,6 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
         }
         return content;
     }
-
-
     //分享回掉接口
     @Override
     public void onStart(SHARE_MEDIA share_media) {

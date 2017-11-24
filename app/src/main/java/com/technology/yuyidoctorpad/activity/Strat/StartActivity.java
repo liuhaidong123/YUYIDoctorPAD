@@ -18,6 +18,7 @@ public class StartActivity extends MyActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what==0){
+//                startActivity(new Intent(StartActivity.this, TestActivity.class));
                 if (User.isLogin(StartActivity.this)){
                     if (User.lTp!=null){
                         switch (User.lTp){
@@ -38,7 +39,7 @@ public class StartActivity extends MyActivity {
                 else {
                     startActivity(new Intent(StartActivity.this, LoginActivity.class));
                     finish();
-                }
+                    }
             }
         }
     };

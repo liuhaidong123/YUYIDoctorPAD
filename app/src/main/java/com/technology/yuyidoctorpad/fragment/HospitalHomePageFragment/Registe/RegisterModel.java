@@ -11,6 +11,7 @@ import com.technology.yuyidoctorpad.Net.gson;
 import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Depart.Bean.DepartmentBean;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Depart.IDepart;
+import com.technology.yuyidoctorpad.lzhUtils.BeanCode;
 import com.technology.yuyidoctorpad.lzhUtils.Empty;
 import com.technology.yuyidoctorpad.lzhUtils.Model;
 
@@ -42,6 +43,13 @@ public class RegisterModel extends Model{
                 break;
             case 2://获取科室中的医生信息
                 iRegister.onGetDocSuccess((DoctorListBean) msg.obj);
+                break;
+
+            case -3://挂号设置失败
+                iRegister.onRegisterError((String) msg.obj);
+                break;
+            case 3:
+                iRegister.onRegisterSuccess();
                 break;
         }
     }
@@ -122,7 +130,7 @@ public class RegisterModel extends Model{
     }
     //提交挂号信息管理员：添加挂号数量
 //    http://localhost:8080/yuyi/datenumber/saveNumber.do?DatenumberJson=Json字符串
-    public void submit(ListDoctorResult bean,IRegister lis){
+    public void submit(ListDoctorResult bean,  IRegister lis){
         this.iRegister=lis;
         Map<String,String>map=new HashMap<>();
         map.put("DatenumberJson",gson.gson.toJson(bean));
@@ -130,13 +138,31 @@ public class RegisterModel extends Model{
             @Override
             public void onFailure(Request request, IOException e) {
                 Log.i("挂号设置","shibai");
+                sendErrorMsg("网络异常！",-3);
                 e.printStackTrace();
             }
             @Override
             public void onResponse(Response response) throws IOException {
-                String resStr=response.body().string();
-                System.out.println(resStr);
-                Log.i("挂号设置",resStr);
+                String resSt=response.body().string();
+                Log.i("挂号设置",resSt);
+                try{
+                    BeanCode b=gson.gson.fromJson(resSt,BeanCode.class);
+                    if (b!=null){
+                        if ("0".equals(b.getCode())){
+                            sendSuccessMsg("挂号成功!",3);
+                        }
+                        else {
+                            sendErrorMsg(Empty.notEmpty(b.getMessage())?b.getMessage():"设置挂号失败！",-3);
+                        }
+                    }
+                    else {
+                        sendErrorMsg("数据异常！",-3);
+                    }
+                }
+                catch (Exception e){
+                    sendErrorMsg("数据异常！",-3);
+                    e.printStackTrace();
+                }
             }
         });
     }

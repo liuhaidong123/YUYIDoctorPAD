@@ -7,8 +7,9 @@ package com.technology.yuyidoctorpad.Net;
 public interface Ip {
 //    "http://59.110.169.148:8080
 //    http://192.168.1.168:8082/yuyi
-    String path="http://59.110.169.148:8080";
-    String imagePath="http://59.110.169.148:8080";
+//    http://59.110.169.148:8080
+    String path="http://192.168.1.44:8080/yuyi";
+    String imagePath="http://192.168.1.44:8080/yuyi";
     String path_F="http://192.168.1.44:8080/yuyi";
 //    http://192.168.1.168:8080/smarthome/mobileapi/
     //患者列表接口
@@ -39,7 +40,7 @@ public interface Ip {
      String interface_MyMessageList="/messagePhysician/findPage.do?";
 
     //消息已读标记://192.168.1.55:8080/yuyi/messagePhysicianLog/save.do?token=EA62E69E02FABA4E4C9A0FDC1C7CAE10&messageId=1
-   String interface_MyMessageRead="/messagePhysicianLog/save.do?";
+    String interface_MyMessageRead="/messagePhysicianLog/save.do?";
     //医生登录
     String interface_Login="/physician/login.do?";
     //获取验证码
@@ -77,4 +78,8 @@ public interface Ip {
     String interface_getDepart="/datenumber/saveNumber.do?";
     //添加病历http://localhost:8080/yuyi/medical/SaveMedical.do?telethone=
     String interface_addRecord="/medical/SaveMedical.do?";
+    //获取用户的容云信息
+    String interface_getRongInfo="/homeuser/findMyUserInfo.do?";
+    //检查当前用户是否有权限接收视频，咨询的接口http://192.168.1.37:8080/yuyi/
+      String interface_CheckPri="/physician/doctoryrongyuntoken.do?";
 }

@@ -7,16 +7,35 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.technology.yuyidoctorpad.Net.Ip;
+import com.technology.yuyidoctorpad.Net.OkUtils;
+import com.technology.yuyidoctorpad.Net.gson;
 import com.technology.yuyidoctorpad.R;
+import com.technology.yuyidoctorpad.RongCloudUtils.RongConnection;
+import com.technology.yuyidoctorpad.RongCloudUtils.RongUserInfo;
+import com.technology.yuyidoctorpad.User.User;
+import com.technology.yuyidoctorpad.bean.BeanPriRong;
 import com.technology.yuyidoctorpad.fragment.AskFragment;
 import com.technology.yuyidoctorpad.fragment.CircleFragment;
 import com.technology.yuyidoctorpad.fragment.myFragment.MyFragment;
 import com.technology.yuyidoctorpad.fragment.paintFragment.PatientFragment;
+import com.technology.yuyidoctorpad.lzhUtils.JpRegister;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,36 +57,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case 0:
                     break;
                 case 1:
-//                    try{
-//                        BeanPriRong rong=okhttp.gson.fromJson(resStr,BeanPriRong.class);
-//                        if (rong!=null){
-//                            if (rong.getCode()==0){
-//                                if (rong.isPermissionInfo()==true){
-//                                    String name="医生";
-//                                    String uri="http://img5.imgtn.bdimg.com/it/u=1482475142,4125104797&fm=23&gp=0.jpg";
-//                                    if (rong.getTrueName()!=null&&!"".equals(rong.getTrueName())){
-//                                        name=rong.getTrueName();
-//                                    }
-//                                    if (!"".equals(rong.getAvatar())&&!TextUtils.isEmpty(rong.getAvatar())){
-//                                        uri=rong.getAvatar();
-//                                    }
-//                                    Log.e("name====",name);
+                    try{
+                        BeanPriRong rong= gson.gson.fromJson(resStr,BeanPriRong.class);
+                        if (rong!=null){
+                            if (rong.getCode()==0){
+                                if (rong.isPermissionInfo()==true){
+                                    User.hasvRongPri=true;
+                                    String name="医生";
+                                    String uri="http://img5.imgtn.bdimg.com/it/u=1482475142,4125104797&fm=23&gp=0.jpg";
+                                    if (rong.getTrueName()!=null&&!"".equals(rong.getTrueName())){
+                                        name=rong.getTrueName();
+                                    }
+                                    if (!"".equals(rong.getAvatar())&&!TextUtils.isEmpty(rong.getAvatar())){
+                                        uri=rong.getAvatar();
+                                    }
+                                    Log.e("name====",name);
 //                                    io.rong.imlib.model.UserInfo info=new io.rong.imlib.model.UserInfo(rong.getId()+"",name, Uri.parse(uri));
-//                                    com.doctor.yuyi.User.UserInfo.RongToken=rong.getToken();
-//                                    RongConnection.connRong(MainActivity.this, com.doctor.yuyi.User.UserInfo.RongToken,info);
-//                                }
-//                                else {
-//                                    Log.e("当前医生无法接收到咨询xinxi ","mainActivity:医院未授予当前医生接收视频到权限");
-//                                }
-//                            }
-//                            else if (rong.getCode()==-1){
-//                                Log.e("当前用户信息无法查询到","mainActivity:当前用户没有在任何医院注册，请通知去注册");
-//                            }
-//                        }
-//                    }
-//                    catch (Exception e){
-//                        e.printStackTrace();
-//                    }
+                                    RongUserInfo.RongToken=rong.getToken();
+                                    RongConnection.connRong(MainActivity.this, RongUserInfo.RongToken);
+                                }
+                                else {
+                                    Log.e("当前医生无法接收到咨询xinxi ","mainActivity:医院未授予当前医生接收视频到权限");
+                                }
+                            }
+                            else if (rong.getCode()==-1){
+                                Log.e("当前用户信息无法查询到","mainActivity:当前用户没有在任何医院注册，请通知去注册");
+                            }
+                        }
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
@@ -76,7 +96,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        CheckPri();
         initUI();
+        if (JpRegister.getInstance().isJPSHSucc(MainActivity.this) == false) {
+            JpRegister.getInstance().setAlias(MainActivity.this, User.tele);
+            Log.e("激光推送在MainActivity注册----", "Login激光推送注册失败");
+        } else {
+            Log.e("激光推送在LoginActiity注册----", "Login激光推送注册成功");
+        }
     }
 
 
@@ -136,7 +163,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mPatient_Img.setImageResource(R.mipmap.patient_no);
         mMy_Tv.setTextColor(ContextCompat.getColor(this, R.color.color_a6a6a6));
         mMy_Img.setImageResource(R.mipmap.my_no);
-
     }
 
     private void selectCircle() {
@@ -148,7 +174,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mPatient_Img.setImageResource(R.mipmap.patient_no);
         mMy_Tv.setTextColor(ContextCompat.getColor(this, R.color.color_a6a6a6));
         mMy_Img.setImageResource(R.mipmap.my_no);
-
     }
 
     private void selectPatient() {
@@ -277,21 +302,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentTransaction.commit();
     }
     //检查当前用户是否有权限接受视频，语音，聊天
-//    private void CheckPri() {
-//        Map<String,String> mp=new HashMap<>();
-//        mp.put("telephone", User.tele);
-//        OkUtils.getCall(Ip.path+Ip.interface_CheckPri,mp,OkUtils.OK_GET).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Request request, IOException e) {
-//                han.sendEmptyMessage(0);
-//            }
-//
-//            @Override
-//            public void onResponse(Response response) throws IOException {
-//                resStr=response.body().string();
-//                Log.i("聊天权限检查---",resStr);
-//                han.sendEmptyMessage(1);
-//            }
-//        });
-//    }
+    private void CheckPri() {
+        Map<String,String> mp=new HashMap<>();
+        mp.put("telephone", User.tele);
+        OkUtils.getCall(Ip.path+Ip.interface_CheckPri,mp, OkUtils.OK_GET).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                han.sendEmptyMessage(0);
+            }
+            @Override
+            public void onResponse(Response response) throws IOException {
+                resStr=response.body().string();
+                Log.i("聊天权限检查---",resStr);
+                han.sendEmptyMessage(1);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
 }

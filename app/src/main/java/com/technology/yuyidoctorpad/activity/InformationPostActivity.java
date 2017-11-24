@@ -2,15 +2,12 @@ package com.technology.yuyidoctorpad.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,27 +19,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.technology.yuyidoctorpad.HttpTools.HttpTools;
+import com.technology.yuyidoctorpad.Photo.PhotoPictureUtils;
+import com.technology.yuyidoctorpad.Photo.PhotoRSCode;
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.bean.HospitalInformationPost.Root;
 import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
-import com.technology.yuyidoctorpad.lhdUtils.PicturePhotoUtils;
-import com.technology.yuyidoctorpad.lhdUtils.RSCode;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 import com.technology.yuyidoctorpad.lhdUtils.UserInfoPresenter2;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
 
 import net.tsz.afinal.http.AjaxParams;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.Date;
 
-import static com.technology.yuyidoctorpad.R.id.post_title_lenth;
-
-public class InformationPostActivity extends AppCompatActivity implements View.OnClickListener {
+public class InformationPostActivity extends AppCompatActivity implements View.OnClickListener ,PhotoPictureUtils.OnSavePictureListener{
     private ImageView mAdd_img;
     private EditText mTitile_edit, mSmallTitle_edit, mContent_edit;
     private TextView mYuYi_tv, mYuYiDoctor_tv, mSubmit_tv, mSmall_Title_Change_Tv, mBig_Title_Change_Tv, mContent_Change_Tv;
@@ -249,69 +242,50 @@ public class InformationPostActivity extends AppCompatActivity implements View.O
 
     //调用相册拍照判断权限
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case RSCode.priCode_SearchPicture://图库
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    PicturePhotoUtils.getInstance().searchPhto(this, outImage);
-                } else {
-
-                    toast.toast(getApplicationContext(), "存储权限被禁用，无法获取相册信息");
-                }
-                break;
-            case RSCode.priCode_TakePhoto://拍照
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    PicturePhotoUtils.getInstance().takePhoto(this, outImage);
-                } else {
-                    toast.toast(getApplicationContext(), "请打开相机权限");
-                }
-                break;
+        if (requestCode== PhotoRSCode.requestCode_SearchPermission){//选取图片的权限请求
+            if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                PhotoPictureUtils.getInstance().searchPicture(this);
+            }
+            else {
+                Toast.makeText(this,"请打开存储卡权限！",Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if (requestCode==PhotoRSCode.requestCode_CameraPermission){//拍照的权限请求
+            if (grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                PhotoPictureUtils.getInstance().takePhoto(this);
+            }
+            else {
+                Toast.makeText(this,"请打开相机权限！",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK) {
+            switch (requestCode) {
+                case PhotoRSCode.requestCode_Search://相册选取返回
+                    PhotoPictureUtils.getInstance().savaPictureSearch(data.getData(),this,this);
+                    break;
+                case PhotoRSCode.requestCode_Camera://拍照
+                    //cameraFile为保存后的文件，mImg：需要显示图片的ImageView
+                    PhotoPictureUtils.getInstance().savaPictureCamera(this,this);
+                    break;
+            }
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case RSCode.rCode_SearchPicture://浏览相册
-                    outImage = new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-                    PicturePhotoUtils.getInstance().cutPhoto_Search(this, outImage, data);
-                    break;
-                case RSCode.rCode_TakePhoto://拍照
-                    Uri uri = Uri.fromFile(outImage);
-                    outImage = new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-                    PicturePhotoUtils.getInstance().cutPhoto_Camera(this, uri, outImage);
-                    break;
-                case RSCode.rCode_CutPicture://裁剪
-                    try {
-                        //将output_image.jpg对象解析成Bitmap对象，然后设置到ImageView中显示出来
-                        Bitmap bitmap = BitmapFactory.decodeFile(outImage.getAbsolutePath());
-                        if (bitmap != null) {
-                            try{
-                                lastFile=new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-                                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(lastFile));
-                                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                                bos.flush();
-                                bos.close();
-                                isPhotoChange = true;
-                                mAdd_img.setImageBitmap(bitmap);
-                            }catch (Exception e){
-                                isPhotoChange = false;
-                                mAdd_img.setImageResource(R.mipmap.erroruser);
-                                ToastUtils.myToast(getApplicationContext(),"头像保存失败，重新上传");
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(getApplicationContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-            }
+    public void onSavePicture(boolean isSuccess, File result) {
+        if (isSuccess){
+            lastFile=result;
+            mAdd_img.setImageBitmap(BitmapFactory.decodeFile(lastFile.getAbsolutePath()));
+            isPhotoChange = true;
+        }
+        else {
+            toast.toast(this,"图片获取失败！");
         }
     }
 
