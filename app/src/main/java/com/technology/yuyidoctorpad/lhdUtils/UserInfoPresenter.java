@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.technology.yuyidoctorpad.Photo.PhotoPictureUtils;
 import com.technology.yuyidoctorpad.R;
 
 import java.io.File;
@@ -52,10 +53,10 @@ public class UserInfoPresenter implements View.OnClickListener{
         }
         switch (view.getId()){
             case R.id.usereditor_textv_picture://图库选取头像
-                PicturePhotoUtils.getInstance().searchPhtoFrag(activity,outImage);
+                PhotoPictureUtils.getInstance().searchPictureFragment(activity);
                 break;
             case R.id.usereditor_textv_camera://拍照头像
-                PicturePhotoUtils.getInstance().takePhotoFrag(activity,outImage);
+                PhotoPictureUtils.getInstance().takePhotoFragment(activity);
                 break;
             case R.id.usereditor_textv_cancle://取消
                 break;

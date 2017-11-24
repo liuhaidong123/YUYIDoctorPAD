@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
@@ -57,6 +58,39 @@ public class PhotoPictureUtils {
             ac.startActivityForResult(intent, PhotoRSCode.requestCode_Search);
         }
     }
+
+    //选取图片(Fragment中使用)
+    public void searchPictureFragment(Fragment ac){
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){
+            if (PermissionCheck.getInstance().isPermissionGet(new String[]{PermissionNames.READ_SD,PermissionNames.WRITE_SD},ac.getActivity())) {
+                PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
+                if (PHOTO.exists()){
+                    PHOTO.delete();
+                }
+                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,getFileUri(ac.getActivity(),PHOTO,intent));
+                Log.i("searchPicture","uri:"+getFileUri(ac.getActivity(),PHOTO,intent));
+                ac.startActivityForResult(intent, PhotoRSCode.requestCode_Search);
+            }
+            else {
+                ac.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},PhotoRSCode.requestCode_SearchPermission);
+            }
+        }
+        else {
+            if (PHOTO.exists()){
+                PHOTO.delete();
+            }
+            PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
+            Intent intent = new Intent(Intent.ACTION_PICK, null);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(PHOTO));
+            ac.startActivityForResult(intent, PhotoRSCode.requestCode_Search);
+        }
+    }
+
+
+
     //拍照
     public void takePhoto(Activity ac){
         if (Build.VERSION.SDK_INT>=23){
@@ -85,6 +119,36 @@ public class PhotoPictureUtils {
             ac.startActivityForResult(intent,PhotoRSCode.requestCode_Camera);
         }
     }
+//    (Fragment中使用)
+    public void takePhotoFragment(Fragment ac){
+        if (Build.VERSION.SDK_INT>=23){
+            if (PermissionCheck.getInstance().isPermissionGet(new String[]{PermissionNames.CAMERA,PermissionNames.READ_SD,PermissionNames.WRITE_SD},ac.getActivity())){
+                PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
+                if (PHOTO.exists()){
+                    PHOTO.delete();
+                }
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,getFileUri(ac.getActivity(),PHOTO,intent));
+                intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+                ac.startActivityForResult(intent,PhotoRSCode.requestCode_Camera);
+            }
+            else {
+                ac.requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},PhotoRSCode.requestCode_Camera);
+            }
+        }
+        else {
+            PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
+            if (PHOTO.exists()){
+                PHOTO.delete();
+            }
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(PHOTO));
+            intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+            ac.startActivityForResult(intent,PhotoRSCode.requestCode_Camera);
+        }
+    }
+
+
     //图片压缩处理参数并显示
     public void savaPictureSearch(Uri uri,OnSavePictureListener listener,Activity ac){
         Uri u=getUri(ac,PHOTO);

@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,22 +22,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.technology.yuyidoctorpad.Photo.PhotoPictureUtils;
+import com.technology.yuyidoctorpad.Photo.PhotoRSCode;
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.activity.WriteHospitalMessageActivity;
-import com.technology.yuyidoctorpad.lhdUtils.ImgUitls;
-import com.technology.yuyidoctorpad.lhdUtils.PicturePhotoUtils;
-import com.technology.yuyidoctorpad.lhdUtils.RSCode;
 import com.technology.yuyidoctorpad.lhdUtils.TelephoneUtils;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 import com.technology.yuyidoctorpad.lhdUtils.UserInfoPresenter;
-import com.technology.yuyidoctorpad.lhdUtils.UserInfoPresenter2;
-import com.technology.yuyidoctorpad.lzhUtils.PhoneUtils;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,7 +41,7 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HospitalMessageFragment extends Fragment implements View.OnClickListener {
+public class HospitalMessageFragment extends Fragment implements View.OnClickListener ,PhotoPictureUtils.OnSavePictureListener{
 
     private EditText mH_Name_Edit, mH_Grade_Edit, mH_Content_Edit, mH_Telephone_Edit,mH_Address_Edit;
     private ImageView mAdd_Hospital_Img;
@@ -247,6 +238,8 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
         return "";
     }
 
+
+
     class BookAda extends BaseAdapter {
 
         @Override
@@ -301,84 +294,119 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
             ImageView img;
         }
     }
-
-    //调用相册拍照判断权限
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case RSCode.priCode_SearchPicture://图库
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    PicturePhotoUtils.getInstance().searchPhtoFrag(this, file);
-                } else {
-                    toast.toast(getContext(), "存储权限被禁用，无法获取相册信息");
-                }
-                break;
-            case RSCode.priCode_TakePhoto://拍照
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    PicturePhotoUtils.getInstance().takePhotoFrag(this, file);
-                } else {
-                    toast.toast(getContext(), "请打开相机权限");
-                }
-                break;
+        if (requestCode== PhotoRSCode.requestCode_SearchPermission){//选取图片的权限请求
+            if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                PhotoPictureUtils.getInstance().searchPictureFragment(this);
+            }
+            else {
+                Toast.makeText(getActivity(),"请打开存储卡权限！",Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if (requestCode==PhotoRSCode.requestCode_CameraPermission){//拍照的权限请求
+            if (grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                PhotoPictureUtils.getInstance().takePhotoFragment(this);
+            }
+            else {
+                Toast.makeText(getActivity(),"请打开相机权限！",Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
+        if (resultCode==RESULT_OK) {
             switch (requestCode) {
-                case RSCode.rCode_SearchPicture://浏览相册
-                    file = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-                    PicturePhotoUtils.getInstance().cutPhoto_SearchFrag(this, file, data);
+                case PhotoRSCode.requestCode_Search://相册选取返回
+                    PhotoPictureUtils.getInstance().savaPictureSearch(data.getData(),this,getActivity());
                     break;
-                case RSCode.rCode_TakePhoto://拍照
-                    Uri uri = Uri.fromFile(file);
-                    file = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-                    PicturePhotoUtils.getInstance().cutPhoto_CameraFrag(this, uri, file);
-                    break;
-                case RSCode.rCode_CutPicture://裁剪
-                    try {
-                        //将output_image.jpg对象解析成Bitmap对象，然后设置到ImageView中显示出来
-                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                        if (bitmap != null) {
-                            try {
-                                if (flag == 1) {//医院图片
-                                    hospitalLastFile = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-                                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(hospitalLastFile));
-                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                                    bos.flush();
-                                    bos.close();
-                                    isHospitalChange = true;
-                                    mAdd_Hospital_Img.setImageBitmap(bitmap);
-                                } else {//证书集合
-                                    File f = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-                                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
-                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                                    bos.flush();
-                                    bos.close();
-                                    mBookList.add(f);
-                                    mBookAda.notifyDataSetChanged();
-                                }
-
-
-                            } catch (Exception e) {
-                                isHospitalChange = false;
-                                ToastUtils.myToast(getContext(), "重新上传");
-                                e.printStackTrace();
-                            }
-
-
-                        } else {
-                            Toast.makeText(getContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(getContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-                    }
+                case PhotoRSCode.requestCode_Camera://拍照
+                    //cameraFile为保存后的文件，mImg：需要显示图片的ImageView
+                    PhotoPictureUtils.getInstance().savaPictureCamera(this,getActivity());
                     break;
             }
         }
     }
+
+    @Override
+    public void onSavePicture(boolean isSuccess, File result) {
+            if (isSuccess){
+                switch (flag){
+                    case 1:
+                        hospitalLastFile=result;
+                        mAdd_Hospital_Img.setImageBitmap(BitmapFactory.decodeFile(hospitalLastFile.getAbsolutePath()));
+                        isHospitalChange = true;
+                        break;
+                    case 2:
+                        mBookList.add(result);
+                        mBookAda.notifyDataSetChanged();
+                        break;
+                }
+            }
+         else {
+                toast.toast(getActivity(),"图片获取失败！");
+            }
+    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK) {
+//            switch (requestCode) {
+//                case RSCode.rCode_SearchPicture://浏览相册
+//                    file = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
+//                    PicturePhotoUtils.getInstance().cutPhoto_SearchFrag(this, file, data);
+//                    break;
+//                case RSCode.rCode_TakePhoto://拍照
+//                    Uri uri = Uri.fromFile(file);
+//                    file = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
+//                    PicturePhotoUtils.getInstance().cutPhoto_CameraFrag(this, uri, file);
+//                    break;
+//                case RSCode.rCode_CutPicture://裁剪
+//                    try {
+//                        //将output_image.jpg对象解析成Bitmap对象，然后设置到ImageView中显示出来
+//                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+//                        if (bitmap != null) {
+//                            try {
+//                                if (flag == 1) {//医院图片
+//                                    hospitalLastFile = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
+//                                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(hospitalLastFile));
+//                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+//                                    bos.flush();
+//                                    bos.close();
+//                                    isHospitalChange = true;
+//                                    mAdd_Hospital_Img.setImageBitmap(bitmap);
+//                                } else {//证书集合
+//                                    File f = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
+//                                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
+//                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+//                                    bos.flush();
+//                                    bos.close();
+//                                    mBookList.add(f);
+//                                    mBookAda.notifyDataSetChanged();
+//                                }
+//
+//
+//                            } catch (Exception e) {
+//                                isHospitalChange = false;
+//                                ToastUtils.myToast(getContext(), "重新上传");
+//                                e.printStackTrace();
+//                            }
+//
+//
+//                        } else {
+//                            Toast.makeText(getContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
+//                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                        Toast.makeText(getContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
+//                    }
+//                    break;
+//            }
+//        }
+//    }
 }
