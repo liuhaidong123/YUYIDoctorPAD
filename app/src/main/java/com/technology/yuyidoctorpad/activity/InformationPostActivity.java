@@ -186,7 +186,7 @@ public class InformationPostActivity extends AppCompatActivity implements View.O
                 if (!"".equals(getBigTitle())) {
                     if (!"".equals(getSmallTitle())) {
                         if (!"".equals(getContent())) {
-                            MyDialog.showDialog(getApplicationContext());
+                            MyDialog.showDialog(this);
                             AjaxParams ajaxParams = new AjaxParams();
                             ajaxParams.put("title", getBigTitle());
                             ajaxParams.put("smallTitle", getSmallTitle());

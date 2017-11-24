@@ -1,5 +1,6 @@
 package com.technology.yuyidoctorpad.activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -14,14 +15,18 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.technology.yuyidoctorpad.R;
 
+import com.technology.yuyidoctorpad.User.User;
+import com.technology.yuyidoctorpad.activity.Login.LoginActivity;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Depart.DepartmentFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.DoctorFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.HomePageFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.InformationPostFragment;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Registe.RegisterNumFragment;
+import com.technology.yuyidoctorpad.lzhUtils.MyApplication;
 ;
 
 import java.util.ArrayList;
@@ -56,7 +61,7 @@ public class HospitalHomePageActivity extends AppCompatActivity implements View.
         mList.add("医生信息");
         mList.add("挂号设置");
         mList.add("资讯发布");
-
+        mList.add("退出");
         mMenu_Img = (ImageView) findViewById(R.id.h_menu);
         mMenu_Img.setOnClickListener(this);
         title = (TextView) findViewById(R.id.h_title);
@@ -85,6 +90,12 @@ public class HospitalHomePageActivity extends AppCompatActivity implements View.
                     case 4:
                         showInformation();
                         myListview.setVisibility(View.GONE);
+                        break;
+                    case 5:
+                        User.clearLogin(HospitalHomePageActivity.this);
+                        MyApplication.removeActivity();
+                        startActivity(new Intent(HospitalHomePageActivity.this, LoginActivity.class));
+                        finish();
                         break;
                     default:
                         break;
@@ -338,6 +349,24 @@ public class HospitalHomePageActivity extends AppCompatActivity implements View.
 
         class MyHolder {
             TextView textView;
+        }
+    }
+
+    private long time = 0;
+    @Override
+    public void onBackPressed() {
+        if (time > 0) {
+            if (System.currentTimeMillis() - time < 2000) {
+                super.onBackPressed();
+            } else {
+                time = System.currentTimeMillis();
+                Toast.makeText(HospitalHomePageActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            }
+
+        } else {
+            time = System.currentTimeMillis();
+            Toast.makeText(HospitalHomePageActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+
         }
     }
 }

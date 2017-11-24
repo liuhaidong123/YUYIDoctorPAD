@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
     tools:context="com.technology.yuyidoctorpad.fragment.CircleFragment">
 
     <RelativeLayout
@@ -34,7 +35,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:src="@mipmap/circle_small_red" />
+                    android:src="@mipmap/circle_small_red"
+                    android:visibility="gone" />
             </FrameLayout>
 
 
@@ -149,10 +151,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@id/change_btn"
-                android:background="@color/color_f1f1f1" />
-
+                android:background="@color/color_f1f1f1"
+                android:visibility="gone" />
 
             <ListView
+
                 android:id="@+id/circle_listview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -163,21 +166,6 @@
 
             </ListView>
 
-            <RelativeLayout
-                android:id="@+id/left_nodata_rl"
-                android:layout_width="375dp"
-                android:layout_height="match_parent"
-                android:layout_below="@id/change_btn"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="抱歉，数据走丢了"
-                    android:textColor="@color/color_1ebeec" />
-            </RelativeLayout>
-
         </RelativeLayout>
 
         <View
@@ -186,7 +174,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/title_head_rl"
             android:layout_toRightOf="@id/left_rl"
-            android:background="@color/color_cccccc" />
+            android:background="@color/color_ffffff" />
 
         <!--右边布局-->
         <ScrollView
@@ -201,7 +189,8 @@
             <RelativeLayout
                 android:id="@+id/scroll_relative"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/user_message_rl"
@@ -401,7 +390,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/view_line"
-            android:background="@drawable/comment_bg">
+            android:background="@drawable/comment_bg"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/writing_img"
@@ -429,21 +419,34 @@
                 android:textSize="15sp" />
         </RelativeLayout>
 
-        <!--右边没有数据显示的布局-->
+        <!--没有数据显示的布局-->
         <RelativeLayout
             android:id="@+id/right_nodata_rl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/title_head_rl"
-            android:layout_toRightOf="@+id/view_line"
-            android:visibility="gone">
+            android:layout_marginTop="44dp"
+            android:visibility="gone"
+
+            >
+
+            <ImageView
+                android:id="@+id/nothing_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/nothing" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_below="@+id/nothing_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
                 android:text="抱歉，数据走丢了"
-                android:textColor="@color/color_1ebeec" />
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_e5e5e5" />
         </RelativeLayout>
 
 

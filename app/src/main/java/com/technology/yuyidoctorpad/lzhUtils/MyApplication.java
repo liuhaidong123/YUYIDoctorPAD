@@ -23,7 +23,7 @@ public class MyApplication extends Application {
 
     //友盟分享
     {
-        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setWeixin("wxcc229f9e409d872f", "38ab251ce7aef8c30e59a0824e61a079");
         PlatformConfig.setQQZone("1106534096", "swVpTHpkOok0iywr");
         PlatformConfig.setSinaWeibo("242239420", "9ae3a7c3e1c7054e4aa977a28b58ce66", "http://sns.whalecloud.com/sina2/callback");
     }
@@ -35,6 +35,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         UMShareAPI.get(this);//友盟
+        Config.isJumptoAppStore = true;//如果用户没有安装qq,微信客户端会自动跳转到应用商店地址去下载（微博不会，微博只会打开网页端）
         Config.DEBUG = true;
         if (Build.VERSION.SDK_INT >= 14) {//4.0以上
             list = new ArrayList<>();

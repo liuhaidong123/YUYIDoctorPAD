@@ -172,12 +172,13 @@
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.AddDcotorActivity"
+        <activity
+            android:name=".activity.AddDcotorActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".activity.DoctorDetilsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DoctorDetilsActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
@@ -185,41 +186,39 @@
             android:name=".activity.Hospital.HospitalAddDepartActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
-            />
-        <activity android:name=".activity.DoctorSearchActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.DoctorSearchActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.Hospital.HospitalEditActivity"
+        <activity
+            android:name=".activity.Hospital.HospitalEditActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.InformationDetailsActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.InformationPostActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AddPaintRecord.PaintRecordAddActicity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
-            />
-        <activity android:name=".activity.InformationDetailsActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AddPaintRecord.PhotoSelect.Post_SelectPhotoActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
-            />
-        <activity android:name=".activity.InformationPostActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            >
-
-        </activity>
-            android:screenOrientation="landscape"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".activity.AddPaintRecord.PaintRecordAddActicity"
-            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
-            android:screenOrientation="landscape"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".activity.AddPaintRecord.PhotoSelect.Post_SelectPhotoActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
-            android:screenOrientation="landscape"
-            android:windowSoftInputMode="adjustPan"
-            ></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".WBShareActivity"></activity>
     </application>
 
 </manifest>

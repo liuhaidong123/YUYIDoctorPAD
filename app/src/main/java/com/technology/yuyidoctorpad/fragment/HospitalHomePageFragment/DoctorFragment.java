@@ -192,10 +192,10 @@ public class DoctorFragment extends Fragment implements View.OnClickListener {
             } else if (mDepartment_Listview.getVisibility() == View.GONE) {
                 mDepartment_Listview.setVisibility(View.VISIBLE);
             }
-            if (mDeparmentListOne1.size() == 0) {
+          //  if (mDeparmentListOne1.size() == 0) {
                 ToastUtils.myToast(getContext(), "正在获取科室列表");
                 mHttptools.getDepartmentMessage(mHandler, User.HospitalId);//获取科室列表
-            }
+          //  }
 
 
         } else if (id == mAdd_Img.getId()) {//添加医生

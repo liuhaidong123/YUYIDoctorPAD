@@ -51,7 +51,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AskFragment extends Fragment implements View.OnClickListener ,UMShareListener{
+public class AskFragment extends Fragment implements View.OnClickListener, UMShareListener {
     private LinearLayout mRecommend_ll, mNew_LL, mHot_ll;
 
     private TextView mToday_tv;
@@ -60,6 +60,7 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
     private View mToday_line;
     private View mNew_line;
     private View mHot_line;
+    private View mM_line;
     private FirstPageListviewAdapter mFirstPageAdapter;
     private ListView mMyListview;
     private List<com.technology.yuyidoctorpad.bean.TodayRecommendBean.Result> mList = new ArrayList<>();
@@ -78,13 +79,13 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
     private ProgressBar mMessageBar;
     private EditText mCommend_edit;
     private ImageView mShareImg;
-    private int mCommentStart=0,mCommentLimit=10;
-    private boolean mMoreFlag=false;//false代表没有点击评论加载更多
-    private int flag=0;//0表示推荐1表示最新2表示热门
+    private int mCommentStart = 0, mCommentLimit = 10;
+    private boolean mMoreFlag = false;//false代表没有点击评论加载更多
+    private int flag = 0;//0表示推荐1表示最新2表示热门
     private UMImage image;
     private UMImage thumb;
     private UMWeb umWeb;
-    private RelativeLayout mRight_Rl,mRight_NoData_Rl,mLeft_NoData_Rl;
+    private RelativeLayout mRight_Rl, mRight_NoData_Rl, mLeft_NoData_Rl;
     private Handler mHttpHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -103,15 +104,15 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
                         mFirstPageAdapter.setmList(mList);
                         mFirstPageAdapter.notifyDataSetChanged();
                         if (mList.size() != 0) {
+                            mM_line.setBackgroundResource(R.color.color_e5e5e5);
                             mMyListview.setVisibility(View.VISIBLE);
-                            mLeft_NoData_Rl.setVisibility(View.GONE);
                             mRight_Rl.setVisibility(View.VISIBLE);
                             mRight_NoData_Rl.setVisibility(View.GONE);
-                            mHttptools.getADMessageDetial(mHttpHandler, mList.get(mPostion).getId(),User.token);//获取今日推荐，最新，热门资讯详情
+                            mHttptools.getADMessageDetial(mHttpHandler, mList.get(mPostion).getId(), User.token);//获取今日推荐，最新，热门资讯详情
                             mHttptools.getCommendList(mHttpHandler, mList.get(mPostion).getId(), mCommentStart, mCommentLimit);//获取评论列表
                         } else {
+                            mM_line.setBackgroundResource(R.color.color_ffffff);
                             mMyListview.setVisibility(View.GONE);
-                            mLeft_NoData_Rl.setVisibility(View.VISIBLE);
                             mRight_Rl.setVisibility(View.GONE);
                             mRight_NoData_Rl.setVisibility(View.VISIBLE);
                             ToastUtils.myToast(getContext(), "抱歉，没有帖子哦");
@@ -134,11 +135,19 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
                     com.technology.yuyidoctorpad.bean.AdMessageDetial.Root root = (com.technology.yuyidoctorpad.bean.AdMessageDetial.Root) o;
 
                     //分享时需要的图片和内容
-                    image = new UMImage(getContext(), UrlTools.BASE + root.getPicture());//设置要分享的图片
-                    thumb = new UMImage(getContext(), UrlTools.BASE + root.getPicture());//设置分享图片的缩略图
+                    if ("".equals(root.getPicture())) {
+                        image = new UMImage(getContext(), R.mipmap.hospital_img);//设置要分享的图片
+                        thumb = new UMImage(getContext(), R.mipmap.hospital_img);//设置分享图片的缩略图
+                    } else {
+                        String[] strings = root.getPicture().split(";");
+                        image = new UMImage(getContext(), UrlTools.BASE + strings[0]);//设置要分享的图片
+                        thumb = new UMImage(getContext(), UrlTools.BASE + strings[0]);//设置分享图片的缩略图
+                    }
+
+
                     image.setThumb(thumb);//图片设置缩略图
                     image.compressStyle = UMImage.CompressStyle.SCALE;
-                    umWeb = new UMWeb("http://www.baidu.com");
+                    umWeb = new UMWeb("http://www.zzzyy.cn/index.do");
                     umWeb.setThumb(thumb);
                     umWeb.setTitle(root.getTitle());
                     umWeb.setDescription(root.getContent());
@@ -162,9 +171,9 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
                     if (root.getCode().equals("0")) {
                         List<Result> list = new ArrayList<>();
                         list = root.getResult();
-                        if (mMoreFlag){
+                        if (mMoreFlag) {
                             mCommentList.addAll(list);
-                        }else {
+                        } else {
                             mCommentList.clear();
                             mCommentList.addAll(list);
                         }
@@ -183,7 +192,7 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
             } else if (msg.what == 103) {
                 ToastUtils.myToast(getContext(), "获取评论列表失败");
                 mMessageListView.removeFooterView(mMessageFooter);
-            }else if (msg.what == 5) {//提交评论返回结果
+            } else if (msg.what == 5) {//提交评论返回结果
                 Object o = msg.obj;
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.SubmitComment.Root) {
                     com.technology.yuyidoctorpad.bean.SubmitComment.Root rootSubmit = (com.technology.yuyidoctorpad.bean.SubmitComment.Root) o;
@@ -220,9 +229,9 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
         mHttptools = HttpTools.getHttpToolsInstance();
         mHttptools.getTodayRecommend(mHttpHandler, mStart, mLimit);//今日推荐
 
-        mRight_Rl=view.findViewById(R.id.right_rl);
-        mRight_NoData_Rl=view.findViewById(R.id.right_no_data);
-        mLeft_NoData_Rl=view.findViewById(R.id.left_no_data_rl);
+        mRight_Rl = view.findViewById(R.id.right_rl);
+        mRight_NoData_Rl = view.findViewById(R.id.right_no_data);
+        mM_line = view.findViewById(R.id.m_line);
 
         //今日推荐，最新，热门
         mRecommend_ll = (LinearLayout) view.findViewById(R.id.recommend_ll);
@@ -249,20 +258,20 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i==mList.size()){//加载更多
-                    mStart+=10;
-                    if (flag==0){//推荐
+                if (i == mList.size()) {//加载更多
+                    mStart += 10;
+                    if (flag == 0) {//推荐
                         mHttptools.getTodayRecommend(mHttpHandler, mStart, mLimit);//今日推荐
-                    }else if (flag==1){//最新
+                    } else if (flag == 1) {//最新
                         mHttptools.getNew(mHttpHandler, mStart, mLimit);
-                    }else {//热门
+                    } else {//热门
                         mHttptools.getHot(mHttpHandler, mStart, mLimit);
                     }
-                }else {//点击某条数据
-                    mCommentStart=0;
-                    mPostion=i;
-                    mMoreFlag=false;
-                    mHttptools.getADMessageDetial(mHttpHandler, mList.get(mPostion).getId(),User.token);//获取今日推荐，最新，热门资讯详情
+                } else {//点击某条数据
+                    mCommentStart = 0;
+                    mPostion = i;
+                    mMoreFlag = false;
+                    mHttptools.getADMessageDetial(mHttpHandler, mList.get(mPostion).getId(), User.token);//获取今日推荐，最新，热门资讯详情
                     mHttptools.getCommendList(mHttpHandler, mList.get(mPostion).getId(), mCommentStart, mCommentLimit);//获取评论列表
 
                 }
@@ -281,8 +290,8 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
         mTitle = mMessageHeader.findViewById(R.id.information_title);
         mMessage = mMessageHeader.findViewById(R.id.information_mess);
         mMessageListView.addHeaderView(mMessageHeader);
-        mCommend_edit=view.findViewById(R.id.my_comment_edit);
-        mShareImg=view.findViewById(R.id.share_img);
+        mCommend_edit = view.findViewById(R.id.my_comment_edit);
+        mShareImg = view.findViewById(R.id.share_img);
         mShareImg.setOnClickListener(this);
         //发送按钮
         mCommend_edit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -293,10 +302,10 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
                         ToastUtils.myToast(getContext(), "请输入评论内容");
                     } else {
                         if (!"".equals(User.tele)) {
-                            mHttptools.submitCommentContent(mHttpHandler, Long.valueOf(User.tele),mList.get(mPostion).getId(), getEditContent());
+                            mHttptools.submitCommentContent(mHttpHandler, Long.valueOf(User.tele), mList.get(mPostion).getId(), getEditContent());
                             mCommend_edit.setText("");
                             //隐藏软键盘
-                            ((InputMethodManager)getContext(). getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                            ((InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                         } else {
                             ToastUtils.myToast(getContext(), "请登录您的账号");
                         }
@@ -309,7 +318,6 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
         });
     }
 
-
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -317,9 +325,9 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
             showTodayLine();
             mStart = 0;
             mPostion = 0;//每次点击下标回归0，请求的是列表中的第一条数据
-            flag=0;
-            mMoreFlag=false;
-            mCommentStart=0;
+            flag = 0;
+            mMoreFlag = false;
+            mCommentStart = 0;
             MyDialog.showDialog(this.getActivity());
             mList.clear();
             mFirstPageAdapter.notifyDataSetChanged();
@@ -328,9 +336,9 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
             showNewLine();
             mStart = 0;
             mPostion = 0;//每次点击下标回归0，请求的是列表中的第一条数据
-            flag=1;
-            mMoreFlag=false;
-            mCommentStart=0;
+            flag = 1;
+            mMoreFlag = false;
+            mCommentStart = 0;
             MyDialog.showDialog(this.getActivity());
             mList.clear();
             mFirstPageAdapter.notifyDataSetChanged();
@@ -340,23 +348,25 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
             showHotLine();
             mStart = 0;
             mPostion = 0;//每次点击下标回归0，请求的是列表中的第一条数据
-            flag=2;
-            mMoreFlag=false;
-            mCommentStart=0;
+            flag = 2;
+            mMoreFlag = false;
+            mCommentStart = 0;
             MyDialog.showDialog(this.getActivity());
             mList.clear();
             mFirstPageAdapter.notifyDataSetChanged();
             mHttptools.getHot(mHttpHandler, mStart, mLimit);
-        }else if (id==mMessageFooter.getId()){//评论加载更多
-            mMoreFlag=true;
-            mCommentStart+=10;
+        } else if (id == mMessageFooter.getId()) {//评论加载更多
+            mMoreFlag = true;
+            mCommentStart += 10;
             mHttptools.getCommendList(mHttpHandler, mList.get(mPostion).getId(), mCommentStart, mCommentLimit);//获取评论列表
 
-        }else if (id==mShareImg.getId()){
-           init();
+        } else if (id == mShareImg.getId()) {
+            init();
         }
     }
+
     public static final int REQUEST_CODE_ASK_READ_PHONE = 123;
+
     public void init() {
         //sdk版本>=23时，
         if (Build.VERSION.SDK_INT >= 23) {
@@ -375,7 +385,7 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
             } else {
                 if (image != null && thumb != null && umWeb != null) {
                     new ShareAction(getActivity())
-                            .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QZONE,SHARE_MEDIA.WEIXIN_CIRCLE)
+                            .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QZONE, SHARE_MEDIA.WEIXIN_CIRCLE)
                             .withMedia(umWeb)
                             .setCallback(this)
                             .open();
@@ -386,7 +396,7 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
         } else {
             if (image != null && thumb != null && umWeb != null) {
                 new ShareAction(getActivity())
-                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QZONE,SHARE_MEDIA.WEIXIN_CIRCLE)
+                        .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QZONE, SHARE_MEDIA.WEIXIN_CIRCLE)
                         .withMedia(umWeb)
                         .setCallback(this)
                         .open();
@@ -405,7 +415,7 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
                     // Permission Granted
                     if (image != null && thumb != null && umWeb != null) {
                         new ShareAction(getActivity())
-                                .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QZONE,SHARE_MEDIA.WEIXIN_CIRCLE)
+                                .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QZONE, SHARE_MEDIA.WEIXIN_CIRCLE)
                                 .withMedia(umWeb)
                                 .setCallback(this)
                                 .open();
@@ -516,21 +526,21 @@ public class AskFragment extends Fragment implements View.OnClickListener ,UMSha
     //分享回掉接口
     @Override
     public void onStart(SHARE_MEDIA share_media) {
-        Log.e("开始",share_media.toString());
+        Log.e("开始", share_media.toString());
     }
 
     @Override
     public void onResult(SHARE_MEDIA share_media) {
-        Log.e("结果",share_media.toString());
+        Log.e("结果", share_media.toString());
     }
 
     @Override
     public void onError(SHARE_MEDIA share_media, Throwable throwable) {
-        Log.e("错误",share_media.toString()+throwable.toString());
+        Log.e("错误", share_media.toString() + throwable.toString());
     }
 
     @Override
     public void onCancel(SHARE_MEDIA share_media) {
-        Log.e("取消",share_media.toString());
+        Log.e("取消", share_media.toString());
     }
 }

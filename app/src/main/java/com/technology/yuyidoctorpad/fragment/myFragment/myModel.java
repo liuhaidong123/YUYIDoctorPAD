@@ -93,7 +93,6 @@ public class myModel {
     //获取有无未读消息
     public void getUnReadMsg(IListener iListener){
         this.listener=iListener;
-        this.listener=iListener;
         Map<String,String> mp=new HashMap<>();
         mp.put("token", User.token);
         OkUtils.getCall(Ip.path+Ip.interface_HasUnReadMsg,mp,OkUtils.OK_GET).enqueue(new Callback() {
@@ -111,7 +110,7 @@ public class myModel {
         });
     }
 
-    class Msg{
+   public class Msg{
 
         /**
          * result : null
