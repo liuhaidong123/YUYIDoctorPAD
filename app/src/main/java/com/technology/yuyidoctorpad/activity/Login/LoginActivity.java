@@ -15,6 +15,7 @@ import com.technology.yuyidoctorpad.activity.Login.Bean.BeanDoc;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanHosLogin;
 import com.technology.yuyidoctorpad.activity.MainActivity;
 import com.technology.yuyidoctorpad.activity.WriteHospitalMessageActivity;
+import com.technology.yuyidoctorpad.lzhUtils.JpRegister;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
 import com.technology.yuyidoctorpad.lzhViews.MyActivity;
 
@@ -74,6 +75,7 @@ public class LoginActivity extends MyActivity implements ILogin{
     //医生登录成功
     @Override
     public void onLoginSuccess( BeanDoc beanDoc) {
+        JpRegister.getInstance().setAlias(this,beanDoc.getPhysician().getTelephone()+"");
         User.saveLogin(this,beanDoc.getResult(),beanDoc.getPhysician().getTelephone()+"",beanDoc.getPhysician().getId()+"",User.LoginTP.DOC);
         presenter.stopTimer();
         startActivity(new Intent(this, MainActivity.class));
@@ -121,7 +123,6 @@ public class LoginActivity extends MyActivity implements ILogin{
                     }
                 }).show();
     }
-
     @Override
     public void getSMSCodeSuccess(){
         successSMScount++;

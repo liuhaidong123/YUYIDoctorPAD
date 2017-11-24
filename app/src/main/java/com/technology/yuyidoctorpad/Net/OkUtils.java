@@ -55,7 +55,6 @@ public class OkUtils {
                 bString=bString.substring(0,bString.length()-1);
                 uri = uri +bString;
             }
-            System.out.println(uri);
             Log.i("url--okHttpPost--",uri);
             //测试用----------yishang--------
             FormEncodingBuilder builder = new FormEncodingBuilder();
@@ -69,7 +68,6 @@ public class OkUtils {
                     .post(builder.build())
                     .build();
             return okhttpclient.newCall(request);
-//            684228
         }
         return null;
     }
@@ -129,7 +127,7 @@ public class OkUtils {
         if (li!=null&&li.size()>0){//文件
             for (int i=0;i<li.size();i++){
                 File f=li.get(i);
-                Log.i("文件名---"+i,f.getName());
+                Log.i("文件名---"+i,f.getName()+"--长度--"+f.length()/1024f);
                 builder.addFormDataPart("file"+i, f.getName(), RequestBody.create(null, f));
             }
         }

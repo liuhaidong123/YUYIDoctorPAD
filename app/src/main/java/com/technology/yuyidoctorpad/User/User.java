@@ -10,6 +10,7 @@ import static com.technology.yuyidoctorpad.User.User.LoginTP.HOS;
  * Created by liuhaidong on 2017/11/1.
  */
 public class User {
+    public static boolean hasvRongPri=false;//是否有接收聊天的权限
     public static LoginTP lTp;//0医生，1医院(当前登录的类型)
     public static String DocId="";//医生的id
     public static String HospitalId="1";//医院的id（默认值为：-1)
