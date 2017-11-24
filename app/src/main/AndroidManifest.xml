@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.technology.yuyidoctorpad">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -8,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
@@ -143,8 +145,7 @@
             android:screenOrientation="landscape"/>
 
         <!-- 友盟分享 -->
-        <activity android:name=".wxapi.WXEntryActivity"
-            />
+        <activity android:name=".wxapi.WXEntryActivity" />
         <!-- 微博 -->
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
@@ -221,23 +222,22 @@
             android:name=".activity.Hospital.HospitalAddDepartActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.DoctorSearchActivity"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name=".activity.DoctorSearchActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.Hospital.HospitalEditActivity"
+        <activity android:name=".activity.Hospital.HospitalEditActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.InformationDetailsActivity"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name=".activity.InformationDetailsActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.InformationPostActivity"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name=".activity.InformationPostActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"></activity>
@@ -415,5 +415,7 @@
             android:screenOrientation="portrait"
             >
         </activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".WBShareActivity"></activity>
     </application>
 </manifest>

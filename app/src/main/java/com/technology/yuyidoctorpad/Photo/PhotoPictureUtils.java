@@ -33,10 +33,10 @@ public class PhotoPictureUtils {
     public void searchPicture(Activity ac){
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){
             if (PermissionCheck.getInstance().isPermissionGet(new String[]{PermissionNames.READ_SD,PermissionNames.WRITE_SD},ac)) {
-                PHOTO=new File(SDutils.getInstance().getFilePath(ac).getAbsolutePath(),getFileName());
-                if (PHOTO.exists()){
+                if (PHOTO!=null&&PHOTO.exists()){
                     PHOTO.delete();
                 }
+                PHOTO=new File(SDutils.getInstance().getFilePath(ac).getAbsolutePath(),getFileName());
                 Intent intent = new Intent(Intent.ACTION_PICK, null);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,getFileUri(ac,PHOTO,intent));
@@ -48,7 +48,7 @@ public class PhotoPictureUtils {
                 }
         }
         else {
-            if (PHOTO.exists()){
+            if (PHOTO!=null&&PHOTO.exists()){
                 PHOTO.delete();
             }
             PHOTO=new File(SDutils.getInstance().getFilePath(ac).getAbsolutePath(),getFileName());
@@ -63,10 +63,10 @@ public class PhotoPictureUtils {
     public void searchPictureFragment(Fragment ac){
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){
             if (PermissionCheck.getInstance().isPermissionGet(new String[]{PermissionNames.READ_SD,PermissionNames.WRITE_SD},ac.getActivity())) {
-                PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
-                if (PHOTO.exists()){
+                if (PHOTO!=null&&PHOTO.exists()){
                     PHOTO.delete();
                 }
+                PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
                 Intent intent = new Intent(Intent.ACTION_PICK, null);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,getFileUri(ac.getActivity(),PHOTO,intent));
@@ -78,7 +78,7 @@ public class PhotoPictureUtils {
             }
         }
         else {
-            if (PHOTO.exists()){
+            if (PHOTO!=null&&PHOTO.exists()){
                 PHOTO.delete();
             }
             PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
@@ -95,10 +95,10 @@ public class PhotoPictureUtils {
     public void takePhoto(Activity ac){
         if (Build.VERSION.SDK_INT>=23){
             if (PermissionCheck.getInstance().isPermissionGet(new String[]{PermissionNames.CAMERA,PermissionNames.READ_SD,PermissionNames.WRITE_SD},ac)){
-                PHOTO=new File(SDutils.getInstance().getFilePath(ac).getAbsolutePath(),getFileName());
-                if (PHOTO.exists()){
+                if (PHOTO!=null&&PHOTO.exists()){
                     PHOTO.delete();
                 }
+                PHOTO=new File(SDutils.getInstance().getFilePath(ac).getAbsolutePath(),getFileName());
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,getFileUri(ac,PHOTO,intent));
                 intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
@@ -109,10 +109,10 @@ public class PhotoPictureUtils {
             }
         }
         else {
-            PHOTO=new File(SDutils.getInstance().getFilePath(ac).getAbsolutePath(),getFileName());
-            if (PHOTO.exists()){
+            if (PHOTO!=null&&PHOTO.exists()){
                 PHOTO.delete();
             }
+            PHOTO=new File(SDutils.getInstance().getFilePath(ac).getAbsolutePath(),getFileName());
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(PHOTO));
             intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
@@ -123,10 +123,10 @@ public class PhotoPictureUtils {
     public void takePhotoFragment(Fragment ac){
         if (Build.VERSION.SDK_INT>=23){
             if (PermissionCheck.getInstance().isPermissionGet(new String[]{PermissionNames.CAMERA,PermissionNames.READ_SD,PermissionNames.WRITE_SD},ac.getActivity())){
-                PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
-                if (PHOTO.exists()){
+                if (PHOTO!=null&&PHOTO.exists()){
                     PHOTO.delete();
                 }
+                PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,getFileUri(ac.getActivity(),PHOTO,intent));
                 intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
@@ -137,10 +137,10 @@ public class PhotoPictureUtils {
             }
         }
         else {
-            PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
             if (PHOTO!=null&&PHOTO.exists()){
                 PHOTO.delete();
             }
+            PHOTO=new File(SDutils.getInstance().getFilePath(ac.getActivity()).getAbsolutePath(),getFileName());
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(PHOTO));
             intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);

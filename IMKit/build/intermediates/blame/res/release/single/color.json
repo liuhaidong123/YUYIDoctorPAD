@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/release/color/rc_btn_file_list_send.xml",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/color/rc_btn_file_list_send.xml"
+    },
+    {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/release/color/rc_btn_file_list_send.xml",
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/color/rc_btn_file_list_send.xml"
     }

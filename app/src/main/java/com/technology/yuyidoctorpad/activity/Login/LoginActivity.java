@@ -93,12 +93,14 @@ public class LoginActivity extends MyActivity implements ILogin{
             switch (state){
                 case 0:
                     startActivity(new Intent(LoginActivity.this, WriteHospitalMessageActivity.class));
+                    finish();
                     break;
                 case 1://通过审核的（已经注册过的）
                     toast.toast(this,"通过审核");
                     User.saveHospitalId(this,bean.getHospitalId());//保存医院id
                     User.saveLogin(this,bean.getResult(),"","",User.LoginTP.HOS);
                     startActivity(new Intent(LoginActivity.this, HospitalHomePageActivity.class));
+                    finish();
                     break;
                 case 2://审核中
                     showDialog("资料审核中","您上次提交的资料还在审核中，是否重新填写审核信息？",2);
@@ -120,6 +122,7 @@ public class LoginActivity extends MyActivity implements ILogin{
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                        startActivity(new Intent(LoginActivity.this, WriteHospitalMessageActivity.class));
+                        finish();
                     }
                 }).show();
     }

@@ -91,28 +91,29 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
                 }
             } else if (msg.what == 56) {//添加医生
                 Object o = msg.obj;
+                MyDialog.stopDia();
+                mSure_Tv.setClickable(true);
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root) {
                     com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root root = (com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root) o;
                     if ("0".equals(root.getCode())) {
                         ToastUtils.myToast(AddDcotorActivity.this, "添加医生成功");
                         mSure_Tv.setClickable(true);
-                        MyDialog.stopDia();
                         finish();
                     } else {
                         ToastUtils.myToast(AddDcotorActivity.this, root.getMessage());
                     }
-                    mSure_Tv.setClickable(true);
                 }else {
-                    mSure_Tv.setClickable(true);
+                    ToastUtils.myToast(AddDcotorActivity.this, "添加医生失败");
                 }
             }else if (msg.what == 64) {//修改医生
                 Object o = msg.obj;
+                mSure_Tv.setClickable(true);
+                MyDialog.stopDia();
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root) {
                     com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root root = (com.technology.yuyidoctorpad.bean.DeparmentSubmitBean.Root) o;
                     if ("0".equals(root.getCode())) {
                         ToastUtils.myToast(AddDcotorActivity.this, "修改医生成功");
                         mSure_Tv.setClickable(true);
-                        MyDialog.stopDia();
                         finish();
                     } else {
                         ToastUtils.myToast(AddDcotorActivity.this, root.getMessage());
@@ -415,20 +416,6 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
     }
 
 
-    public void clearMessage() {
-        mName_Edit.setText("");
-        mDepartment_Tv.setText("");
-        mJob_Tv.setText("");
-        mTelephone_Edit.setText("");
-        mAskPower_img.setImageResource(R.mipmap.agree_no);
-        mLookDataPower_img.setImageResource(R.mipmap.agree_no);
-        mRegister_img.setImageResource(R.mipmap.agree_no);
-        askPowerFlag = false;
-        lookDataPowerFlag = false;
-        registerPowerFlag = false;
-        isPhotoChange = false;
-
-    }
 
     //调用相册拍照判断权限
     @Override
@@ -477,52 +464,7 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
             toast.toast(this,"图片保存失败！");
         }
     }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK) {
-//            switch (requestCode) {
-//                case RSCode.rCode_SearchPicture://浏览相册
-//                    outImage = new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                    PicturePhotoUtils.getInstance().cutPhoto_Search(this, outImage, data);
-//                    break;
-//                case RSCode.rCode_TakePhoto://拍照
-//                    Uri uri = Uri.fromFile(outImage);
-//                    outImage = new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                    PicturePhotoUtils.getInstance().cutPhoto_Camera(this, uri, outImage);
-//                    break;
-//                case RSCode.rCode_CutPicture://裁剪
-//                    try {
-//                        //将output_image.jpg对象解析成Bitmap对象，然后设置到ImageView中显示出来
-//                        Bitmap bitmap = BitmapFactory.decodeFile(outImage.getAbsolutePath());
-//                        if (bitmap != null) {
-//                            try{
-//                                lastFile=new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(lastFile));
-//                                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-//                                bos.flush();
-//                                bos.close();
-//                                isPhotoChange = true;
-//                                mAdd_Img.setImageBitmap(bitmap);
-//                            }catch (Exception e){
-//                                isPhotoChange = false;
-//                                mAdd_Img.setImageResource(R.mipmap.erroruser);
-//                                ToastUtils.myToast(getApplicationContext(),"头像保存失败，重新上传");
-//                                e.printStackTrace();
-//                            }
-//
-//
-//                        } else {
-//                            Toast.makeText(getApplicationContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-//                        }
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(getApplicationContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-//                    }
-//                    break;
-//            }
-//        }
-//    }
+
     class JobAda extends BaseAdapter {
 
         @Override

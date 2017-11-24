@@ -13,7 +13,7 @@ public class Root {
 
     private String certificate;
 
-    private int administratorsTelephone;
+    private long administratorsTelephone;
 
     private String hospitalToken;
 
@@ -69,10 +69,10 @@ public class Root {
     public String getCertificate(){
         return this.certificate;
     }
-    public void setAdministratorsTelephone(int administratorsTelephone){
+    public void setAdministratorsTelephone(long administratorsTelephone){
         this.administratorsTelephone = administratorsTelephone;
     }
-    public int getAdministratorsTelephone(){
+    public long getAdministratorsTelephone(){
         return this.administratorsTelephone;
     }
     public void setHospitalToken(String hospitalToken){

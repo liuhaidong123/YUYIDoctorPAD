@@ -22,33 +22,31 @@ public class User {
         String userTelePhone = preferences.getString("telePhone", "0");
         String tp=preferences.getString("type","-1");
         String docId=preferences.getString("DocId","-1");
-        if (!"-1".equals(tp)&&!"0".equals(userToken)){//本地存放了登录的类别
-            boolean flag=false;
+        boolean flag=false;
+        if (!"-1".equals(tp)){//本地存放了登录的类别
             switch (tp){
                 case "0":
                     lTp=DOC;//医生登录
                     if (!"0".equals(userTelePhone)&&!"0".equals(userToken)&!"-1".equals(docId)){
-                        token=userToken;
-                        tele=userTelePhone;
-                        DocId=docId;
+                        User.token=userToken;
+                        User.tele=userTelePhone;
+                        User.DocId=docId;
                         flag=true;
                     }
                     break;
                 case "1"://医院登录没有保存手机号，所以只要判断token是否正确即可
                     lTp=HOS;//医院登录
-                    token=userToken;
-                    tele="1";
                     flag=true;
                     String hosId=preferences.getString("HospitalId","-1");
                     if ("-1".equals(hosId)){
                         flag=false;
                     }
-                    HospitalId=hosId;
+                    User.HospitalId=hosId;
                     break;
             }
             return flag;
         }
-        return false;
+        return flag;
     }
     //保存医院id
     public static void saveHospitalId(Context con,String hosId){
@@ -64,18 +62,17 @@ public class User {
         SharedPreferences.Editor edi = pre.edit();
         switch (tp){
             case DOC:
-                edi.putString("type","0");
                 edi.putString("DocId",docId);
+                edi.putString("type","0");
+                edi.putString("userToken",UsToken);
+                edi.putString("telePhone",UsTele);
+                User.token=UsToken;
+                User.tele=UsTele;
                 break;
             case HOS:
                 edi.putString("type","1");
-                UsTele="1";//医院的时候不存放电话号，电话好默认为1
                 break;
         }
-        edi.putString("userToken",UsToken);
-        edi.putString("telePhone",UsTele);
-        User.token=UsToken;
-        User.tele=UsTele;
         edi.commit();
     }
     public static void clearLogin(Context con){

@@ -102,7 +102,7 @@ public class DoctorFragment extends Fragment implements View.OnClickListener {
                     if (root != null && root.getResult() != null) {
                         mDeparmentListOne1 = root.getResult();
                         if (mDeparmentListOne1.size() != 0) {
-                            department_tv.setText("全部");
+                           // department_tv.setText("全部");
                             mDeparmentListOne1.add(new Result("全部"));
                             mDepartmentAda = new DepartmentAda(mDeparmentListOne1, getContext());
                             mDepartment_Listview.setAdapter(mDepartmentAda);
@@ -192,10 +192,10 @@ public class DoctorFragment extends Fragment implements View.OnClickListener {
             } else if (mDepartment_Listview.getVisibility() == View.GONE) {
                 mDepartment_Listview.setVisibility(View.VISIBLE);
             }
-            if (mDeparmentListOne1.size() == 0) {
-                ToastUtils.myToast(getContext(), "正在获取科室列表");
+          //  if (mDeparmentListOne1.size() == 0) {
+              //  ToastUtils.myToast(getContext(), "正在获取科室列表");
                 mHttptools.getDepartmentMessage(mHandler, User.HospitalId);//获取科室列表
-            }
+          //  }
 
 
         } else if (id == mAdd_Img.getId()) {//添加医生

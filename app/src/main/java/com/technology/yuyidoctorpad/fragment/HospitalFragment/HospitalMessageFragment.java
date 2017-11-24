@@ -65,7 +65,7 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
     private int mBookPosition = -1;
 
     public HospitalMessageFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -201,7 +201,6 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
         }
     }
 
-
     private String getHospitalName() {
         if (!"".equals(mH_Name_Edit.getText().toString().trim())) {
             return mH_Name_Edit.getText().toString().trim();
@@ -238,8 +237,6 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
         return "";
     }
 
-
-
     class BookAda extends BaseAdapter {
 
         @Override
@@ -264,7 +261,6 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
             if (view == null) {
                 bookHolder = new BookHolder();
                 view = LayoutInflater.from(getContext()).inflate(R.layout.book_gridview_item, null);
-
                 bookHolder.img = view.findViewById(R.id.book_img);
                 view.setTag(bookHolder);
             } else {
@@ -315,8 +311,6 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
         }
     }
 
-
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -352,61 +346,4 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
                 toast.toast(getActivity(),"图片获取失败！");
             }
     }
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK) {
-//            switch (requestCode) {
-//                case RSCode.rCode_SearchPicture://浏览相册
-//                    file = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                    PicturePhotoUtils.getInstance().cutPhoto_SearchFrag(this, file, data);
-//                    break;
-//                case RSCode.rCode_TakePhoto://拍照
-//                    Uri uri = Uri.fromFile(file);
-//                    file = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                    PicturePhotoUtils.getInstance().cutPhoto_CameraFrag(this, uri, file);
-//                    break;
-//                case RSCode.rCode_CutPicture://裁剪
-//                    try {
-//                        //将output_image.jpg对象解析成Bitmap对象，然后设置到ImageView中显示出来
-//                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-//                        if (bitmap != null) {
-//                            try {
-//                                if (flag == 1) {//医院图片
-//                                    hospitalLastFile = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(hospitalLastFile));
-//                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-//                                    bos.flush();
-//                                    bos.close();
-//                                    isHospitalChange = true;
-//                                    mAdd_Hospital_Img.setImageBitmap(bitmap);
-//                                } else {//证书集合
-//                                    File f = new File(getContext().getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
-//                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-//                                    bos.flush();
-//                                    bos.close();
-//                                    mBookList.add(f);
-//                                    mBookAda.notifyDataSetChanged();
-//                                }
-//
-//
-//                            } catch (Exception e) {
-//                                isHospitalChange = false;
-//                                ToastUtils.myToast(getContext(), "重新上传");
-//                                e.printStackTrace();
-//                            }
-//
-//
-//                        } else {
-//                            Toast.makeText(getContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-//                        }
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(getContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-//                    }
-//                    break;
-//            }
-//        }
-//    }
 }

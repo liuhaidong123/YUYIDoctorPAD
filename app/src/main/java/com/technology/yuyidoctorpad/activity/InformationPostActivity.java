@@ -179,7 +179,7 @@ public class InformationPostActivity extends AppCompatActivity implements View.O
                 if (!"".equals(getBigTitle())) {
                     if (!"".equals(getSmallTitle())) {
                         if (!"".equals(getContent())) {
-                            MyDialog.showDialog(getApplicationContext());
+                            MyDialog.showDialog(this);
                             AjaxParams ajaxParams = new AjaxParams();
                             ajaxParams.put("title", getBigTitle());
                             ajaxParams.put("smallTitle", getSmallTitle());
@@ -288,50 +288,5 @@ public class InformationPostActivity extends AppCompatActivity implements View.O
             toast.toast(this,"图片获取失败！");
         }
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK) {
-//            switch (requestCode) {
-//                case RSCode.rCode_SearchPicture://浏览相册
-//                    outImage = new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                    PicturePhotoUtils.getInstance().cutPhoto_Search(this, outImage, data);
-//                    break;
-//                case RSCode.rCode_TakePhoto://拍照
-//                    Uri uri = Uri.fromFile(outImage);
-//                    outImage = new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                    PicturePhotoUtils.getInstance().cutPhoto_Camera(this, uri, outImage);
-//                    break;
-//                case RSCode.rCode_CutPicture://裁剪
-//                    try {
-//                        //将output_image.jpg对象解析成Bitmap对象，然后设置到ImageView中显示出来
-//                        Bitmap bitmap = BitmapFactory.decodeFile(outImage.getAbsolutePath());
-//                        if (bitmap != null) {
-//                            try{
-//                                lastFile=new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
-//                                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(lastFile));
-//                                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-//                                bos.flush();
-//                                bos.close();
-//                                isPhotoChange = true;
-//                                mAdd_img.setImageBitmap(bitmap);
-//                            }catch (Exception e){
-//                                isPhotoChange = false;
-//                                mAdd_img.setImageResource(R.mipmap.erroruser);
-//                                ToastUtils.myToast(getApplicationContext(),"头像保存失败，重新上传");
-//                                e.printStackTrace();
-//                            }
-//                        } else {
-//                            Toast.makeText(getApplicationContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-//                        }
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(getApplicationContext(), "照片截取失败", Toast.LENGTH_SHORT).show();
-//                    }
-//                    break;
-//            }
-//        }
-//    }
 
 }
