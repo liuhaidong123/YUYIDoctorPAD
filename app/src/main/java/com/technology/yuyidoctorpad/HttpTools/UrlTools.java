@@ -5,8 +5,8 @@ package com.technology.yuyidoctorpad.HttpTools;
  */
 
 public class UrlTools {
-    public static final String BASE = "http://192.168.1.44:8080/yuyi";
-    //public static final String BASE = "http://59.110.169.148:8080";
+    // public static final String BASE = "http://192.168.1.44:8080/yuyi";
+    public static final String BASE = "http://59.110.169.148:8080";
     public static final String URL_AD = "/doctorlyinformation/getall.do";//广告数据
     public static final String URL_AD_MESSAGE = "/doctorlyinformation/get.do?";//广告,今日，最新，热门数据详情（需传id=,token）
     public static final String URL_TODAY_RECOMMEND = "/doctorlyinformation/getTodayAll.do?";//今日推荐（需传start，limit）
@@ -34,18 +34,17 @@ public class UrlTools {
     public static final String URL_SHARE_INFORMATION = "/share/UpdateShar.do?";//id=1&shareType=1&token=0365866B04DA5283B29330178F625C64  资讯详情分享
 
 
-
-//医院接口
+    //医院接口
     public static final String URL_DEPARTMENT_LIST = "/department/getdepartment.do?";//科室列表参数hospitalId=1
-    public static final String URL_SUBMIT_DOCTOR="/physician/AddphysicianData.do?";//添加医生  trueName=医生名称&title=医生职称&telephone=医生电话&hospitalId=医院编号&departmentId=科室编号&clinicId=门诊编号&permissionInfo=咨询权限&permissionData=查看数据权限
-    public static final String URL_DOCTOR_LIST="/physician/findList.do?";//医生列表参数hospitalId=1&departmentId=1
-    public static final String URL_DOCTOR_DETAILS="/physician/findDoctoryData.do?";//单个医生详情physicianid=2
-    public static final String URL_SEARCH_DOCTOR="/physician/findvaguetrueName.do?";//搜索医生接口hospitalId=1&truename=刘海东
-    public static final String URL_HOSPITAL_INFOMATION_LIST="/doctorlyinformation/findTimeAndPublishchannel.do?";//资讯列表Publishchannel=1&time=1&start=0&limit=10
-    public static final String URL_INFORMATION_DATAILS="/doctorlyinformation/getIdPersonal.do?";//资讯详情id=12
-    public static final String URL_POST_INFOR="/doctorlyinformation/PublishInformation.do?";//发布详情
-    public static final String URL_HOSPITAL_HOMEPAGE="/hospital/get.do?";//医院主页
-    public static final String URL_UPDATE_DOCTOR="/physician/UpdatephysicianData.do?";//修改医生信息
-    public static final String URL_SUBMIT_MANAGER_MSG="/hospital/AddHospitaInformation.do?";//提交医院管理员信息
+    public static final String URL_SUBMIT_DOCTOR = "/physician/AddphysicianData.do?";//添加医生  trueName=医生名称&title=医生职称&telephone=医生电话&hospitalId=医院编号&departmentId=科室编号&clinicId=门诊编号&permissionInfo=咨询权限&permissionData=查看数据权限
+    public static final String URL_DOCTOR_LIST = "/physician/findList.do?";//医生列表参数hospitalId=1&departmentId=1
+    public static final String URL_DOCTOR_DETAILS = "/physician/findDoctoryData.do?";//单个医生详情physicianid=2
+    public static final String URL_SEARCH_DOCTOR = "/physician/findvaguetrueName.do?";//搜索医生接口hospitalId=1&truename=刘海东
+    public static final String URL_HOSPITAL_INFOMATION_LIST = "/doctorlyinformation/findTimeAndPublishchannel.do?";//资讯列表Publishchannel=1&time=1&start=0&limit=10
+    public static final String URL_INFORMATION_DATAILS = "/doctorlyinformation/getIdPersonal.do?";//资讯详情id=12
+    public static final String URL_POST_INFOR = "/doctorlyinformation/PublishInformation.do?";//发布详情
+    public static final String URL_HOSPITAL_HOMEPAGE = "/hospital/get.do?";//医院主页
+    public static final String URL_UPDATE_DOCTOR = "/physician/UpdatephysicianData.do?";//修改医生信息
+    public static final String URL_SUBMIT_MANAGER_MSG = "/hospital/AddHospitaInformation.do?";//提交医院管理员信息
 
 }

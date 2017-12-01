@@ -78,7 +78,7 @@
             android:name=".activity.WriteHospitalMessageActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.PaintList.PaintMsgActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
@@ -131,18 +131,21 @@
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.Settings.AboutActivity"
+        <activity
+            android:name=".activity.Settings.AboutActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".activity.Settings.FeedActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.Settings.FeedActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".activity.PaintList.PaintEleMsgActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.PaintList.PaintEleMsgActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
 
         <!-- 友盟分享 -->
         <activity android:name=".wxapi.WXEntryActivity" />
@@ -212,7 +215,7 @@
             android:name=".activity.AddDcotorActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.DoctorDetilsActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
@@ -222,25 +225,30 @@
             android:name=".activity.Hospital.HospitalAddDepartActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
-            />
-        <activity android:name=".activity.DoctorSearchActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.DoctorSearchActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.Hospital.HospitalEditActivity"
+        <activity
+            android:name=".activity.Hospital.HospitalEditActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
-            />
-        <activity android:name=".activity.InformationDetailsActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.InformationDetailsActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
-            />
-        <activity android:name=".activity.InformationPostActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.InformationPostActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="landscape">
+
+        </activity>
         <activity
             android:name=".activity.AddPaintRecord.PaintRecordAddActicity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
@@ -287,6 +295,7 @@
                 <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".activity.Rong.RongConversationList_Activity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
@@ -301,28 +310,28 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Rong.UnRongListActivity"
+        <activity
+            android:name=".activity.Rong.UnRongListActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <!-- ================================================================容云相关================================================================================================ -->
         <!-- ===============================================================激光================================================================================================ -->
         <!-- Rich push 核心功能 since 2.0.6-->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
-            android:theme="@style/MyDialogStyle"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:theme="@style/MyDialogStyle"></activity>
         <!-- Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.technology.yuyidoctorpad" />
             </intent-filter>
@@ -331,8 +340,8 @@
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
-            android:process=":mult"
-            android:exported="false">
+            android:exported="false"
+            android:process=":mult">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTER" />
                 <action android:name="cn.jpush.android.intent.REPORT" />
@@ -342,10 +351,9 @@
         </service>
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
-            android:authorities="com.technology.yuyidoctorpad.DataProvider"
             android:name="cn.jpush.android.service.DataProvider"
-            android:exported="false"
-            />
+            android:authorities="com.technology.yuyidoctorpad.DataProvider"
+            android:exported="false" />
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
         <service
@@ -359,10 +367,9 @@
         </service>
         <!-- since 3.1.0 Required SDK 核心功能-->
         <provider
-            android:authorities="com.technology.yuyidoctorpad.DownloadProvider"
             android:name="cn.jpush.android.service.DownloadProvider"
-            android:exported="true"
-            />
+            android:authorities="com.technology.yuyidoctorpad.DownloadProvider"
+            android:exported="true" />
         <!-- Required SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
@@ -380,16 +387,19 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
         <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
         <!-- User defined.  For test only  用户自定义的广播接收器-->
         <receiver
             android:name=".lzhUtils.MyReceiver"
-            android:exported="false"
-            android:enabled="true">
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
@@ -407,15 +417,22 @@
             </intent-filter>
         </receiver>
         <!-- Required  . Enable it you can get statistics data with channel -->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="1c6b3e58a2dff1720997c7ba" /> <!--  </>值来自开发者平台取得的AppKey-->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="1c6b3e58a2dff1720997c7ba" /> <!--  </>值来自开发者平台取得的AppKey-->
         <!-- ================================================================激光================================================================================================ -->
-        <activity android:name=".TestActivity"
+        <activity
+            android:name=".TestActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait">
+
         </activity>
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".WBShareActivity"></activity>
+
+        <activity android:name=".WBShareActivity">
+
+        </activity>
     </application>
 </manifest>
