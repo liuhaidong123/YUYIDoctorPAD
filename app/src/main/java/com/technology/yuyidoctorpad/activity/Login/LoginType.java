@@ -7,15 +7,16 @@ package com.technology.yuyidoctorpad.activity.Login;
 public enum LoginType {
     DOCTOR,HOSPITAL;//医生登录，医院登录
     public static LoginType getOppositeType(LoginType tp){
+        LoginType type=DOCTOR;
         switch (tp){
             case DOCTOR:
-                tp=HOSPITAL;
+                type=HOSPITAL;
                 break;
             case HOSPITAL:
-                tp=DOCTOR;
+                type=DOCTOR;
                 break;
         }
-        return tp;
+        return type;
     }
     public static String getLoginTypeString(LoginType tp){
         String str="";

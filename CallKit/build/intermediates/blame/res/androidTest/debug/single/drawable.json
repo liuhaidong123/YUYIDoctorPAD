@@ -48,12 +48,12 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable/rc_send_toggle_selector.xml"
     },
     {
-        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/androidTest/debug/drawable/rc_cs_group_ok_text_selector.xml",
-        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable/rc_cs_group_ok_text_selector.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/androidTest/debug/drawable/rc_corner_voice_style.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable/rc_corner_voice_style.xml"
+    },
+    {
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/androidTest/debug/drawable/rc_cs_group_ok_text_selector.xml",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable/rc_cs_group_ok_text_selector.xml"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/androidTest/debug/drawable/rc_voip_float_bg.xml",

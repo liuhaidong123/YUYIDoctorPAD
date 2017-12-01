@@ -67,7 +67,6 @@ public class LoginActivity extends MyActivity implements ILogin{
                 break;
         }
     }
-
     @Override
     public void onError(String msg) {
         toast.toast(this,msg);
@@ -92,7 +91,7 @@ public class LoginActivity extends MyActivity implements ILogin{
         int state= bean.getState();
             switch (state){
                 case 0:
-                    startActivity(new Intent(LoginActivity.this, WriteHospitalMessageActivity.class));
+                    startActivity(new Intent(LoginActivity.this,WriteHospitalMessageActivity.class));
                     finish();
                     break;
                 case 1://通过审核的（已经注册过的）

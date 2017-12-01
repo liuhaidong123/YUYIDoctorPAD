@@ -14,7 +14,9 @@ import com.technology.yuyidoctorpad.activity.Login.Bean.BeanDoc;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanHosLogin;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanHosSMS;
 import com.technology.yuyidoctorpad.activity.Login.Bean.BeanSMS;
+import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lzhUtils.Empty;
+import com.technology.yuyidoctorpad.lzhUtils.MyApplication;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -58,9 +60,11 @@ public class LoginModel {
                     break;
 
                 case -1://医生登录
+                    MyDialog.stopDia();
                     listener.onError("网络异常！");
                     break;
                 case 1://医生登录
+                    MyDialog.stopDia();
                     try{
                         BeanDoc beanDoc=gson.gson.fromJson(resStr,BeanDoc.class);
                         if (beanDoc!=null){
@@ -76,6 +80,7 @@ public class LoginModel {
                         }
                     }
                     catch (Exception e){
+                        listener.onError("登录失败！");
                         e.printStackTrace();
                     }
                     break;
@@ -103,9 +108,11 @@ public class LoginModel {
                     }
                     break;
                 case -4://医院登录
+                    MyDialog.stopDia();
                     listener.onError("网络异常！");
                     break;
                 case 4://医院登录
+                    MyDialog.stopDia();
                     try{
                         BeanHosLogin be=gson.gson.fromJson(resStr,BeanHosLogin.class);
                         if (be!=null){
@@ -129,6 +136,7 @@ public class LoginModel {
         }
     };
     public void login(String phoneNum,String smsCode,ILogin listener,LoginType tp){
+        MyDialog.showDialog(MyApplication.activityCurrent);
         this.listener=listener;
         switch (tp){
             case DOCTOR:

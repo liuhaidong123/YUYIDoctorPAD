@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.technology.yuyidoctorpad.activity.Rong.UnRongListActivity">
     <RelativeLayout
+        android:id="@+id/tt"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="42dp">
@@ -15,18 +16,24 @@
             android:layout_centerInParent="true"
             />
     </RelativeLayout>
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <ImageView
+    <RelativeLayout
+        android:background="#f1f1f1"
+        android:layout_below="@+id/tt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/nothing"/>
-        <TextView style="@style/TextS15C3Lwrap"
-            android:layout_marginTop="15dp"
-            android:text="对不起，您没有接收咨询的权限！"/>
-    </LinearLayout>
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@mipmap/nothing"/>
+            <TextView style="@style/TextS15C3Lwrap"
+                android:layout_marginTop="15dp"
+                android:text="对不起，您没有接收咨询的权限！"/>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

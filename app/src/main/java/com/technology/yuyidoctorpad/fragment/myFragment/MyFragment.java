@@ -76,7 +76,7 @@ public class MyFragment extends BaseFragment implements IListener{
                     intent.setClass(getActivity(), UserInfoActivity.class);
                     intent.putExtra(IntentValue.UserInfo,us);
                     startActivity(intent);
-                }
+                    }
                 else {
                     toast.toast(getActivity(),"没有获取到用户信息！");
                 }
@@ -92,29 +92,46 @@ public class MyFragment extends BaseFragment implements IListener{
                 break;
 
             case R.id.my_consulting://咨询
-                if (User.hasvRongPri){
-                    intent.setClass(getActivity(), RongConversationList_Activity.class);
-                    startActivity(intent);
-                }
-                else {
-                    intent.setClass(getActivity(), UnRongListActivity.class);
-                    startActivity(intent);
+                if (us!=null){
+                    if (User.hasvRongPri){
+                        intent.setClass(getActivity(), RongConversationList_Activity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        intent.setClass(getActivity(), UnRongListActivity.class);
+                        startActivity(intent);
+                    }
                 }
                 break;
 
             case R.id.my_data://查看数据
-                intent.setClass(getActivity(), PaintDataListActivity.class);
-                startActivity(intent);
+                if (us!=null){
+                    intent.setClass(getActivity(), PaintDataListActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    toast.toast(getActivity(),"没有查询到您注册的医院信息，没有使用该功能！");
+                }
                 break;
 
             case R.id.my_register://挂号接收
-                intent.setClass(getActivity(), RegistionActivity.class);
-                startActivity(intent);
+                if (us!=null){
+                    intent.setClass(getActivity(), RegistionActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    toast.toast(getActivity(),"没有查询到您注册的医院信息，没有使用该功能！");
+                }
                 break;
 
             case R.id.my_addPaintRecord://病历添加
-                intent.setClass(getActivity(), PaintRecordAddActicity.class);
-                startActivity(intent);
+                if (us!=null){
+                    intent.setClass(getActivity(), PaintRecordAddActicity.class);
+                    startActivity(intent);
+                }
+                else {
+                    toast.toast(getActivity(),"没有查询到您注册的医院信息，没有使用该功能！");
+                }
                 break;
 
             case R.id.my_settings://设置
