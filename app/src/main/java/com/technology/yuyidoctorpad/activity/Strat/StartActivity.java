@@ -28,6 +28,7 @@ public class StartActivity extends MyActivity {
                                 break;
                             case HOS:
                                 startActivity(new Intent(getApplicationContext(),HospitalHomePageActivity.class));
+                                finish();
                                 break;
                         }
                     }

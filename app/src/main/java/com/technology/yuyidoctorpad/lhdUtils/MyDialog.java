@@ -1,12 +1,9 @@
 package com.technology.yuyidoctorpad.lhdUtils;
 
-import android.app.ProgressDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.technology.yuyidoctorpad.R;
 
@@ -16,30 +13,27 @@ import com.technology.yuyidoctorpad.R;
  */
 
 public class MyDialog {
-    public static ProgressDialog dialog;
+    public static Dialog dialog;
     public static void showDialog(Context context){
+        if (dialog!=null&&dialog.isShowing()){
+            return;
+        }
         if (context!=null){
+//            ImageView imageView= (ImageView) v.findViewById(R.id.dialogimg);
+//            imageView.setBackgroundResource(R.drawable.animt);
+//            AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getBackground();
+//
+//            animationDrawable.start();
+            dialog=new Dialog(context, R.style.dialog);
             LayoutInflater inflater = LayoutInflater.from(context);
             View v = inflater.inflate(R.layout.window, null);
-            ImageView imageView= (ImageView) v.findViewById(R.id.dialogimg);
-            imageView.setBackgroundResource(R.drawable.animt);
-            AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getBackground();
-
-            animationDrawable.start();
-            dialog = new ProgressDialog(context, R.style.dialog);
-            dialog.setCancelable(true);
-            dialog.setCanceledOnTouchOutside(false);
+            dialog.setContentView(v);
             dialog.show();
-            dialog.setContentView(v, new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT));
         }
-
     }
     public static void  stopDia(){
         if(dialog!=null&&dialog.isShowing()){
             dialog.dismiss();
         }
-
     }
 }

@@ -226,7 +226,6 @@ public class HospitalMessageFragment extends Fragment implements View.OnClickLis
         if (TelephoneUtils.isFixedPhone(mH_Telephone_Edit.getText().toString().trim())) {
             return mH_Telephone_Edit.getText().toString().trim();
         }
-
         return "";
     }
 

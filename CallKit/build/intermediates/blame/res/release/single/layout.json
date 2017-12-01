@@ -44,12 +44,12 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_notification_realtime_location.xml"
     },
     {
-        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_voip_multi_video_calling_bottom_view.xml",
-        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/src/main/res/layout/rc_voip_multi_video_calling_bottom_view.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_picprev_activity.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_picprev_activity.xml"
+    },
+    {
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_voip_multi_video_calling_bottom_view.xml",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/src/main/res/layout/rc_voip_multi_video_calling_bottom_view.xml"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_voip_item_incoming_maudio.xml",
@@ -64,12 +64,12 @@
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_fragment_base_setting.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_ext_plugin_item.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_ext_plugin_item.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_item_group_information_notification_message.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_item_group_information_notification_message.xml"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_ext_plugin_item.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_ext_plugin_item.xml"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_picprev_activity.xml",
@@ -124,12 +124,12 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_ac_picture_pager.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_cs_alert_robot_evaluation.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_cs_alert_robot_evaluation.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_voip_contact_container.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/src/main/res/layout/rc_voip_contact_container.xml"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_cs_alert_robot_evaluation.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_cs_alert_robot_evaluation.xml"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_wi_block.xml",
@@ -160,12 +160,12 @@
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_picsel_preview.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_ac_camera.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_ac_camera.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_item_file_message.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_item_file_message.xml"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_ac_camera.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_ac_camera.xml"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_picsel_activity.xml",
@@ -184,20 +184,20 @@
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/main/res/layout/rc_voip_contact_container.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_voip_user_info.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/main/res/layout/rc_voip_user_info.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_base_activity_layout.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_base_activity_layout.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_voip_ac_muti_audio.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/main/res/layout/rc_voip_ac_muti_audio.xml"
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_voip_user_info.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/main/res/layout/rc_voip_user_info.xml"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_item_public_service_search.xml",
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/layout/rc_item_public_service_search.xml"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/release/layout/rc_voip_ac_muti_audio.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/main/res/layout/rc_voip_ac_muti_audio.xml"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/release/layout/rc_voip_user_info.xml",

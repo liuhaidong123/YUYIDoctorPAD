@@ -12,12 +12,12 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_selector_title_pic_back_press.9.png"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u2b50.png",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u2b50.png"
-    },
-    {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_selector_title_pic_back_press.9.png",
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_selector_title_pic_back_press.9.png"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u2b50.png",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u2b50.png"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_yes.png",
@@ -144,12 +144,12 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_icon_rt_message_right.png"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_volume_7.png",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_volume_7.png"
-    },
-    {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_audio_toggle_hover.png",
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_audio_toggle_hover.png"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/rc_ic_volume_7.png",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_ic_volume_7.png"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u1f60a.png",
@@ -200,12 +200,12 @@
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/rc_fr_file_list_ad_icon_file.png"
     },
     {
-        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u1f3e1.png",
-        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f3e1.png"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u1f47b.png",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f47b.png"
+    },
+    {
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u1f3e1.png",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/u1f3e1.png"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/u1f648.png",

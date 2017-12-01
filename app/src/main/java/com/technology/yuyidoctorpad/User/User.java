@@ -60,12 +60,14 @@ public class User {
     public static void saveLogin(Context con,String UsToken, String UsTele,String docId,LoginTP tp){
         SharedPreferences pre = con.getSharedPreferences("USER",Context.MODE_APPEND);
         SharedPreferences.Editor edi = pre.edit();
+        User.lTp=tp;
         switch (tp){
             case DOC:
                 edi.putString("DocId",docId);
                 edi.putString("type","0");
                 edi.putString("userToken",UsToken);
                 edi.putString("telePhone",UsTele);
+                User.DocId=docId;
                 User.token=UsToken;
                 User.tele=UsTele;
                 break;

@@ -12,12 +12,12 @@
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_item_list_selector.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_plugin_toggle_selector.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_plugin_toggle_selector.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/debug/drawable/rc_selector_grid_camera_mask.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable/rc_selector_grid_camera_mask.xml"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_plugin_toggle_selector.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_plugin_toggle_selector.xml"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/debug/drawable/rc_menu_keyboard_selector.xml",
@@ -40,12 +40,12 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable/rc_btn_public_service_enter_selector.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_menu_keyboard_selector.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_menu_keyboard_selector.xml"
-    },
-    {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_emotion_toggle_selector.xml",
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_emotion_toggle_selector.xml"
+    },
+    {
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_menu_keyboard_selector.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_menu_keyboard_selector.xml"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/debug/drawable/rc_corner_popup_dialog_style.xml",
@@ -64,16 +64,16 @@
         "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_cs_ratingbar.xml"
     },
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_cs_evaluate_selector.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_cs_evaluate_selector.xml"
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/debug/drawable/rc_keyboard_selector.xml",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable/rc_keyboard_selector.xml"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/debug/drawable/rc_bg_item.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable/rc_bg_item.xml"
     },
     {
-        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/debug/drawable/rc_keyboard_selector.xml",
-        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable/rc_keyboard_selector.xml"
+        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_cs_evaluate_selector.xml",
+        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/src/main/res/drawable/rc_cs_evaluate_selector.xml"
     },
     {
         "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/IMKit/build/intermediates/res/merged/debug/drawable/rc_pb_file_download_progress.xml",

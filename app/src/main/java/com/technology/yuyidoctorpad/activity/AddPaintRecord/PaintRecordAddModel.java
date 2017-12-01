@@ -8,9 +8,11 @@ import com.squareup.okhttp.Response;
 import com.technology.yuyidoctorpad.Net.Ip;
 import com.technology.yuyidoctorpad.Net.OkUtils;
 import com.technology.yuyidoctorpad.Net.gson;
+import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lzhUtils.BeanCode;
 import com.technology.yuyidoctorpad.lzhUtils.Empty;
 import com.technology.yuyidoctorpad.lzhUtils.Model;
+import com.technology.yuyidoctorpad.lzhUtils.MyApplication;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,9 +31,11 @@ public class PaintRecordAddModel extends Model{
         super.handleMessage(msg);
         switch (msg.what){
             case 0:
+                MyDialog.stopDia();
                 listener.onAddError((String) msg.obj);
                 break;
             case 1:
+                MyDialog.stopDia();
                 listener.onAddSuccess();
                 break;
         }
@@ -46,6 +50,7 @@ public class PaintRecordAddModel extends Model{
 //    返回值：   返回值名称                返回值类型    备注
 //    code              0成功-1失败
     public void addRecord(String telethone, String name, String age, String  gender, String medicalrecord, String physicianId, List<File> list, IpaintAdd listener){
+        MyDialog.showDialog(MyApplication.activityCurrent);
         this.listener=listener;
         Map<String,String>mp=new HashMap<>();
         mp.put("telethone",telethone);

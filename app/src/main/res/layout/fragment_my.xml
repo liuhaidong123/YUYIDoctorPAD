@@ -48,10 +48,10 @@
                  android:orientation="vertical">
                  <RelativeLayout style="@style/LayoutWrap">
                      <TextView style="@style/TextS14CfLwrap"
-                         android:text="姓名"
+                         android:text=""
                          android:id="@+id/my_userName"/>
                      <TextView style="@style/TextS14CfLwrap"
-                         android:text="主任医师"
+                         android:text=""
                          android:layout_marginLeft="10dp"
                          android:layout_toRightOf="@+id/my_userName"
                          android:id="@+id/my_userZC"/>
@@ -60,10 +60,10 @@
                      android:layout_marginTop="10dp"
                      style="@style/LayoutWrap">
                      <TextView style="@style/TextS12CfLwrap"
-                         android:text="涿州市中医院"
+                         android:text=""
                          android:id="@+id/my_hospitalName"/>
                      <TextView style="@style/TextS12CfLwrap"
-                         android:text="主任医师"
+                         android:text=""
                          android:layout_marginLeft="10dp"
                          android:layout_toRightOf="@+id/my_hospitalName"
                          android:id="@+id/my_userDepartment"/>
