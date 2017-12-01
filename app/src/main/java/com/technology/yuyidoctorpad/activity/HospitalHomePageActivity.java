@@ -3,12 +3,15 @@ package com.technology.yuyidoctorpad.activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -48,14 +51,44 @@ public class HospitalHomePageActivity extends AppCompatActivity implements View.
     public final String informationTag = "information";
     public final String addDoctorTag = "adddoctor";
 
+    private AlertDialog.Builder builder;
+    private AlertDialog alertDialog;
+    private View alertView;
+    private TextView mCancle_Btn, mSure_Btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_home_page);
+
         initUI();
     }
 
     private void initUI() {
+
+        builder = new AlertDialog.Builder(this);
+        alertDialog = builder.create();
+        alertView = LayoutInflater.from(this).inflate(R.layout.exit_hospital_alert, null);
+        mCancle_Btn = alertView.findViewById(R.id.cancle_btn);
+        mSure_Btn = alertView.findViewById(R.id.sure_btn);
+        alertDialog.setView(alertView);
+
+        mCancle_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+        mSure_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                User.clearLogin(HospitalHomePageActivity.this);
+                MyApplication.removeActivity();
+                startActivity(new Intent(HospitalHomePageActivity.this, LoginActivity.class));
+                finish();
+                alertDialog.dismiss();
+            }
+        });
         mList.add("医院主页");
         mList.add("科室信息");
         mList.add("医生信息");
@@ -92,10 +125,9 @@ public class HospitalHomePageActivity extends AppCompatActivity implements View.
                         myListview.setVisibility(View.GONE);
                         break;
                     case 5:
-                        User.clearLogin(HospitalHomePageActivity.this);
-                        MyApplication.removeActivity();
-                        startActivity(new Intent(HospitalHomePageActivity.this, LoginActivity.class));
-                        finish();
+                        alertDialog.show();
+                        alertDialog.getWindow().setLayout(dip2px(400), RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        myListview.setVisibility(View.GONE);
                         break;
                     default:
                         break;
@@ -119,6 +151,18 @@ public class HospitalHomePageActivity extends AppCompatActivity implements View.
             }
 
         }
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     *
+     * @param dpValue
+     * @return
+     *
+     */
+    public  int dip2px(float dpValue) {
+        final float scale = getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
     public void showHomePage() {
@@ -353,6 +397,7 @@ public class HospitalHomePageActivity extends AppCompatActivity implements View.
     }
 
     private long time = 0;
+
     @Override
     public void onBackPressed() {
         if (time > 0) {

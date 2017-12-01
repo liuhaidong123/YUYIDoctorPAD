@@ -96,8 +96,6 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private View mHot_line, mSelect_line, mNew_line, mMline, equip_line;//线
     private String mColorSelect = "#1ebeec";
     private String mNoSelectColor = "#6a6a6a";
-
-    private RelativeLayout mMany_Box;//加载更多
     private ProgressBar mBar;
     private View mFooter;
     private ListView mListview;
@@ -128,7 +126,6 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private TextView mTitle;
     private TextView mContent;
     private TextView mComment_allNum;
-    private boolean isFlag = true;
 
     private int mStart3 = 0;
     private int mLimit3 = 10;
@@ -136,10 +133,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private ProgressBar mBar3;
     //评论框
     private EditText mEdit;
-
-    private RelativeLayout mComment_rl, mRightNoData_rl, card_comment_box;
-
-
+    private RelativeLayout mComment_rl, mRightNoData_rl, card_comment_box,again_login_rl;
     //发帖弹框
     private View mPopView;
     private TextView mPostBtn;
@@ -147,7 +141,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private GridView mImg_GridView;
     private PostCardAdapter mCardImgAda;
     private List<String> mCardListImg = new ArrayList<>();
-    private RelativeLayout mPopParentView, mleft_rl;
+    private RelativeLayout mPopParentView;
     private PopupWindow popupWindow;
     private static final int READ_WRITE_PERMISS_CODE = 123;
     private AlertDialog.Builder builder;
@@ -187,7 +181,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         mComment_rl.setVisibility(View.GONE);
                         mRightNoData_rl.setVisibility(View.VISIBLE);
                         mHotPostion = -1;
-                        ToastUtils.myToast(getContext(), "抱歉，没有热门数据");
+                        ToastUtils.myToast(getContext(), "数据走丢了");
                     }
 
                     mListview.setVisibility(View.VISIBLE);
@@ -238,7 +232,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                             mComment_rl.setVisibility(View.GONE);
                             mRightNoData_rl.setVisibility(View.VISIBLE);
                             mSelectPostion = -1;
-                            ToastUtils.myToast(getContext(), "抱歉，没有精选数据");
+                            ToastUtils.myToast(getContext(), "数据走丢了");
                         }
                         if (list.size() != 10) {
                             mListview.removeFooterView(mFooter);
@@ -284,7 +278,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         mComment_rl.setVisibility(View.GONE);
                         mRightNoData_rl.setVisibility(View.VISIBLE);
                         mNewPostion = -1;
-                        ToastUtils.myToast(getContext(), "抱歉，没有最新数据");
+                        ToastUtils.myToast(getContext(), "数据走丢了");
                     }
                     if (list.size() != 10) {
                         mListview.removeFooterView(mFooter);
@@ -301,6 +295,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                 mBar.setVisibility(View.INVISIBLE);
 
             } else if (msg.what == 1012) {//详情
+                mMline.setVisibility(View.VISIBLE);
+                mComment_rl.setVisibility(View.VISIBLE);
+                card_comment_box.setVisibility(View.VISIBLE);
                 Object o = msg.obj;
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.CircleMessageBean.Root) {
                     com.technology.yuyidoctorpad.bean.CircleMessageBean.Root root = (com.technology.yuyidoctorpad.bean.CircleMessageBean.Root) o;
@@ -358,7 +355,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                     }
                 }
             } else if (msg.what == 108) {
-                ToastUtils.myToast(getContext(), "数据错误");
+                again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请重新登录");
             } else if (msg.what == 12) {//学术圈提交评论
                 Object o = msg.obj;
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.SubmitComment.Root) {
@@ -456,6 +454,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initUI(View view) {
+        again_login_rl=view.findViewById(R.id.again_login_rl);
         card_comment_box = view.findViewById(R.id.card_comment_box);
         mComment_rl = view.findViewById(R.id.scroll_relative);
         mRightNoData_rl = view.findViewById(R.id.right_nodata_rl);
@@ -671,6 +670,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
         } else if (id == mMessage_Btn.getId()) {//消息
             startActivity(new Intent(getContext(), MessageActivity.class));
         } else if (id == mHot_tv.getId()) {//热门
+            mMline.setVisibility(View.INVISIBLE);
+            mComment_rl.setVisibility(View.GONE);
+            card_comment_box.setVisibility(View.GONE);
             MyDialog.showDialog(getContext());
             mHotPostion = 0;
             mSelectPostion = 0;
@@ -684,6 +686,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mHttptools.circleHot(mHandler, mStart, mLimit, User.token);
             showHotLine();
         } else if (id == mSelect_tv.getId()) {//精选
+            mMline.setVisibility(View.INVISIBLE);
+            mComment_rl.setVisibility(View.GONE);
+            card_comment_box.setVisibility(View.GONE);
             MyDialog.showDialog(getContext());
             mHotPostion = 0;
             mSelectPostion = 0;
@@ -697,6 +702,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mHttptools.circleSelect(mHandler, mStart, mLimit, User.token);
             showSelectLine();
         } else if (id == mNew_tv.getId()) {//最新
+            mMline.setVisibility(View.INVISIBLE);
+            mComment_rl.setVisibility(View.GONE);
+            card_comment_box.setVisibility(View.GONE);
             MyDialog.showDialog(getContext());
             mHotPostion = 0;
             mSelectPostion = 0;

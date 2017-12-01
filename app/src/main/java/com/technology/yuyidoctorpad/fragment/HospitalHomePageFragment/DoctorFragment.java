@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * 医生信息
@@ -102,7 +105,7 @@ public class DoctorFragment extends Fragment implements View.OnClickListener {
                     if (root != null && root.getResult() != null) {
                         mDeparmentListOne1 = root.getResult();
                         if (mDeparmentListOne1.size() != 0) {
-                           // department_tv.setText("全部");
+                            // department_tv.setText("全部");
                             mDeparmentListOne1.add(new Result("全部"));
                             mDepartmentAda = new DepartmentAda(mDeparmentListOne1, getContext());
                             mDepartment_Listview.setAdapter(mDepartmentAda);
@@ -174,8 +177,8 @@ public class DoctorFragment extends Fragment implements View.OnClickListener {
                     start += 20;
                     mHttptools.getDoctorList(mHandler, Long.valueOf(User.HospitalId), deparmentId, start, limit);//根据科室id请求全部医生
                 } else {//跳转医生详情
-                    Intent intent=new Intent(getContext(), DoctorDetilsActivity.class);
-                    intent.putExtra("doctorId",mDoctorList.get(i).getId());
+                    Intent intent = new Intent(getContext(), DoctorDetilsActivity.class);
+                    intent.putExtra("doctorId", mDoctorList.get(i).getId());
                     startActivity(intent);
                 }
             }
@@ -192,10 +195,7 @@ public class DoctorFragment extends Fragment implements View.OnClickListener {
             } else if (mDepartment_Listview.getVisibility() == View.GONE) {
                 mDepartment_Listview.setVisibility(View.VISIBLE);
             }
-          //  if (mDeparmentListOne1.size() == 0) {
-              //  ToastUtils.myToast(getContext(), "正在获取科室列表");
-                mHttptools.getDepartmentMessage(mHandler, User.HospitalId);//获取科室列表
-          //  }
+            mHttptools.getDepartmentMessage(mHandler, User.HospitalId);//获取科室列表
 
 
         } else if (id == mAdd_Img.getId()) {//添加医生
@@ -203,13 +203,26 @@ public class DoctorFragment extends Fragment implements View.OnClickListener {
                 mDepartment_Listview.setVisibility(View.GONE);
             }
             Intent intent = new Intent(getActivity(), AddDcotorActivity.class);
-            startActivity(intent);
-        }else if (id==mSearch_Img.getId()){
+           // startActivity(intent);
+            startActivityForResult(intent,100);
+        } else if (id == mSearch_Img.getId()) {
             if (mDepartment_Listview.getVisibility() == View.VISIBLE) {
                 mDepartment_Listview.setVisibility(View.GONE);
             }
             Intent intent = new Intent(getActivity(), DoctorSearchActivity.class);
             startActivity(intent);
+        }
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==100&&resultCode==RESULT_OK){
+            deparmentId=0;
+            department_tv.setText("全部");
+            mHttptools.getDoctorList(mHandler, Long.valueOf(User.HospitalId), deparmentId, start, limit);//默认请求全部医生
+            Log.e("onActivityResult","====");
         }
     }
 

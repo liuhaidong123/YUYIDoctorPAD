@@ -48,10 +48,10 @@ import java.util.List;
 public class AddDcotorActivity extends AppCompatActivity implements View.OnClickListener,PhotoPictureUtils.OnSavePictureListener {
     private RelativeLayout mJob_Rl, mDepartment_Rl, mWai_rl;
     private ImageView mAdd_Img, mLookDataPower_img, mAskPower_img, mRegister_img;
-    private EditText mName_Edit, mTelephone_Edit;
-    private TextView mJob_Tv, mDepartment_Tv, mSure_Tv, mTitle;
-    private ListView mJob_ListView;
-    private JobAda mJobAda;
+    private EditText mName_Edit, mTelephone_Edit,mJob_Edit;
+    private TextView  mDepartment_Tv, mSure_Tv, mTitle;
+   // private ListView mJob_ListView;
+   // private JobAda mJobAda;
     private List<String> mJobList = new ArrayList<>();
     private ExpandableListView mDepartment_ListView;
     private DepartmentTwoAda mDepartmentAda;
@@ -98,7 +98,9 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
                     if ("0".equals(root.getCode())) {
                         ToastUtils.myToast(AddDcotorActivity.this, "添加医生成功");
                         mSure_Tv.setClickable(true);
+                        setResult(RESULT_OK,getIntent());
                         finish();
+
                     } else {
                         ToastUtils.myToast(AddDcotorActivity.this, root.getMessage());
                     }
@@ -134,7 +136,7 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
                         isPhotoChange = true;
                         Picasso.with(getApplicationContext()).load(UrlTools.BASE + root.getAvatar()).error(R.mipmap.erroruser).into(mAdd_Img);
                         mName_Edit.setText(root.getTrueName());
-                        mJob_Tv.setText(root.getTitle());
+                        mJob_Edit.setText(root.getTitle());
                         mDepartment_Tv.setText(root.getDepartmentName());
                         mTelephone_Edit.setText(root.getTelephone() + "");
                         OneID=root.getDepartmentId();
@@ -203,7 +205,7 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
         mRegister_img.setOnClickListener(this);
         mName_Edit = (EditText) findViewById(R.id.edit_name);//姓名
         mTelephone_Edit = (EditText) findViewById(R.id.edit_telephone);//电话
-        mJob_Tv = (TextView) findViewById(R.id.job_tv);//职业
+        mJob_Edit= (EditText) findViewById(R.id.edit_job);//职业
         mDepartment_Tv = (TextView) findViewById(R.id.department_tv);//科室
 
         mJob_Rl = (RelativeLayout) findViewById(R.id.job_rl);//职业按钮
@@ -244,19 +246,19 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
         });
 
 
-        mJobList.add("麻醉师");
-        mJobList.add("手术师");
-        mJobList.add("主治医师");
-        mJob_ListView = (ListView) findViewById(R.id.job_listview);//职称ListView
-        mJobAda = new JobAda();
-        mJob_ListView.setAdapter(mJobAda);
-        mJob_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                mJob_Tv.setText(mJobList.get(i));
-                mJob_ListView.setVisibility(View.GONE);
-            }
-        });
+//        mJobList.add("麻醉师");
+//        mJobList.add("手术师");
+//        mJobList.add("主治医师");
+//        mJob_ListView = (ListView) findViewById(R.id.job_listview);//职称ListView
+//        mJobAda = new JobAda();
+//        mJob_ListView.setAdapter(mJobAda);
+//        mJob_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                mJob_Tv.setText(mJobList.get(i));
+//                mJob_ListView.setVisibility(View.GONE);
+//            }
+//        });
     }
 
 
@@ -266,23 +268,23 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
         if (id == mAdd_Img.getId()) {//添加图片
             outImage = new File(getExternalFilesDir("DCIM").getAbsolutePath(), new Date().getTime() + ".jpg");
             presenter.showWindow(this, mWai_rl, outImage);
-        } else if (id == mJob_Rl.getId()) {//选择职称
+        } else if (id == mJob_Edit.getId()) {//选择职称
 
             if (mDepartment_ListView.getVisibility() == View.VISIBLE) {
                 mDepartment_ListView.setVisibility(View.GONE);
             }
-            if (mJob_ListView.getVisibility() == View.GONE) {
-                mJob_ListView.setVisibility(View.VISIBLE);
-            } else if (mJob_ListView.getVisibility() == View.VISIBLE) {
-                mJob_ListView.setVisibility(View.GONE);
-            }
+//            if (mJob_ListView.getVisibility() == View.GONE) {
+//                mJob_ListView.setVisibility(View.VISIBLE);
+//            } else if (mJob_ListView.getVisibility() == View.VISIBLE) {
+//                mJob_ListView.setVisibility(View.GONE);
+//            }
 
 
         } else if (id == mDepartment_Rl.getId()) {//选择科室
 
-            if (mJob_ListView.getVisibility() == View.VISIBLE) {
-                mJob_ListView.setVisibility(View.GONE);
-            }
+//            if (mJob_ListView.getVisibility() == View.VISIBLE) {
+//                mJob_ListView.setVisibility(View.GONE);
+//            }
 
             if (mDepartment_ListView.getVisibility() == View.GONE) {
                 mDepartment_ListView.setVisibility(View.VISIBLE);
@@ -401,8 +403,8 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
     //获取职称
 
     public String getJob() {
-        if (!"".equals(mJob_Tv.getText().toString().trim())) {
-            return mJob_Tv.getText().toString().trim();
+        if (!"".equals(mJob_Edit.getText().toString().trim())) {
+            return mJob_Edit.getText().toString().trim();
         }
         return "";
     }

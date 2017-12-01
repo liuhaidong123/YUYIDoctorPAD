@@ -259,7 +259,7 @@
             android:layout_below="@+id/nothing_img"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="抱歉,数据走丢了"
+            android:text="数据走丢了"
             android:textColor="@color/color_e5e5e5"
             android:textSize="19sp"
             android:textStyle="bold" />

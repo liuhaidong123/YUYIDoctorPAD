@@ -70,34 +70,34 @@
                 android:layout_alignBottom="@+id/infor_img"
                 android:layout_marginLeft="50dp"
                 android:layout_toRightOf="@+id/infor_img"
+                android:text=""
                 android:textColor="@color/color_666666"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/infor_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/infor_img"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/information_sh_bg"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:text=""
+                android:textColor="#888888"
                 android:textSize="13sp"
 
                 />
 
             <TextView
-                android:id="@+id/infor_status"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/information_sh_bg"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text=""
-                android:layout_alignParentRight="true"
-                android:layout_alignBottom="@+id/infor_img"
-                android:textColor="#888888"
-
-                />
-
-            <TextView
-                android:layout_marginTop="50dp"
-                android:layout_below="@+id/infor_img"
-                android:textSize="15sp"
                 android:id="@+id/infor_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/infor_img"
+                android:layout_marginTop="50dp"
                 android:textColor="@color/color_333333"
+                android:textSize="15sp"
 
                 />
         </RelativeLayout>

@@ -26,10 +26,13 @@ import com.technology.yuyidoctorpad.activity.InformationDetailsActivity;
 import com.technology.yuyidoctorpad.activity.InformationPostActivity;
 import com.technology.yuyidoctorpad.bean.HospitalInformation.Root;
 import com.technology.yuyidoctorpad.bean.HospitalInformation.Rows;
+import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * 资讯
@@ -54,6 +57,7 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            MyDialog.stopDia();
             if (msg.what == 60) {
                 Object o = msg.obj;
                 if (o != null && o instanceof Root) {
@@ -97,6 +101,7 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
     }
 
     private void initUI(View view) {
+        MyDialog.showDialog(getActivity());
         mBottomTime_Img = view.findViewById(R.id.pull_bottom);//降序
         mBottomTime_Img.setOnClickListener(this);
         mTopTime_Img = view.findViewById(R.id.pull_top);//升序
@@ -144,11 +149,13 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
     public void onClick(View view) {
         int id = view.getId();
         if (id == mBottomTime_Img.getId()) {//降序
+            MyDialog.showDialog(getActivity());
             time = 1;
             start = 0;
             moreFlag = false;
             mHttptools.getHospitalInfomationLIst(mHandler, time, wayid, start, limit);
         } else if (id == mTopTime_Img.getId()) {//升序
+            MyDialog.showDialog(getActivity());
             time = 2;
             start = 0;
             moreFlag = false;
@@ -161,8 +168,10 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
             }
 
         } else if (id == mPost_Btn.getId()) {//发布
-            startActivity(new Intent(getContext(),InformationPostActivity.class));
+            Intent intent=new Intent(getContext(),InformationPostActivity.class);
+            startActivityForResult(intent,1010);
         } else if (id == mYuYi_tv.getId()) {//宇医
+            MyDialog.showDialog(getActivity());
             wayid = 1;
             start = 0;
             moreFlag = false;
@@ -170,6 +179,7 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
             mTwo_rl.setVisibility(View.GONE);
             mHttptools.getHospitalInfomationLIst(mHandler, time, wayid, start, limit);
         } else if (id == mYuYiDoctor_tv.getId()) {//宇医医生
+            MyDialog.showDialog(getActivity());
             wayid = 2;
             start = 0;
             moreFlag = false;
@@ -179,6 +189,15 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==1010&&resultCode==RESULT_OK){
+            moreFlag = false;
+            start=0;
+            mHttptools.getHospitalInfomationLIst(mHandler, time, wayid, start, limit);
+        }
+    }
 
     class inforAda extends BaseAdapter {
 
@@ -211,7 +230,7 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
             } else {
                 inforHolder = (InforHolder) view.getTag();
             }
-            Picasso.with(getContext()).load(UrlTools.BASE + mList.get(i).getPicture()).into(inforHolder.img);
+            Picasso.with(getContext()).load(UrlTools.BASE + mList.get(i).getPicture()).error(R.mipmap.errorpicture).into(inforHolder.img);
             inforHolder.title.setText(mList.get(i).getTitle());
             inforHolder.message.setText(mList.get(i).getContent());
             if (mList.get(i).getAuditState() == 1) {

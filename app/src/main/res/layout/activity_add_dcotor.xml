@@ -23,7 +23,6 @@
         android:layout_below="@+id/h_title"
         android:background="@color/color_cccccc" />
 
-
     <RelativeLayout
         android:id="@+id/wai_rl"
         android:layout_width="wrap_content"
@@ -100,26 +99,39 @@
                 android:layout_toRightOf="@+id/job"
                 android:background="@drawable/add_doctor_bg">
 
-                <TextView
-                    android:id="@+id/job_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:ellipsize="end"
-                    android:gravity="center"
+                <EditText
+                    android:id="@+id/edit_job"
+                    android:layout_width="225dp"
+                    android:layout_height="30dp"
+                    android:inputType="text"
+                    android:maxLength="30"
                     android:maxLines="1"
                     android:paddingLeft="15dp"
-                    android:paddingRight="25dp"
-                    android:text=""
+                    android:background="@null"
                     android:textColor="@color/color_333333"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@mipmap/pulldown" />
+
+                <!--<TextView-->
+                <!--android:id="@+id/job_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:ellipsize="end"-->
+                <!--android:gravity="center"-->
+                <!--android:maxLines="1"-->
+                <!--android:paddingLeft="15dp"-->
+                <!--android:paddingRight="25dp"-->
+                <!--android:text=""-->
+                <!--android:textColor="@color/color_333333"-->
+                <!--android:textSize="15sp" />-->
+
+                <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:src="@mipmap/pulldown" />-->
             </RelativeLayout>
 
 
@@ -335,20 +347,6 @@
         </ExpandableListView>
 
 
-        <!--<ListView-->
-        <!--android:id="@+id/department_listview"-->
-        <!--android:layout_width="225dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignRight="@+id/department_rl"-->
-        <!--android:layout_below="@+id/department_rl"-->
-        <!--android:background="@drawable/add_doctor_bg"-->
-        <!--android:divider="@color/color_eaeaea"-->
-        <!--android:dividerHeight="0.5dp"-->
-        <!--android:paddingLeft="15dp"-->
-        <!--android:paddingRight="15dp"-->
-        <!--android:visibility="gone">-->
-
-        <!--</ListView>-->
-
     </RelativeLayout>
+
 </RelativeLayout>

@@ -58,6 +58,7 @@ public class InformationPostActivity extends AppCompatActivity implements View.O
                     if (root != null) {
                         if (root.getCode().equals("0")) {
                             ToastUtils.myToast(getApplicationContext(), "提交审核成功");
+                            setResult(RESULT_OK,getIntent());
                             finish();
                         } else {
                             ToastUtils.myToast(getApplicationContext(), root.getMessage());

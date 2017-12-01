@@ -18,6 +18,7 @@ import com.technology.yuyidoctorpad.HttpTools.UrlTools;
 import com.technology.yuyidoctorpad.R;
 import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.bean.HospitalHomePage.Root;
+import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 
 /**
@@ -25,33 +26,35 @@ import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
  */
 public class HomePageFragment extends Fragment {
 
-    private TextView mH_Name, mH_Grade, mH_Tele, mContent,mJJ;
+    private TextView mH_Name, mH_Grade, mH_Tele, mContent, mJJ;
     private ImageView mH_Img;
-private View line;
+    private View line;
     private HttpTools httpTools;
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.what==63){
-                Object o=msg.obj;
-                if (o!=null&& o instanceof Root){
-                    Root root= (Root) o;
-                    if (root!=null){
+            MyDialog.stopDia();
+            if (msg.what == 63) {
+                Object o = msg.obj;
+                if (o != null && o instanceof Root) {
+                    Root root = (Root) o;
+                    if (root != null) {
                         line.setBackgroundResource(R.color.color_1ebeec);
                         mJJ.setText("医院简介");
                         mH_Name.setText(root.getHospitalName());
                         mH_Grade.setText(root.getGrade());
-                        mH_Tele.setText("联系电话："+root.getTell());
+                        mH_Tele.setText("联系电话：" + root.getTell());
                         mContent.setText(root.getIntroduction());
-                        Picasso.with(getContext()).load(UrlTools.BASE+root.getPicture()).error(R.mipmap.errorpicture).into(mH_Img);
+                        Picasso.with(getContext()).load(UrlTools.BASE + root.getPicture()).error(R.mipmap.errorpicture).into(mH_Img);
                     }
-                }else {
-                    ToastUtils.myToast(getContext(),"医院信息错误");
+                } else {
+                    ToastUtils.myToast(getContext(), "医院信息错误");
                 }
             }
         }
     };
+
     public HomePageFragment() {
 
     }
@@ -60,21 +63,22 @@ private View line;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        httpTools=HttpTools.getHttpToolsInstance();
-        httpTools.getHospitalHomePage(handler,Long.valueOf(User.HospitalId));
+        httpTools = HttpTools.getHttpToolsInstance();
+        httpTools.getHospitalHomePage(handler, Long.valueOf(User.HospitalId));
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
         initUI(view);
         return view;
     }
 
     private void initUI(View view) {
+        MyDialog.showDialog(getActivity());
         mH_Name = (TextView) view.findViewById(R.id.h_name);
         mH_Grade = (TextView) view.findViewById(R.id.h_grade);
         mH_Tele = (TextView) view.findViewById(R.id.h_telephone);
         mContent = (TextView) view.findViewById(R.id.h_content);
         mContent.setMovementMethod(ScrollingMovementMethod.getInstance());
         mH_Img = (ImageView) view.findViewById(R.id.h_img);
-        mJJ=(TextView) view.findViewById(R.id.h_message);
-        line=view.findViewById(R.id.h_line2);
+        mJJ = (TextView) view.findViewById(R.id.h_message);
+        line = view.findViewById(R.id.h_line2);
     }
 }

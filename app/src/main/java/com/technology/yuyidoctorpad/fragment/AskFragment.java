@@ -114,7 +114,7 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
                             mMyListview.setVisibility(View.GONE);
                             mRight_Rl.setVisibility(View.GONE);
                             mRight_NoData_Rl.setVisibility(View.VISIBLE);
-                            ToastUtils.myToast(getContext(), "抱歉，没有帖子哦");
+                            ToastUtils.myToast(getContext(), "数据走丢了");
                         }
                         if (list.size() < 10) {//隐藏加载更多
                             mMyListview.removeFooterView(footer);
@@ -129,6 +129,8 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
                 MyDialog.stopDia();
                 mBar.setVisibility(View.INVISIBLE);
             } else if (msg.what == 2) {//广告，今日推荐，最新，热门资讯详情
+                mRight_Rl.setVisibility(View.VISIBLE);
+                mM_line.setVisibility(View.VISIBLE);
                 Object o = msg.obj;
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.AdMessageDetial.Root) {
                     com.technology.yuyidoctorpad.bean.AdMessageDetial.Root root = (com.technology.yuyidoctorpad.bean.AdMessageDetial.Root) o;
@@ -321,6 +323,8 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
     public void onClick(View view) {
         int id = view.getId();
         if (id == mRecommend_ll.getId()) {//推荐
+            mRight_Rl.setVisibility(View.GONE);
+            mM_line.setVisibility(View.INVISIBLE);
             showTodayLine();
             mStart = 0;
             mPostion = 0;//每次点击下标回归0，请求的是列表中的第一条数据
@@ -332,6 +336,8 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
             mFirstPageAdapter.notifyDataSetChanged();
             mHttptools.getTodayRecommend(mHttpHandler, mStart, mLimit);//今日推荐
         } else if (id == mNew_LL.getId()) {//最新
+            mRight_Rl.setVisibility(View.GONE);
+            mM_line.setVisibility(View.INVISIBLE);
             showNewLine();
             mStart = 0;
             mPostion = 0;//每次点击下标回归0，请求的是列表中的第一条数据
@@ -344,6 +350,8 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
             mHttptools.getNew(mHttpHandler, mStart, mLimit);
 
         } else if (id == mHot_ll.getId()) {//热门
+            mRight_Rl.setVisibility(View.GONE);
+            mM_line.setVisibility(View.INVISIBLE);
             showHotLine();
             mStart = 0;
             mPostion = 0;//每次点击下标回归0，请求的是列表中的第一条数据
