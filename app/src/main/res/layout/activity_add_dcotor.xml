@@ -64,7 +64,7 @@
                 android:layout_toRightOf="@+id/name"
                 android:background="@drawable/add_doctor_bg"
                 android:inputType="text"
-                android:maxLength="8"
+                android:maxLength="25"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:textColor="@color/color_333333"

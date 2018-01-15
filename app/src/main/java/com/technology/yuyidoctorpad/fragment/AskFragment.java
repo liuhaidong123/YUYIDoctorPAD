@@ -73,7 +73,7 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
     private ListView mMessageListView;
     private CommentAdapter mCommentAdapter;
     private List<Result> mCommentList = new ArrayList<>();
-    private View mMessageFooter, mMessageHeader;
+    private View mMessageFooter, mMessageHeader,mNo_Comment_footer;
     private TextView mTitle, mMessage, Comment_Num;
     private ProgressBar mMessageBar;
     private EditText mCommend_edit;
@@ -178,10 +178,15 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
                             mCommentList.clear();
                             mCommentList.addAll(list);
                         }
-
+                        mMessageBar.setVisibility(View.GONE);
                         mCommentAdapter.notifyDataSetChanged();
                         mMessageListView.removeFooterView(mMessageFooter);
-
+                        mMessageListView.removeFooterView(mNo_Comment_footer);
+                        if (mCommentList.size()==0){
+                            mMessageListView.addFooterView(mNo_Comment_footer);
+                        }else {
+                            mMessageListView.removeFooterView(mNo_Comment_footer);
+                        }
                         if (list.size() == 10) {
                             mMessageListView.addFooterView(mMessageFooter);
                             mMessageBar.setVisibility(View.GONE);
@@ -192,6 +197,7 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
                 }
             } else if (msg.what == 103) {
                 ToastUtils.myToast(getContext(), "获取评论列表失败");
+                mMessageBar.setVisibility(View.GONE);
                 mMessageListView.removeFooterView(mMessageFooter);
             } else if (msg.what == 5) {//提交评论返回结果
                 Object o = msg.obj;
@@ -202,13 +208,14 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
                         mCommentStart = 0;
                         mHttptools.getCommendList(mHttpHandler, mList.get(mPostion).getId(), mCommentStart, mCommentLimit);//获取评论列表
                         Comment_Num.setText(Integer.valueOf(Comment_Num.getText().toString()) + 1 + "");
-                        ToastUtils.myToast(getContext(), "评论成功");
+                       // ToastUtils.myToast(getContext(), "评论成功");
                     } else {
                         ToastUtils.myToast(getContext(), "评论失败");
                     }
                 }
             } else if (msg.what == 104) {
-                ToastUtils.myToast(getContext(), "提交评论失败");
+                ToastUtils.myToast(getContext(), "账号异常，请重新登录");
+
             }
         }
     };
@@ -284,8 +291,11 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
         mMessageListView = view.findViewById(R.id.message_listview);
         mCommentAdapter = new CommentAdapter(getContext(), mCommentList);
         mMessageListView.setAdapter(mCommentAdapter);
+        mNo_Comment_footer= LayoutInflater.from(getContext()).inflate(R.layout.no_comment_footer, null);
         mMessageFooter = LayoutInflater.from(getContext()).inflate(R.layout.footerview, null);
         mMessageFooter.setOnClickListener(this);
+        TextView textView=mMessageFooter.findViewById(R.id.loading_textView);
+        textView.setText("加载更多");
         mMessageBar = mMessageFooter.findViewById(R.id.loading_progressBar);
         mMessageHeader = LayoutInflater.from(getContext()).inflate(R.layout.information_header, null);
         mTitle = mMessageHeader.findViewById(R.id.information_title);
@@ -365,6 +375,7 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
         } else if (id == mMessageFooter.getId()) {//评论加载更多
             mMoreFlag = true;
             mCommentStart += 10;
+            mMessageBar.setVisibility(View.VISIBLE);
             mHttptools.getCommendList(mHttpHandler, mList.get(mPostion).getId(), mCommentStart, mCommentLimit);//获取评论列表
 
         } else if (id == mShareImg.getId()) {

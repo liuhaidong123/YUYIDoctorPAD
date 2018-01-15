@@ -133,7 +133,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private ProgressBar mBar3;
     //评论框
     private EditText mEdit;
-    private RelativeLayout mComment_rl, mRightNoData_rl, card_comment_box,again_login_rl;
+    private RelativeLayout mComment_rl, mRightNoData_rl, card_comment_box, again_login_rl;
     //发帖弹框
     private View mPopView;
     private TextView mPostBtn;
@@ -174,6 +174,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         mRightNoData_rl.setVisibility(View.GONE);
                         mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mList.get(mHotPostion).getId());
                     } else {
+                        again_login_rl.setVisibility(View.GONE);
                         card_comment_box.setVisibility(View.GONE);
                         equip_line.setVisibility(View.GONE);
                         mMline.setBackgroundResource(R.color.color_ffffff);
@@ -186,7 +187,6 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
 
                     mListview.setVisibility(View.VISIBLE);
                     mHot_tv.setClickable(true);
-                    Log.e("kkkkk", "快步");
                     if (list.size() != 10) {
                         mListview.removeFooterView(mFooter);
                     } else {
@@ -195,9 +195,10 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                 }
 
             } else if (msg.what == 106) {
+                again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请重新登录");
                 MyDialog.stopDia();
                 mHot_tv.setClickable(true);
-                ToastUtils.myToast(getActivity(), "网络错误");
                 mListview.removeFooterView(mFooter);
                 mBar.setVisibility(View.INVISIBLE);
 
@@ -225,6 +226,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                             mRightNoData_rl.setVisibility(View.GONE);
                             mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mSelectList.get(mSelectPostion).getId());
                         } else {
+                            again_login_rl.setVisibility(View.GONE);
                             card_comment_box.setVisibility(View.GONE);
                             equip_line.setVisibility(View.GONE);
                             mMline.setBackgroundResource(R.color.color_ffffff);
@@ -245,7 +247,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             } else if (msg.what == 107) {
                 MyDialog.stopDia();
                 mSelect_tv.setClickable(true);
-                ToastUtils.myToast(getActivity(), "网络错误");
+                again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请重新登录");
                 mBar.setVisibility(View.INVISIBLE);
                 mListview.removeFooterView(mFooter);
             } else if (msg.what == 1100) {//学术圈最新
@@ -271,6 +274,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         mRightNoData_rl.setVisibility(View.GONE);
                         mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mNewList.get(mNewPostion).getId());
                     } else {
+                        again_login_rl.setVisibility(View.GONE);
                         card_comment_box.setVisibility(View.GONE);
                         equip_line.setVisibility(View.GONE);
                         mMline.setBackgroundResource(R.color.color_ffffff);
@@ -290,7 +294,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             } else if (msg.what == 1101) {
                 MyDialog.stopDia();
                 mNew_tv.setClickable(true);
-                ToastUtils.myToast(getActivity(), "网络错误");
+                again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请重新登录");
                 mListview.removeFooterView(mFooter);
                 mBar.setVisibility(View.INVISIBLE);
 
@@ -428,9 +433,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         ToastUtils.myToast(getContext(), "发帖解析错误");
                     }
                 }
-            }else if (msg.what==1010){//消息有红点
+            } else if (msg.what == 1010) {//消息有红点
                 mSmallRed_Img.setVisibility(View.VISIBLE);
-            }else if (msg.what==-2){//消息没有红点
+            } else if (msg.what == -2) {//消息没有红点
                 mSmallRed_Img.setVisibility(View.GONE);
             }
         }
@@ -454,7 +459,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initUI(View view) {
-        again_login_rl=view.findViewById(R.id.again_login_rl);
+        again_login_rl = view.findViewById(R.id.again_login_rl);
         card_comment_box = view.findViewById(R.id.card_comment_box);
         mComment_rl = view.findViewById(R.id.scroll_relative);
         mRightNoData_rl = view.findViewById(R.id.right_nodata_rl);
@@ -677,7 +682,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mHotPostion = 0;
             mSelectPostion = 0;
             mNewPostion = 0;
-            mHot_tv.setClickable(false);
+            //mHot_tv.setClickable(false);
             mFlag = 0;
             mStart = 0;
             mList.clear();
@@ -693,7 +698,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mHotPostion = 0;
             mSelectPostion = 0;
             mNewPostion = 0;
-            mSelect_tv.setClickable(false);
+            //mSelect_tv.setClickable(false);
             mFlag = 1;
             mStart = 0;
             mSelectList.clear();
@@ -709,7 +714,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mHotPostion = 0;
             mSelectPostion = 0;
             mNewPostion = 0;
-            mNew_tv.setClickable(false);
+           // mNew_tv.setClickable(false);
             mFlag = 2;
             mStart = 0;
             mNewList.clear();

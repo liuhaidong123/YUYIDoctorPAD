@@ -2,6 +2,7 @@ package com.technology.yuyidoctorpad.activity.Login;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.technology.yuyidoctorpad.lzhUtils.Empty;
 import com.technology.yuyidoctorpad.lzhUtils.PhoneUtils;
@@ -59,15 +60,16 @@ public class LoginPresenter {
     }
 
 
-    public void onGetSmsCode(String phoneNum,ILogin listener,LoginType tp){
-        if (Empty.notEmpty(phoneNum)&& PhoneUtils.isPhone(phoneNum)){
+    public void onGetSmsCode(String phoneNum,String currentMillis,String imgcode,String mycookie,ILogin listener,LoginType tp){
+        if (Empty.notEmpty(phoneNum)&& PhoneUtils.isPhone(phoneNum)&&Empty.notEmpty(imgcode)){
             if (model==null){
                 model=new LoginModel();
             }
-            model.getSmS(phoneNum,listener,tp);
+            model.getSmS(phoneNum,currentMillis,imgcode,mycookie,listener,tp);
+           // Log.e("传递中myCooike=", mycookie);
         }
         else {
-            listener.getSMSCodeError("手机号不正确！");
+            listener.getSMSCodeError("请填写正确的手机号或者动态验证码");
         }
     }
 

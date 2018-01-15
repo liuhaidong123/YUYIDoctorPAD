@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/res/merged/debug/color/rc_btn_file_list_send.xml",
-        "source": "/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/color/rc_btn_file_list_send.xml"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/debug/color/rc_btn_file_list_send.xml",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/color/rc_btn_file_list_send.xml"
     }

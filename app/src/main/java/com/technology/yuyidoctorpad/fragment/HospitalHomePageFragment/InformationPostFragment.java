@@ -223,9 +223,9 @@ public class InformationPostFragment extends Fragment implements View.OnClickLis
                 inforHolder = new InforHolder();
                 view = LayoutInflater.from(getContext()).inflate(R.layout.information_listview_item, null);
                 inforHolder.img = view.findViewById(R.id.i_hospital_image);
-                inforHolder.title = view.findViewById(R.id.i_sh_tv);
-                inforHolder.message = view.findViewById(R.id.i_hospital_name);
-                inforHolder.status = view.findViewById(R.id.i_hospital_message);
+                inforHolder.title = view.findViewById(R.id.i_hospital_name);
+                inforHolder.message = view.findViewById(R.id.i_hospital_message);
+                inforHolder.status = view.findViewById(R.id.i_sh_tv);
                 view.setTag(inforHolder);
             } else {
                 inforHolder = (InforHolder) view.getTag();

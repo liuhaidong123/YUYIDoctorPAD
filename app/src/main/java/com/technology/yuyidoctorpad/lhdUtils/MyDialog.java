@@ -14,25 +14,27 @@ import com.technology.yuyidoctorpad.R;
 
 public class MyDialog {
     public static Dialog dialog;
-    public static void showDialog(Context context){
-        if (dialog!=null&&dialog.isShowing()){
+
+    public static void showDialog(Context context) {
+        if (dialog != null && dialog.isShowing()) {
             return;
         }
-        if (context!=null){
+        if (context != null) {
 //            ImageView imageView= (ImageView) v.findViewById(R.id.dialogimg);
 //            imageView.setBackgroundResource(R.drawable.animt);
 //            AnimationDrawable animationDrawable = (AnimationDrawable) imageView.getBackground();
 //
 //            animationDrawable.start();
-            dialog=new Dialog(context, R.style.dialog);
+            dialog = new Dialog(context, R.style.dialog);
             LayoutInflater inflater = LayoutInflater.from(context);
             View v = inflater.inflate(R.layout.window, null);
             dialog.setContentView(v);
             dialog.show();
         }
     }
-    public static void  stopDia(){
-        if(dialog!=null&&dialog.isShowing()){
+
+    public static void stopDia() {
+        if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
     }

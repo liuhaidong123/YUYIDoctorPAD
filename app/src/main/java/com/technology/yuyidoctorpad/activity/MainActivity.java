@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
@@ -49,49 +50,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final String myTag = "myFragment";
 
     private String resStr;
-    private Handler han=new Handler(){
+    private Handler han = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case 0:
                     break;
                 case 1:
-                    try{
-                        BeanPriRong rong= gson.gson.fromJson(resStr,BeanPriRong.class);
-                        if (rong!=null){
-                            if (rong.getCode()==0){
-                                if (rong.isPermissionInfo()==true){
-                                    User.hasvRongPri=true;
-                                    String name="医生";
-                                    String uri="http://img5.imgtn.bdimg.com/it/u=1482475142,4125104797&fm=23&gp=0.jpg";
-                                    if (rong.getTrueName()!=null&&!"".equals(rong.getTrueName())){
-                                        name=rong.getTrueName();
+                    try {
+                        BeanPriRong rong = gson.gson.fromJson(resStr, BeanPriRong.class);
+                        if (rong != null) {
+                            if (rong.getCode() == 0) {
+                                if (rong.isPermissionInfo() == true) {
+                                    User.hasvRongPri = true;
+                                    String name = "医生";
+                                    String uri = "http://img5.imgtn.bdimg.com/it/u=1482475142,4125104797&fm=23&gp=0.jpg";
+                                    if (rong.getTrueName() != null && !"".equals(rong.getTrueName())) {
+                                        name = rong.getTrueName();
                                     }
-                                    if (!"".equals(rong.getAvatar())&&!TextUtils.isEmpty(rong.getAvatar())){
-                                        uri=rong.getAvatar();
+                                    if (!"".equals(rong.getAvatar()) && !TextUtils.isEmpty(rong.getAvatar())) {
+                                        uri = rong.getAvatar();
                                     }
-                                    Log.e("name====",name);
+                                    Log.e("name====", name);
 //                                    io.rong.imlib.model.UserInfo info=new io.rong.imlib.model.UserInfo(rong.getId()+"",name, Uri.parse(uri));
-                                    RongUserInfo.RongToken=rong.getToken();
+                                    RongUserInfo.RongToken = rong.getToken();
                                     RongConnection.connRong(MainActivity.this, RongUserInfo.RongToken);
+                                } else {
+                                    Log.e("当前医生无法接收到咨询xinxi ", "mainActivity:医院未授予当前医生接收视频到权限");
                                 }
-                                else {
-                                    Log.e("当前医生无法接收到咨询xinxi ","mainActivity:医院未授予当前医生接收视频到权限");
-                                }
-                            }
-                            else if (rong.getCode()==-1){
-                                Log.e("当前用户信息无法查询到","mainActivity:当前用户没有在任何医院注册，请通知去注册");
+                            } else if (rong.getCode() == -1) {
+                                Log.e("当前用户信息无法查询到", "mainActivity:当前用户没有在任何医院注册，请通知去注册");
                             }
                         }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
             }
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -203,10 +202,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //显示资讯
     public void showInformationFragment() {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        AskFragment askFragment= (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
-        CircleFragment circleFragment= (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment= (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
-        MyFragment myFragment= (MyFragment) mFragmentManager.findFragmentByTag(myTag);
+        AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
+        CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
+        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (askFragment != null) {//显示资讯
             fragmentTransaction.show(askFragment);
@@ -225,13 +224,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         fragmentTransaction.commit();
     }
+
     //显示学术圈页面
     public void showAcademicFragment() {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        AskFragment askFragment= (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
-        CircleFragment circleFragment= (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment= (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
-        MyFragment myFragment= (MyFragment) mFragmentManager.findFragmentByTag(myTag);
+        AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
+        CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
+        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (circleFragment != null) {//显示学术圈
             fragmentTransaction.show(circleFragment);
@@ -250,13 +250,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         fragmentTransaction.commit();
     }
+
     //显示患者页面
     public void showPatientFragment() {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        AskFragment askFragment= (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
-        CircleFragment circleFragment= (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment= (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
-        MyFragment myFragment= (MyFragment) mFragmentManager.findFragmentByTag(myTag);
+        AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
+        CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
+        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (patientFragment != null) {//显示患者
             fragmentTransaction.show(patientFragment);
@@ -275,14 +276,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         fragmentTransaction.commit();
     }
+
     //显示我的页面
     public void showMyFragment() {
 
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        AskFragment askFragment= (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
-        CircleFragment circleFragment= (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment= (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
-        MyFragment myFragment= (MyFragment) mFragmentManager.findFragmentByTag(myTag);
+        AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
+        CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
+        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (myFragment != null) {//显示wode
             fragmentTransaction.show(myFragment);
@@ -301,19 +303,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         fragmentTransaction.commit();
     }
+
     //检查当前用户是否有权限接受视频，语音，聊天
     private void CheckPri() {
-        Map<String,String> mp=new HashMap<>();
+        Map<String, String> mp = new HashMap<>();
         mp.put("telephone", User.tele);
-        OkUtils.getCall(Ip.path+Ip.interface_CheckPri,mp, OkUtils.OK_GET).enqueue(new Callback() {
+        OkUtils.getCall(Ip.path + Ip.interface_CheckPri, mp, OkUtils.OK_GET).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
                 han.sendEmptyMessage(0);
             }
+
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr=response.body().string();
-                Log.i("聊天权限检查---",resStr);
+                resStr = response.body().string();
+                Log.i("聊天权限检查---", resStr);
                 han.sendEmptyMessage(1);
             }
         });
@@ -322,8 +326,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-
         JPushInterface.onResume(this);
+    }
+
+    private long time = 0;
+
+    @Override
+    public void onBackPressed() {
+        if (time > 0) {
+            if (System.currentTimeMillis() - time < 2000) {
+                super.onBackPressed();
+            } else {
+                time = System.currentTimeMillis();
+                Toast.makeText(MainActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            }
+
+        } else {
+            time = System.currentTimeMillis();
+            Toast.makeText(MainActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override

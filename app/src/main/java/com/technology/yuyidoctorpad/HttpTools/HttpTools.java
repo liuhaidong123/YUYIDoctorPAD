@@ -3,6 +3,7 @@ package com.technology.yuyidoctorpad.HttpTools;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.technology.yuyidoctorpad.bean.AdBean.Root;
 import com.google.gson.Gson;
@@ -1304,4 +1305,5 @@ public class HttpTools {
             }
         });
     }
+
 }

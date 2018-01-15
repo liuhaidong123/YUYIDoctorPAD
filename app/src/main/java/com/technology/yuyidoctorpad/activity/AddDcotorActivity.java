@@ -51,7 +51,7 @@ public class AddDcotorActivity extends AppCompatActivity implements View.OnClick
     private EditText mName_Edit, mTelephone_Edit,mJob_Edit;
     private TextView  mDepartment_Tv, mSure_Tv, mTitle;
    // private ListView mJob_ListView;
-   // private JobAda mJobAda;
+    private JobAda mJobAda;
     private List<String> mJobList = new ArrayList<>();
     private ExpandableListView mDepartment_ListView;
     private DepartmentTwoAda mDepartmentAda;

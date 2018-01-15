@@ -5,12 +5,12 @@ package com.technology.yuyidoctorpad.Net;
  */
 
 public interface Ip {
-    //"http://59.110.169.148:8080
-    //http://192.168.1.168:8082/yuyi
-    //http://59.110.169.148:8080
     String path = "http://59.110.169.148:8080";
     String imagePath = "http://59.110.169.148:8080";
     String path_F = "http://59.110.169.148:8080";
+//    String path = "http://192.168.1.168:8082/yuyi";
+//    String imagePath = "http://192.168.1.168:8082/yuyi";
+//    String path_F = "http://192.168.1.168:8082/yuyi";
     //http://192.168.1.168:8080/smarthome/mobileapi/
     //患者列表接口
     String IPaintList = "/homeuser/findMyUserList.do?";
@@ -44,7 +44,8 @@ public interface Ip {
     //医生登录
     String interface_Login = "/physician/login.do?";
     //获取验证码
-    String interface_SMSCode = "/physician/vcode.do?";
+    //String interface_SMSCode = "/physician/vcode.do?";
+    String interface_SMSCode = "/physician/vcode.do?";//参数：ts=1515636702185&id=13717883005&imgcode=1234；id=手机号，ts=获取动态码时的时间毫秒数，imgcode=动态码
     //医院获取验证码
     String interface_SMSCodeHospital = "/hospital/vcode.do?";
     //http://localhost:8080/yuyi/hospital/AdministratorLogin.do?administratorsTelephone=18782931356&vcode=524740

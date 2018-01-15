@@ -114,7 +114,7 @@ public class CardMessageCommentAdapter extends BaseAdapter {
             holder = (CardCommentHolder) convertView.getTag();
         }
 
-        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.errorpicture).into(holder.img);
+        Picasso.with(mContext).load(UrlTools.BASE + list.get(position).getAvatar()).error(R.mipmap.erroruser).into(holder.img);
         holder.name.setText(list.get(position).getTrueName());
         holder.time.setText(TimeUtils.getTime(list.get(position).getCreateTimeString()));
 //        String str="";

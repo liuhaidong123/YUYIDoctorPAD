@@ -80,7 +80,7 @@ public class RegistionActivity extends MyActivity implements IonScrollBottomList
     private PopupWindow popSucc;
     private ImageView my_registration_image;
     private MyListAdapter adapterPop;
-    private String resStr;
+    private String resStr1,resStr2;
     private int start = 0;
     private final int limit = 10;
     private List<Bean_MyRegistrationKS.ResultBean> listKS;
@@ -105,7 +105,7 @@ public class RegistionActivity extends MyActivity implements IonScrollBottomList
                 case 1:
                     MyDialog.stopDia();
                     try {
-                        Bean_MyRegistrationKS ks = gson.gson.fromJson(resStr, Bean_MyRegistrationKS.class);
+                        Bean_MyRegistrationKS ks = gson.gson.fromJson(resStr1, Bean_MyRegistrationKS.class);
                         if (ks != null) {
                             if ("0".equals(ks.getCode())) {
                                 if (ks.getResult() != null && ks.getResult().size() > 0) {
@@ -135,7 +135,7 @@ public class RegistionActivity extends MyActivity implements IonScrollBottomList
                 case 2://挂号列表患者列表
                     MyDialog.stopDia();
                     try {
-                        Bean_RegistertionList resgit = gson.gson.fromJson(resStr, Bean_RegistertionList.class);
+                        Bean_RegistertionList resgit = gson.gson.fromJson(resStr2, Bean_RegistertionList.class);
                         if (resgit != null) {
                             List<Bean_RegistertionList.RowsBean> lt = resgit.getRows();
                             if (lt != null && lt.size() > 0) {
@@ -442,8 +442,8 @@ public class RegistionActivity extends MyActivity implements IonScrollBottomList
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr = response.body().string();
-                Log.i("获取所有科室----", resStr);
+                resStr1 = response.body().string();
+                Log.i("获取所有科室----", resStr1);
                 handler.sendEmptyMessage(1);
             }
         });
@@ -481,8 +481,8 @@ public class RegistionActivity extends MyActivity implements IonScrollBottomList
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr = response.body().string();
-                Log.i("获取挂号列表请求---", resStr);
+                resStr2 = response.body().string();
+                Log.i("获取挂号列表请求---", resStr2);
                 handler.sendEmptyMessage(2);
             }
         });

@@ -123,12 +123,12 @@
         android:background="@color/color_ffffff" />
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/right_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/m_line"
-        android:background="@color/color_ffffff">
+        android:background="@color/color_ffffff"
+        android:visibility="gone">
 
         <ListView
             android:id="@+id/message_listview"

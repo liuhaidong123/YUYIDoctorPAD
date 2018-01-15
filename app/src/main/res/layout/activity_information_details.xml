@@ -48,6 +48,8 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="125dp"
                 android:layout_toRightOf="@+id/infor_img"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/color_333333"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -60,6 +62,8 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_toRightOf="@+id/infor_img"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/color_333333"
                 android:textSize="20sp" />
 

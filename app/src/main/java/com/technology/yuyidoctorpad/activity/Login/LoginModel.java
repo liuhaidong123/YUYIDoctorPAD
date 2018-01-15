@@ -30,30 +30,27 @@ public class LoginModel {
     ILogin listener;
     String cookie;
     String resStr;
-    Handler handler=new Handler(){
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case -2://医生获取验证码
                     listener.getSMSCodeError("网络异常！");
                     break;
                 case 2://医生获取验证码
                     try {
-                        BeanSMS bean= gson.gson.fromJson(resStr,BeanSMS.class);
-                        if (bean!=null){
-                            if ("0".equals(bean.getCode())){
+                        BeanSMS bean = gson.gson.fromJson(resStr, BeanSMS.class);
+                        if (bean != null) {
+                            if ("0".equals(bean.getCode())) {
                                 listener.getSMSCodeSuccess();
+                            } else {
+                                listener.getSMSCodeError(Empty.notEmpty(bean.getResult()) ? bean.getResult() : "获取失败！");
                             }
-                            else {
-                                listener.getSMSCodeError(Empty.notEmpty(bean.getResult())?bean.getResult():"获取失败！");
-                            }
-                        }
-                        else {
+                        } else {
                             listener.getSMSCodeError("获取失败！");
                         }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         listener.getSMSCodeError("数据异常！");
                         e.printStackTrace();
                     }
@@ -65,21 +62,18 @@ public class LoginModel {
                     break;
                 case 1://医生登录
                     MyDialog.stopDia();
-                    try{
-                        BeanDoc beanDoc=gson.gson.fromJson(resStr,BeanDoc.class);
-                        if (beanDoc!=null){
-                            if ("0".equals(beanDoc.getCode())){
+                    try {
+                        BeanDoc beanDoc = gson.gson.fromJson(resStr, BeanDoc.class);
+                        if (beanDoc != null) {
+                            if ("0".equals(beanDoc.getCode())) {
                                 listener.onLoginSuccess(beanDoc);
+                            } else {
+                                listener.onError(Empty.notEmpty(beanDoc.getMessage()) ? beanDoc.getMessage() : "登录失败！");
                             }
-                            else {
-                                listener.onError(Empty.notEmpty(beanDoc.getMessage())?beanDoc.getMessage():"登录失败！");
-                            }
+                        } else {
+                            listener.onError("登录失败！");
                         }
-                        else {
-                          listener.onError("登录失败！");
-                        }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         listener.onError("登录失败！");
                         e.printStackTrace();
                     }
@@ -88,21 +82,18 @@ public class LoginModel {
                     listener.getSMSCodeError("网络异常！");
                     break;
                 case 3://医院获取验证码
-                    try{
-                        BeanHosSMS bea=gson.gson.fromJson(resStr,BeanHosSMS.class);
-                        if (bea!=null){
-                            if ("0".equals(bea.getCode())){
-                               listener.getSMSCodeSuccess();
+                    try {
+                        BeanHosSMS bea = gson.gson.fromJson(resStr, BeanHosSMS.class);
+                        if (bea != null) {
+                            if ("0".equals(bea.getCode())) {
+                                listener.getSMSCodeSuccess();
+                            } else {
+                                listener.onError(Empty.notEmpty(bea.getResult()) ? bea.getResult() : "获取失败！");
                             }
-                            else {
-                                listener.onError(Empty.notEmpty(bea.getResult())?bea.getResult():"获取失败！");
-                            }
-                        }
-                        else {
+                        } else {
                             listener.getSMSCodeError("获取失败！");
                         }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         listener.getSMSCodeError("数据异常！");
                         e.printStackTrace();
                     }
@@ -113,21 +104,18 @@ public class LoginModel {
                     break;
                 case 4://医院登录
                     MyDialog.stopDia();
-                    try{
-                        BeanHosLogin be=gson.gson.fromJson(resStr,BeanHosLogin.class);
-                        if (be!=null){
-                          if ("0".equals(be.getCode())){
-                              listener.onHospitalLoginSuccess(be);
-                          }
-                            else {
-                              listener.onError(be.getMessage());
-                          }
-                        }
-                        else {
+                    try {
+                        BeanHosLogin be = gson.gson.fromJson(resStr, BeanHosLogin.class);
+                        if (be != null) {
+                            if ("0".equals(be.getCode())) {
+                                listener.onHospitalLoginSuccess(be);
+                            } else {
+                                listener.onError(be.getMessage());
+                            }
+                        } else {
                             listener.onError("登录失败！");
                         }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         listener.onError("数据异常！");
                         e.printStackTrace();
                     }
@@ -135,34 +123,41 @@ public class LoginModel {
             }
         }
     };
-    public void login(String phoneNum,String smsCode,ILogin listener,LoginType tp){
+
+    public void login(String phoneNum, String smsCode, ILogin listener, LoginType tp) {
         MyDialog.showDialog(MyApplication.activityCurrent);
-        this.listener=listener;
-        switch (tp){
+        this.listener = listener;
+        switch (tp) {
             case DOCTOR:
-                onDoctorLogin(phoneNum,smsCode);
+                onDoctorLogin(phoneNum, smsCode);
                 break;
             case HOSPITAL:
-                onHospitalLogin(phoneNum,smsCode);
+                onHospitalLogin(phoneNum, smsCode);
                 break;
         }
     }
-    public void getSmS(String phoneNum,ILogin listener,LoginType tp){
-        this.listener=listener;
-        switch (tp){
+
+    public void getSmS(String phoneNum, String currentMillis, String imgcode, String mycookie, ILogin listener, LoginType tp) {
+        this.listener = listener;
+        switch (tp) {
             case DOCTOR:
-                getDocSmsCode(phoneNum);
+                getDocSmsCode(phoneNum, currentMillis, imgcode, mycookie);
+               // Log.e("传递中myCooike=", mycookie);
                 break;
             case HOSPITAL:
-                onHospitalSmsCode(phoneNum);
+                onHospitalSmsCode(phoneNum, currentMillis, imgcode, mycookie);
+                //Log.e("传递中myCooike=", mycookie);
                 break;
         }
     }
+
     //医生登录验证码获取
-    private void getDocSmsCode(String phoneNum){
-        Map<String,String> mp=new HashMap<>();
-        mp.put("id",phoneNum);
-        OkUtils.getCall(Ip.path+Ip.interface_SMSCode,mp,OkUtils.OK_GET).enqueue(new Callback() {
+    private void getDocSmsCode(String phoneNum, String currentMillis, String imgcode, final String mycookie) {
+        Map<String, String> mp = new HashMap<>();
+        mp.put("id", phoneNum);
+        mp.put("ts", currentMillis);
+        mp.put("imgcode", imgcode);
+        OkUtils.getCallCookie(Ip.path + Ip.interface_SMSCode, mp, mycookie).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
                 handler.sendEmptyMessage(-2);
@@ -170,9 +165,11 @@ public class LoginModel {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr=response.body().string();
-                cookie=response.headers().get("Set-Cookie");
-                Log.i("获取验证码---",resStr);
+                resStr = response.body().string();
+                //cookie = response.headers().get("Set-Cookie");
+                cookie=mycookie;
+                Log.i("获取验证码---", resStr);
+                //Log.e("获取验证码cookie=", cookie);
                 handler.sendEmptyMessage(2);
 
             }
@@ -181,11 +178,11 @@ public class LoginModel {
 
 
     //医生登录
-    private void onDoctorLogin(String phoneNum,String smsCode){
-        Map<String,String> mp=new HashMap<>();
-        mp.put("id",phoneNum);
-        mp.put("vcode",smsCode);
-        OkUtils.getCallCookie(Ip.path+Ip.interface_Login,mp,cookie).enqueue(new Callback() {
+    private void onDoctorLogin(String phoneNum, String smsCode) {
+        Map<String, String> mp = new HashMap<>();
+        mp.put("id", phoneNum);
+        mp.put("vcode", smsCode);
+        OkUtils.getCallCookie(Ip.path + Ip.interface_Login, mp, cookie).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
                 handler.sendEmptyMessage(-1);
@@ -193,18 +190,19 @@ public class LoginModel {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr=response.body().string();
-                Log.i("登陆返回---",resStr);
+                resStr = response.body().string();
+                Log.i("登陆返回---", resStr);
                 handler.sendEmptyMessage(1);
             }
         });
     }
+
     //医院登录
-    private void onHospitalLogin(String phoneNum,String smsCode){
-        Map<String,String>mp=new HashMap<>();
-        mp.put("administratorsTelephone",phoneNum);
-        mp.put("vcode",smsCode);
-        OkUtils.getCallCookie(Ip.path_F+Ip.interface_HospitalLogin,mp,cookie).enqueue(new Callback() {
+    private void onHospitalLogin(String phoneNum, String smsCode) {
+        Map<String, String> mp = new HashMap<>();
+        mp.put("id", phoneNum);
+        mp.put("vcode", smsCode);
+        OkUtils.getCallCookie(Ip.path_F + Ip.interface_HospitalLogin, mp, cookie).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
                 handler.sendEmptyMessage(-4);
@@ -213,17 +211,20 @@ public class LoginModel {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr=response.body().string();
-                Log.i("医院登录",resStr);
+                resStr = response.body().string();
+                Log.i("医院登录", resStr);
                 handler.sendEmptyMessage(4);
             }
         });
     }
+
     //医院获取验证码
-    private void onHospitalSmsCode(String phoneNum){
-        Map<String,String>mp=new HashMap<>();
-        mp.put("administratorsTelephone",phoneNum);
-        OkUtils.getCall(Ip.path_F+Ip.interface_SMSCodeHospital,mp,OkUtils.OK_POST).enqueue(new Callback() {
+    private void onHospitalSmsCode(String phoneNum, String currentMillis, String imgcode, final String mycookie) {
+        Map<String, String> mp = new HashMap<>();
+        mp.put("id", phoneNum);
+        mp.put("ts", currentMillis);
+        mp.put("imgcode", imgcode);
+        OkUtils.getCallCookie(Ip.path_F + Ip.interface_SMSCodeHospital, mp, mycookie).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
                 handler.sendEmptyMessage(-3);
@@ -232,9 +233,11 @@ public class LoginModel {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                resStr=response.body().string();
-                cookie=response.headers().get("Set-Cookie");
-                Log.i("医院获取验证码",resStr);
+                resStr = response.body().string();
+               // cookie = response.headers().get("Set-Cookie");
+                cookie=mycookie;
+                Log.i("医院获取验证码", resStr);
+                //Log.e("获取验证码=", cookie);
                 handler.sendEmptyMessage(3);
             }
         });

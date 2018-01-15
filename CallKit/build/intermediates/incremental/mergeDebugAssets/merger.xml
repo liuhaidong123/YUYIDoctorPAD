@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/main/assets"/><source path="/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/hcq/Desktop/YUYIDoctorPAD/CallKit/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/src/main/assets"/><source path="/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/src/debug/assets"/></dataSet></merger>

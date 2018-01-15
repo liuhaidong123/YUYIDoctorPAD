@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class OkUtils {
     public static final int OK_GET=0;
     public static final  int OK_POST=1;
+
     public static final OkHttpClient okhttpclient=new OkHttpClient();
     public static Call getCall(String url, Map<String,String> mp, int state) {
         okhttpclient.setConnectTimeout(7000, TimeUnit.MILLISECONDS);
@@ -99,7 +100,7 @@ public class OkUtils {
         Request request;
         if (cookie!=null&&!"".equals(cookie)){
             request = new Request.Builder()
-                    .url(url).header("cookie",cookie)
+                    .url(url).header("Cookie",cookie)
                     .post(builder.build())
                     .build();
         }

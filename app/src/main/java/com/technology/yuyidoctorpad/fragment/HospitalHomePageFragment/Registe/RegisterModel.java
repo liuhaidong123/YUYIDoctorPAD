@@ -11,9 +11,11 @@ import com.technology.yuyidoctorpad.Net.gson;
 import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Depart.Bean.DepartmentBean;
 import com.technology.yuyidoctorpad.fragment.HospitalHomePageFragment.Depart.IDepart;
+import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lzhUtils.BeanCode;
 import com.technology.yuyidoctorpad.lzhUtils.Empty;
 import com.technology.yuyidoctorpad.lzhUtils.Model;
+import com.technology.yuyidoctorpad.lzhUtils.MyApplication;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -46,9 +48,11 @@ public class RegisterModel extends Model{
                 break;
 
             case -3://挂号设置失败
+                MyDialog.stopDia();
                 iRegister.onRegisterError((String) msg.obj);
                 break;
             case 3:
+                MyDialog.stopDia();
                 iRegister.onRegisterSuccess();
                 break;
         }
@@ -131,6 +135,7 @@ public class RegisterModel extends Model{
     //提交挂号信息管理员：添加挂号数量
 //    http://localhost:8080/yuyi/datenumber/saveNumber.do?DatenumberJson=Json字符串
     public void submit(ListDoctorResult bean,  IRegister lis){
+        MyDialog.showDialog(MyApplication.activityCurrent);
         this.iRegister=lis;
         Map<String,String>map=new HashMap<>();
         map.put("DatenumberJson",gson.gson.toJson(bean));

@@ -8,7 +8,6 @@ import java.util.List;
  */
 
 public class paintListBean {
-
     /**
      * total : 1
      * rows : [{"gender":1,"telephone":18301264693,"avatar":"/static/image/201752/20adefc4206147a5ae80479c7a9fb45b.jpg","trueName":"刘大东","id":116,"age":26}]
