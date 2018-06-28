@@ -904,16 +904,16 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/src/main/res/drawable-xhdpi/rc_voip_audio_left_connected.png"
     },
     {
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/debug/drawable-xhdpi-v4/u1f381.png",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable-xhdpi-v4/u1f381.png"
+    },
+    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/debug/drawable-xhdpi-v4/rc_real_time_location_exit.png",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable-xhdpi-v4/rc_real_time_location_exit.png"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/debug/drawable-xhdpi-v4/u1f64f.png",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable-xhdpi-v4/u1f64f.png"
-    },
-    {
-        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/debug/drawable-xhdpi-v4/u1f381.png",
-        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/exploded-aar/YUYIDoctorPAD/IMKit/unspecified/res/drawable-xhdpi-v4/u1f381.png"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/CallKit/build/intermediates/res/merged/debug/drawable-xhdpi-v4/rc_voip_icon_camera.png",

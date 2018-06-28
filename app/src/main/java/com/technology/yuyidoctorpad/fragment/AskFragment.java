@@ -2,6 +2,7 @@ package com.technology.yuyidoctorpad.fragment;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -37,6 +38,7 @@ import com.technology.yuyidoctorpad.bean.CommendListBean.Result;
 import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lhdUtils.ToastUtils;
 import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
@@ -558,5 +560,11 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
     @Override
     public void onCancel(SHARE_MEDIA share_media) {
         Log.e("取消", share_media.toString());
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(getActivity()).onActivityResult(requestCode, resultCode, data);
     }
 }

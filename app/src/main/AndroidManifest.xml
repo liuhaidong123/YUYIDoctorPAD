@@ -148,35 +148,50 @@
             android:screenOrientation="landscape" />
 
         <!-- 友盟分享 -->
-        <activity android:name=".wxapi.WXEntryActivity" />
+
         <!-- 微博 -->
         <activity
-            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+        android:configChanges="keyboardHidden|orientation"
+        android:exported="false"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+        android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+        android:configChanges="keyboardHidden|orientation"
+        android:exported="false"
+        android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-            <intent-filter>
-                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+        android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+        android:launchMode="singleTask"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        <intent-filter>
+        <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
         </activity>
 
+        <!--<activity-->
+            <!--android:name=".WBShareActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation"-->
+            <!--android:screenOrientation="portrait">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"
             android:exported="false" />
         <!-- 微博 -->
-
+        <!-- 微信分享Activity -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- qq -->
         <activity
@@ -431,8 +446,5 @@
 
         </activity>
 
-        <activity android:name=".WBShareActivity">
-
-        </activity>
     </application>
 </manifest>

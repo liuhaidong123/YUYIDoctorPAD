@@ -1,8 +1,13 @@
 package com.technology.yuyidoctorpad.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -33,7 +38,9 @@ import com.technology.yuyidoctorpad.fragment.paintFragment.PatientFragment;
 import com.technology.yuyidoctorpad.lzhUtils.JpRegister;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.jpush.android.api.JPushInterface;
@@ -95,6 +102,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermission();
+        }
         CheckPri();
         initUI();
         if (JpRegister.getInstance().isJPSHSucc(MainActivity.this) == false) {
@@ -352,5 +362,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
         JPushInterface.onPause(this);
+    }
+
+
+    private boolean permissionGranted = true;
+    private final int PERMISSION_CODES = 100;
+    private static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.CAMERA,
+            Manifest.permission.RECORD_AUDIO,
+           };
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void requestPermission() {
+        List<String> p = new ArrayList<>();
+        for (String permission : PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                p.add(permission);
+            }
+        }
+        if (p.size() > 0) {
+            requestPermissions(p.toArray(new String[p.size()]), PERMISSION_CODES);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_CODES:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                    permissionGranted = false;
+                } else {
+                    permissionGranted = true;
+                }
+                break;
+            default:
+                break;
+        }
+
     }
 }

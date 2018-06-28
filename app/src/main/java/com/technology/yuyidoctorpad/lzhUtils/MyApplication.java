@@ -56,7 +56,6 @@ public class MyApplication extends Application {
         super.onCreate();
         JPushInterface.init(this);     		// 初始化 JPush
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
-
         UMShareAPI.get(this);//友盟
         Config.isJumptoAppStore = true;//如果用户没有安装qq,微信客户端会自动跳转到应用商店地址去下载（微博不会，微博只会打开网页端）
         Config.DEBUG = true;
