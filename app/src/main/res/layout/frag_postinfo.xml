@@ -241,7 +241,7 @@
                 android:src="@mipmap/writing"/>
             <EditText
                 android:focusableInTouchMode="true"
-                android:imeOptions="actionSearch"
+                android:imeOptions="actionSend"
                 android:inputType="text"
                 android:maxLines="1"
                 android:maxLength="100"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_patient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.technology.yuyidoctorpad.activity.PatientActivity">
+
+     <include layout="@layout/titleinclude"
+    android:id="@+id/paintList_titleinclude"/>
+    <RelativeLayout style="@style/LayoutMatch"
+        android:background="#f1f1f1"
+        android:layout_below="@+id/paintList_titleinclude">
+        <com.technology.yuyidoctorpad.lzhUtils.MyListView
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            style="@style/LayoutMatch"
+            android:dividerHeight="15dp"
+            android:divider="#00000000"
+            android:listSelector="#00000000"
+            android:id="@+id/paintListView"/>
+    </RelativeLayout>
+</RelativeLayout>

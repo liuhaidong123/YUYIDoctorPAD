@@ -109,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
-                        android:text="患者"
+                        android:text="咨询"
                         android:textColor="@color/color_a6a6a6"
                         android:textSize="11sp" />
                 </LinearLayout>

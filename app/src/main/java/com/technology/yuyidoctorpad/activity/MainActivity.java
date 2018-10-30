@@ -32,6 +32,7 @@ import com.technology.yuyidoctorpad.RongCloudUtils.RongUserInfo;
 import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.bean.BeanPriRong;
 import com.technology.yuyidoctorpad.fragment.AskFragment;
+import com.technology.yuyidoctorpad.fragment.ChatFragment;
 import com.technology.yuyidoctorpad.fragment.CircleFragment;
 import com.technology.yuyidoctorpad.fragment.myFragment.MyFragment;
 import com.technology.yuyidoctorpad.fragment.paintFragment.PatientFragment;
@@ -214,7 +215,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
         CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+       // PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        ChatFragment patientFragment = (ChatFragment) mFragmentManager.findFragmentByTag(patientTag);
         MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (askFragment != null) {//显示资讯
@@ -240,7 +242,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
         CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+       // PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        ChatFragment patientFragment = (ChatFragment) mFragmentManager.findFragmentByTag(patientTag);
         MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (circleFragment != null) {//显示学术圈
@@ -266,13 +269,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
         CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        //PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        ChatFragment patientFragment = (ChatFragment) mFragmentManager.findFragmentByTag(patientTag);
         MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (patientFragment != null) {//显示患者
             fragmentTransaction.show(patientFragment);
         } else {
-            PatientFragment patientF = new PatientFragment();
+            //PatientFragment patientF = new PatientFragment();
+            ChatFragment patientF = new ChatFragment();
             fragmentTransaction.add(mFragment_Rl.getId(), patientF, patientTag);
         }
         if (askFragment != null) {//隐藏资讯
@@ -293,7 +298,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         AskFragment askFragment = (AskFragment) mFragmentManager.findFragmentByTag(informationTag);
         CircleFragment circleFragment = (CircleFragment) mFragmentManager.findFragmentByTag(academicTag);
-        PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        //PatientFragment patientFragment = (PatientFragment) mFragmentManager.findFragmentByTag(patientTag);
+        ChatFragment patientFragment = (ChatFragment) mFragmentManager.findFragmentByTag(patientTag);
         MyFragment myFragment = (MyFragment) mFragmentManager.findFragmentByTag(myTag);
 
         if (myFragment != null) {//显示wode
@@ -308,7 +314,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (circleFragment != null) {//隐藏xueshuquan
             fragmentTransaction.hide(circleFragment);
         }
-        if (patientFragment != null) {//隐藏我的
+        if (patientFragment != null) {//隐藏
             fragmentTransaction.hide(patientFragment);
         }
         fragmentTransaction.commit();

@@ -6,6 +6,7 @@ package com.technology.yuyidoctorpad.HttpTools;
 
 public class UrlTools {
     //public static final String BASE = "http://192.168.1.168:8082/yuyi";
+
     public static final String BASE = "http://59.110.169.148:8080";
     public static final String URL_AD = "/doctorlyinformation/getall.do";//广告数据
     public static final String URL_AD_MESSAGE = "/doctorlyinformation/get.do?";//广告,今日，最新，热门数据详情（需传id=,token）
@@ -49,4 +50,6 @@ public class UrlTools {
 
     //获取动态验证码
     public static final String URL_GET_DYNAMIC_NUM = "/personal/imgcode.do?";//参数ts=1515636702185当前毫秒数
+    public static final String Url_CheckVersion="/aboutUs/getph.do";//检测版本号
+
 }

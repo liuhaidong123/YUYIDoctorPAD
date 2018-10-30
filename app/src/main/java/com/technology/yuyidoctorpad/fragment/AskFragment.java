@@ -45,7 +45,9 @@ import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -315,7 +317,9 @@ public class AskFragment extends Fragment implements View.OnClickListener, UMSha
                         ToastUtils.myToast(getContext(), "请输入评论内容");
                     } else {
                         if (!"".equals(User.tele)) {
-                            mHttptools.submitCommentContent(mHttpHandler, Long.valueOf(User.tele), mList.get(mPostion).getId(), getEditContent());
+                            Map<String ,String> map=new HashMap<String, String>();
+                            map.put("Content",getEditContent());
+                            mHttptools.submitCommentContent(mHttpHandler, Long.valueOf(User.tele), mList.get(mPostion).getId(), map);
                             mCommend_edit.setText("");
                             //隐藏软键盘
                             ((InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);

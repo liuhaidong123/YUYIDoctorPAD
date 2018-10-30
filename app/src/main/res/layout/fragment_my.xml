@@ -140,7 +140,7 @@
                         android:src="@mipmap/consult"/>
                     <TextView style="@style/TextS14C6aLwrap"
                         android:layout_marginTop="25dp"
-                        android:text="咨询"/>
+                        android:text="患者"/>
                 </LinearLayout>
             </RelativeLayout>
 

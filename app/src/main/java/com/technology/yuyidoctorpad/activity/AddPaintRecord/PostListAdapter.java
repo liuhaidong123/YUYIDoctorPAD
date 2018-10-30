@@ -61,26 +61,33 @@ public class PostListAdapter extends BaseAdapter {
         else {
             hodler= (ViewHodler) convertView.getTag();
         }
-        if (position==list.size()-1){
-           hodler.text5.setVisibility(View.VISIBLE);
-            ViewGroup.LayoutParams params=hodler.post_listitem_img.getLayoutParams();
-            params.width=(int)context.getResources().getDimension(R.dimen.grid)/3;
-            params.height=(int)context.getResources().getDimension(R.dimen.grid)/3;
-            hodler.post_listitem_img.setLayoutParams(params);
-            hodler.post_listitem_img.setScaleType(ImageView.ScaleType.FIT_XY);
-            hodler.post_listitem_img.setImageResource(R.mipmap.add);
-        }
-        else {
-            ViewGroup.LayoutParams params=hodler.post_listitem_img.getLayoutParams();
-            params.width=(int)context.getResources().getDimension(R.dimen.grid);
-            params.height=(int)context.getResources().getDimension(R.dimen.grid);
-            hodler.post_listitem_img.setLayoutParams(params);
-            hodler.post_listitem_img.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            hodler.text5.setVisibility(View.GONE);
-            Log.i("url222=="+list.size(),list.get(position));
-            Picasso.with(context).load(list.get(position))
-                   .placeholder(R.mipmap.errorpicture).error(R.mipmap.errorpicture).into(hodler.post_listitem_img);
+
+        if (parent.getChildCount()==position){
+            if (position==list.size()-1){
+                hodler.text5.setVisibility(View.VISIBLE);
+                ViewGroup.LayoutParams params=hodler.post_listitem_img.getLayoutParams();
+                params.width=(int)context.getResources().getDimension(R.dimen.grid)/3;
+                params.height=(int)context.getResources().getDimension(R.dimen.grid)/3;
+                hodler.post_listitem_img.setLayoutParams(params);
+                hodler.post_listitem_img.setScaleType(ImageView.ScaleType.FIT_XY);
+                hodler.post_listitem_img.setImageResource(R.mipmap.add);
             }
+            else {
+                ViewGroup.LayoutParams params=hodler.post_listitem_img.getLayoutParams();
+                params.width=(int)context.getResources().getDimension(R.dimen.grid);
+                params.height=(int)context.getResources().getDimension(R.dimen.grid);
+                hodler.post_listitem_img.setLayoutParams(params);
+                hodler.post_listitem_img.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                hodler.text5.setVisibility(View.GONE);
+                Log.i("url222=="+list.size(),list.get(position));
+                Picasso.with(context).load(list.get(position))
+                        .placeholder(R.mipmap.errorpicture).error(R.mipmap.errorpicture).into(hodler.post_listitem_img);
+            }
+        }else {
+
+        }
+
+
         return convertView;
     }
 

@@ -129,6 +129,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
+                    android:src="@mipmap/res3"
                     android:id="@+id/my_status_num_img"
                     android:layout_width="80dp"
                     android:layout_height="40dp"

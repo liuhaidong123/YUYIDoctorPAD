@@ -284,12 +284,12 @@
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable-xhdpi/u1f60c.png"
     },
     {
-        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/release/drawable-xhdpi-v4/u1f60f.png",
-        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable-xhdpi/u1f60f.png"
-    },
-    {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/release/drawable-xhdpi-v4/u2615.png",
         "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable-xhdpi/u2615.png"
+    },
+    {
+        "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/release/drawable-xhdpi-v4/u1f60f.png",
+        "source": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/src/main/res/drawable-xhdpi/u1f60f.png"
     },
     {
         "merged": "/Users/liuhaidong/AndroidStudioProjects/YuYiDoctorPad/IMKit/build/intermediates/res/merged/release/drawable-xhdpi-v4/u1f366.png",

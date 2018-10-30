@@ -1,6 +1,7 @@
 package com.technology.yuyidoctorpad.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,7 @@ public class PostCardAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImgHolder imgHolder=null;
-
+        Log.e("i=", ""+i);
         if (view==null){
             imgHolder=new ImgHolder();
             view=mInflater.inflate(R.layout.card_item,null);
@@ -66,20 +67,29 @@ public class PostCardAdapter extends BaseAdapter {
             imgHolder= (ImgHolder) view.getTag();
         }
 
-        if (mList.size()==0){
-            imgHolder.img.setImageResource(R.mipmap.add_img);
-            //imgHolder.add_tv.setVisibility(View.GONE);
-        }else {
-            if (i==mList.size()){
+       if (viewGroup.getChildCount()==i){
+            if (mList.size()==0){
                 imgHolder.img.setImageResource(R.mipmap.add_img);
+                Log.e("add_img", ":mList.size()==0");
                 //imgHolder.add_tv.setVisibility(View.GONE);
             }else {
-                //imgHolder.add_tv.setVisibility(View.GONE);
-                Picasso.with(mContext).load(mList.get(i)).resize(ImgUitls.getWith(mContext)/6,ImgUitls.getWith(mContext)/6).error(R.mipmap.errorpicture).into(imgHolder.img);
-            }
+                if (i==mList.size()){
+                    imgHolder.img.setImageResource(R.mipmap.add_img);
+                    Log.e("add_img", ":mList.size()==i"+i);
+                    //imgHolder.add_tv.setVisibility(View.GONE);
+                }else {
+                    Log.e("实际图像", ""+i);
+                    //imgHolder.add_tv.setVisibility(View.GONE);
+                    Picasso.with(mContext).load(mList.get(i)).resize(ImgUitls.getWith(mContext)/6,ImgUitls.getWith(mContext)/6).error(R.mipmap.errorpicture).into(imgHolder.img);
+                }
 
+
+            }
+        }else {
 
         }
+
+
 
 
 

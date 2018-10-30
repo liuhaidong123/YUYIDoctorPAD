@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
@@ -113,9 +114,10 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private InformationListView mImgListView, mCommentListView;
     private CardMessageImgAdapter mImgAdapter;
     private String[] mStrImg = new String[0];//图片集合
-
-    private CardMessageCommentAdapter mCommentAdapter;
+    private CommAdapter commAdapter;
+    //private CardMessageCommentAdapter mCommentAdapter;
     private List<CommentList> mCommentList = new ArrayList<>();//评论列表集合
+    private int mCommPosition;
     private RelativeLayout mScrollRl;
     private int mNewPostion = 0, mSelectPostion = 0, mHotPostion = 0;//点击热门某条数据下标，点击精选某条数据下标，点击最新某条数据下标，
     private RoundImageView mHead_img;
@@ -133,7 +135,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     private ProgressBar mBar3;
     //评论框
     private EditText mEdit;
-    private RelativeLayout mComment_rl, mRightNoData_rl, card_comment_box, again_login_rl;
+    private RelativeLayout mComment_rl, mRightNoData_rl, card_comment_box;
+    //RelativeLayout again_login_rl;
     //发帖弹框
     private View mPopView;
     private TextView mPostBtn;
@@ -174,7 +177,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         mRightNoData_rl.setVisibility(View.GONE);
                         mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mList.get(mHotPostion).getId());
                     } else {
-                        again_login_rl.setVisibility(View.GONE);
+                        //again_login_rl.setVisibility(View.GONE);
                         card_comment_box.setVisibility(View.GONE);
                         equip_line.setVisibility(View.GONE);
                         mMline.setBackgroundResource(R.color.color_ffffff);
@@ -195,8 +198,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                 }
 
             } else if (msg.what == 106) {
-                again_login_rl.setVisibility(View.VISIBLE);
-                ToastUtils.myToast(getContext(), "请重新登录");
+               // again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请检查网络");
                 MyDialog.stopDia();
                 mHot_tv.setClickable(true);
                 mListview.removeFooterView(mFooter);
@@ -226,7 +229,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                             mRightNoData_rl.setVisibility(View.GONE);
                             mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mSelectList.get(mSelectPostion).getId());
                         } else {
-                            again_login_rl.setVisibility(View.GONE);
+                            //again_login_rl.setVisibility(View.GONE);
                             card_comment_box.setVisibility(View.GONE);
                             equip_line.setVisibility(View.GONE);
                             mMline.setBackgroundResource(R.color.color_ffffff);
@@ -247,8 +250,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             } else if (msg.what == 107) {
                 MyDialog.stopDia();
                 mSelect_tv.setClickable(true);
-                again_login_rl.setVisibility(View.VISIBLE);
-                ToastUtils.myToast(getContext(), "请重新登录");
+               // again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请检查网络");
                 mBar.setVisibility(View.INVISIBLE);
                 mListview.removeFooterView(mFooter);
             } else if (msg.what == 1100) {//学术圈最新
@@ -274,7 +277,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         mRightNoData_rl.setVisibility(View.GONE);
                         mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mNewList.get(mNewPostion).getId());
                     } else {
-                        again_login_rl.setVisibility(View.GONE);
+                       // again_login_rl.setVisibility(View.GONE);
                         card_comment_box.setVisibility(View.GONE);
                         equip_line.setVisibility(View.GONE);
                         mMline.setBackgroundResource(R.color.color_ffffff);
@@ -294,8 +297,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             } else if (msg.what == 1101) {
                 MyDialog.stopDia();
                 mNew_tv.setClickable(true);
-                again_login_rl.setVisibility(View.VISIBLE);
-                ToastUtils.myToast(getContext(), "请重新登录");
+                //again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请检查网络");
                 mListview.removeFooterView(mFooter);
                 mBar.setVisibility(View.INVISIBLE);
 
@@ -348,9 +351,10 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         List<CommentList> list = new ArrayList<>();
                         list = root.getResult().getCommentList();
                         mCommentList.addAll(list);
-                        mCommentAdapter.setList(mCommentList);
-                        mCommentAdapter.notifyDataSetChanged();
+                        //mCommentAdapter.setList(mCommentList);
+                        // mCommentAdapter.notifyDataSetChanged();
 
+                        commAdapter.notifyDataSetChanged();
                         if (list.size() != 10) {
                             mMany_Box3.setVisibility(View.GONE);
                         } else {
@@ -360,8 +364,8 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                     }
                 }
             } else if (msg.what == 108) {
-                again_login_rl.setVisibility(View.VISIBLE);
-                ToastUtils.myToast(getContext(), "请重新登录");
+                //again_login_rl.setVisibility(View.VISIBLE);
+                ToastUtils.myToast(getContext(), "请检查网络");
             } else if (msg.what == 12) {//学术圈提交评论
                 Object o = msg.obj;
                 if (o != null && o instanceof com.technology.yuyidoctorpad.bean.SubmitComment.Root) {
@@ -437,6 +441,31 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                 mSmallRed_Img.setVisibility(View.VISIBLE);
             } else if (msg.what == -2) {//消息没有红点
                 mSmallRed_Img.setVisibility(View.GONE);
+            } else if (msg.what == 13) {
+                Object o = msg.obj;
+                if (o != null && o instanceof com.technology.yuyidoctorpad.bean.InformationPraise.Root) {
+                    com.technology.yuyidoctorpad.bean.InformationPraise.Root root = (com.technology.yuyidoctorpad.bean.InformationPraise.Root) o;
+                    if (root.getCode().equals("0")) {
+                        if (root.getResult().equals("点赞成功")) {
+                            mCommentList.get(mCommPosition).setLike(true);
+                            if (mCommentList.get(mCommPosition).getLikeNum() == null) {
+                                mCommentList.get(mCommPosition).setLikeNum(1);
+                            } else {
+                                mCommentList.get(mCommPosition).setLikeNum(mCommentList.get(mCommPosition).getLikeNum() + 1);
+                            }
+                           commAdapter.notifyDataSetChanged();
+
+                        } else if (root.getResult().equals("撤销点赞成功")) {
+                            mCommentList.get(mCommPosition).setLike(false);
+                            mCommentList.get(mCommPosition).setLikeNum(mCommentList.get(mCommPosition).getLikeNum() - 1);
+                            commAdapter.notifyDataSetChanged();
+                        }
+                    } else {
+                        ToastUtils.myToast(getContext(), "点赞失败");
+                    }
+                }
+            } else if (msg.what == 113) {
+                ToastUtils.myToast(getContext(), "数据错误");
             }
         }
     };
@@ -459,7 +488,13 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initUI(View view) {
-        again_login_rl = view.findViewById(R.id.again_login_rl);
+//        again_login_rl = view.findViewById(R.id.again_login_rl);
+//        again_login_rl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mHttptools.circleHot(mHandler, mStart, mLimit, User.token); //刚进来显示热门
+//            }
+//        });
         card_comment_box = view.findViewById(R.id.card_comment_box);
         mComment_rl = view.findViewById(R.id.scroll_relative);
         mRightNoData_rl = view.findViewById(R.id.right_nodata_rl);
@@ -488,16 +523,19 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                     mHotPostion = i;
                     mStart3 = 0;
                     mCommentList.clear();
+                    commAdapter.notifyDataSetChanged();
                     mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mList.get(mHotPostion).getId());
                 } else if (mFlag == 1) {//精选
                     mSelectPostion = i;
                     mStart3 = 0;
                     mCommentList.clear();
+                    commAdapter.notifyDataSetChanged();
                     mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mSelectList.get(mSelectPostion).getId());
                 } else {//最新
                     mNewPostion = i;
                     mStart3 = 0;
                     mCommentList.clear();
+                    commAdapter.notifyDataSetChanged();
                     mHttptools.getHotSelectNewMessage(mHandler, User.token, mStart3, mLimit3, mNewList.get(mNewPostion).getId());
                 }
             }
@@ -524,13 +562,14 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
         mContent = (TextView) view.findViewById(R.id.card_message);
         mComment_allNum = (TextView) view.findViewById(R.id.card_comment_num);
         //帖子详情页面的图片listview
-        mImgListView = (InformationListView) view.findViewById(R.id.card_img_listview);
+        mImgListView = view.findViewById(R.id.card_img_listview);
         mImgAdapter = new CardMessageImgAdapter(getContext(), mStrImg);
         mImgListView.setAdapter(mImgAdapter);
         //帖子详情页面的评论listview
-        mCommentListView = (InformationListView) view.findViewById(R.id.card_comment_listview);
-        mCommentAdapter = new CardMessageCommentAdapter(getContext(), mCommentList);
-        mCommentListView.setAdapter(mCommentAdapter);
+        mCommentListView = view.findViewById(R.id.card_comment_listview);
+        // mCommentAdapter = new CardMessageCommentAdapter(getContext(), mCommentList);
+        commAdapter = new CommAdapter();
+        mCommentListView.setAdapter(commAdapter);
         //将scrollView定位到顶部
         mScrollRl = (RelativeLayout) view.findViewById(R.id.scroll_relative);
         mScrollRl.setFocusable(true);
@@ -552,7 +591,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
 
                         if (mFlag == 0) {//评论的是热门的某条数据
                             if (mHotPostion != -1) {
-                                mHttptools.submitCircleComment(mHandler, Long.valueOf(User.tele), mList.get(mHotPostion).getId(), getEditContent());
+                                Map<String ,String> map=new HashMap<String, String>();
+                                map.put("Content",getEditContent());
+                                mHttptools.submitCircleComment(mHandler, Long.valueOf(User.tele), mList.get(mHotPostion).getId(), map);
                                 //隐藏软键盘
                                 ((InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                             } else {
@@ -560,7 +601,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                             }
                         } else if (mFlag == 1) {//评论的是精选的某条数据
                             if (mSelectPostion != -1) {
-                                mHttptools.submitCircleComment(mHandler, Long.valueOf(User.tele), mSelectList.get(mSelectPostion).getId(), getEditContent());
+                                Map<String ,String> map=new HashMap<String, String>();
+                                map.put("Content",getEditContent());
+                                mHttptools.submitCircleComment(mHandler, Long.valueOf(User.tele), mSelectList.get(mSelectPostion).getId(), map);
                                 //隐藏软键盘
                                 ((InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                             } else {
@@ -568,7 +611,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                             }
                         } else {//评论的是最新的某条数据
                             if (mNewPostion != -1) {
-                                mHttptools.submitCircleComment(mHandler, Long.valueOf(User.tele), mNewList.get(mNewPostion).getId(), getEditContent());
+                                Map<String ,String> map=new HashMap<String, String>();
+                                map.put("Content",getEditContent());
+                                mHttptools.submitCircleComment(mHandler, Long.valueOf(User.tele), mNewList.get(mNewPostion).getId(), map);
                                 //隐藏软键盘
                                 ((InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                             } else {
@@ -686,7 +731,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mFlag = 0;
             mStart = 0;
             mList.clear();
+            mAdapter.notifyDataSetChanged();
             mCommentList.clear();
+            commAdapter.notifyDataSetChanged();
             mListview.setVisibility(View.GONE);
             mHttptools.circleHot(mHandler, mStart, mLimit, User.token);
             showHotLine();
@@ -702,7 +749,9 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mFlag = 1;
             mStart = 0;
             mSelectList.clear();
+            mSelectAdapter.notifyDataSetChanged();
             mCommentList.clear();
+            commAdapter.notifyDataSetChanged();
             mListview.setVisibility(View.GONE);
             mHttptools.circleSelect(mHandler, mStart, mLimit, User.token);
             showSelectLine();
@@ -714,11 +763,13 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
             mHotPostion = 0;
             mSelectPostion = 0;
             mNewPostion = 0;
-           // mNew_tv.setClickable(false);
+            // mNew_tv.setClickable(false);
             mFlag = 2;
             mStart = 0;
             mNewList.clear();
+            mNewAdpter.notifyDataSetChanged();
             mCommentList.clear();
+            commAdapter.notifyDataSetChanged();
             mListview.setVisibility(View.GONE);
             mHttptools.circleNew(mHandler, mStart, mLimit, User.token);
             showNewLine();
@@ -918,7 +969,7 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
                         break;
                     }
                 }
-                mCardImgAda.setmList(mCardListImg);
+                //mCardImgAda.setmList(mCardListImg);
                 mCardImgAda.notifyDataSetChanged();
             }
         }
@@ -1032,6 +1083,84 @@ public class CircleFragment extends Fragment implements View.OnClickListener {
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
+        }
+    }
+
+
+    //评论详情adapter
+
+    class CommAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return mCommentList.size();
+        }
+
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(final int i, View view, ViewGroup viewGroup) {
+            CommHolder holder = null;
+            if (view == null) {
+                holder = new CommHolder();
+                view = LayoutInflater.from(getContext()).inflate(R.layout.card_comment_listview_item, null);
+                holder.img = (RoundImageView) view.findViewById(R.id.head_img);
+                holder.name = (TextView) view.findViewById(R.id.name);
+                holder.time = (TextView) view.findViewById(R.id.time);
+                holder.content_tv = (TextView) view.findViewById(R.id.content);
+                holder.praise_img = (ImageView) view.findViewById(R.id.car_user_praise_img);
+                holder.praise_num = (TextView) view.findViewById(R.id.card_user_praise_num);
+                view.setTag(holder);
+
+            } else {
+                holder = (CommHolder) view.getTag();
+            }
+            Picasso.with(getContext()).load(UrlTools.BASE + mCommentList.get(i).getAvatar()).error(R.mipmap.erroruser).into(holder.img);
+            holder.name.setText(mCommentList.get(i).getTrueName());
+            holder.time.setText(TimeUtils.getTime(mCommentList.get(i).getCreateTimeString()));
+            holder.content_tv.setText(mCommentList.get(i).getContent());
+            if (mCommentList.get(i).getLikeNum() == null) {
+                holder.praise_num.setText("0");
+            } else {
+                holder.praise_num.setText(mCommentList.get(i).getLikeNum() + "");
+            }
+
+            if (mCommentList.get(i).isLike()) {
+                holder.praise_img.setImageResource(R.mipmap.like_selected);
+            } else {
+                holder.praise_img.setImageResource(R.mipmap.like);
+            }
+
+            holder.praise_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCommPosition = i;
+                    mHttptools.circleCommendPrise(mHandler, mCommentList.get(i).getId(), User.token);
+                    Log.e("id", mCommentList.get(i).getId() + "");
+                    Log.e("token", User.token);
+                }
+            });
+
+
+            return view;
+        }
+
+        class CommHolder {
+            RoundImageView img;
+            TextView name;
+            TextView time;
+            TextView content_tv;
+            ImageView praise_img;
+            TextView praise_num;
         }
     }
 }

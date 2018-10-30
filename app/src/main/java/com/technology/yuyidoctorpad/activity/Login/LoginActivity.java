@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -74,12 +77,33 @@ public class LoginActivity extends MyActivity implements ILogin {
         mMyStatus_Img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCurrentMillis = System.currentTimeMillis();
-                getDynamicNumAndCookie();//获取动态验证码以及cookie
+                if (isNetworkConnected()) {
+                    mCurrentMillis = System.currentTimeMillis();
+                    getDynamicNumAndCookie();//获取动态验证码以及cookie
+                } else {
+                    Toast.makeText(LoginActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
 
+    }
+
+    /**
+     * 判断有没有网
+     *
+     * @return
+     */
+    public boolean isNetworkConnected() {
+
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) this.getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+        if (mNetworkInfo != null) {
+            return mNetworkInfo.isAvailable();
+        }
+
+        return false;
     }
 
     @OnClick({R.id.loginTitleSelect, R.id.my_userlogin_logninButton, R.id.my_userlogin_getSMScode})

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -24,17 +26,14 @@ import com.technology.yuyidoctorpad.User.User;
 import com.technology.yuyidoctorpad.activity.Settings.Bean.Bean_MySetting_Feadus;
 import com.technology.yuyidoctorpad.lhdUtils.MyDialog;
 import com.technology.yuyidoctorpad.lzhUtils.toast;
-import com.technology.yuyidoctorpad.lzhViews.MyActivity;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
-
-public class FeedActivity extends MyActivity {
-    @BindView(R.id.titleinclude_text)TextView title;
-    private final Context con=FeedActivity.this;
+public class FeedActivity extends AppCompatActivity {
+   // @BindView(R.id.titleinclude_text)TextView title;
+   private final Context con=FeedActivity.this;
     private EditText my_settings_idea_editIdea,my_settings_idea_editContact;
     private TextView my_settings_idea_textNum;
     private String resStr;
@@ -70,8 +69,9 @@ public class FeedActivity extends MyActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setChilidView(R.layout.activity_contact);
-        title.setText("意见反馈");
+        setContentView(R.layout.activity_contact);
+      //  title.setText("意见反馈");
+        initView();
     }
 
     private void initView() {

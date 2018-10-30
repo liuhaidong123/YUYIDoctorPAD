@@ -7,8 +7,8 @@ android {
         applicationId "com.technology.yuyidoctorpad"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "9.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         sourceSets {
@@ -43,16 +43,6 @@ dependencies {
     })
     compile files('libs/afinal_0.5.1_bin.jar')
     compile files('libs/open_sdk_r5788_lite.jar')
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support:support-v4:26.0.0-alpha1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
-    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
-    testCompile 'junit:junit:4.12'
-    compile 'com.jakewharton:butterknife:8.8.1'
-    compile 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'com.squareup.okhttp:okhttp:2.4.0'
-    compile 'com.squareup.okio:okio:1.5.0'
     compile files('libs/open_sdk_r5788_lite.jar')
     compile files('libs/umeng_social_tool.jar')
     compile files('libs/umeng_social_shareboard.jar')
@@ -73,4 +63,14 @@ dependencies {
     compile files('libs/jpush-android-3.1.0.jar')
     compile files('libs/libammsdk.jar')
     compile files('libs/weiboSDKCore.jar')
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:support-v4:26.0.0-alpha1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'com.squareup.okio:okio:1.5.0'
+    testCompile 'junit:junit:4.12'
 }

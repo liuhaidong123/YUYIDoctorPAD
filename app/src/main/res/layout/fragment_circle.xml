@@ -472,7 +472,7 @@
             android:layout_below="@+id/login_img"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="账号异常,请重新登录"
+            android:text="网络异常，请检查网络或点击刷新"
             android:textColor="@color/color_cccccc"
             android:textSize="19sp"
             android:textStyle="bold" />

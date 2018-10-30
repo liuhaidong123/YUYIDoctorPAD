@@ -51,7 +51,7 @@ public class AboutActivity extends MyActivity {
                             my_settings_aboutOurs_name.setText(result.getTitle());
                             my_settings_aboutOurs_pro.setText(result.getContent());
                             my_setting_about_version.setText(result.getVersion());
-                            Picasso.with(con).load(Ip.imagePath+result.getPicture()).error(R.mipmap.ic_launcher).into(roundRectImageView);
+                          //  Picasso.with(con).load(Ip.imagePath+result.getPicture()).error(R.mipmap.ic_launcher).into(roundRectImageView);
                         }
                         else {
                             Log.e("获取关于我们失败---","--------");

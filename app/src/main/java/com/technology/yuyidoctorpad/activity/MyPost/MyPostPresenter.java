@@ -49,7 +49,7 @@ import java.util.List;
  * Created by wanyu on 2017/11/7.
  */
 
-public class MyPostPresenter implements View.OnClickListener{
+public class MyPostPresenter implements View.OnClickListener {
     private HttpTools mHttptools;
     IListener listener;
     Activity ac;
@@ -58,16 +58,18 @@ public class MyPostPresenter implements View.OnClickListener{
     PopupWindow pop;
     PostCardAdapter mCardImgAda;
     TextView mPostBtn;
-    TextView  mTitle_Edit;
-    TextView  mContent_Edit;
+    TextView mTitle_Edit;
+    TextView mContent_Edit;
     GridView mImg_GridView;
-    View   mPopView;
+    View mPopView;
     private static final int READ_WRITE_PERMISS_CODE = 123;
     public List<String> mCardListImg = new ArrayList<>();
     private AlertDialog.Builder builder;
     private AlertDialog mAlert;
+    private View mAlertView;
+    private TextView mSure, mCancle;
     private int mPosition = -1;
-    Handler mHandler=new Handler() {
+    Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -98,8 +100,7 @@ public class MyPostPresenter implements View.OnClickListener{
                                 mPostBtn.setClickable(true);
                                 ToastUtils.myToast(ac, "发帖解析错误");
                             }
-                        }
-                        else {
+                        } else {
                             listener.onMakeCommentError("发帖失败！");
                         }
                     } catch (Exception e) {
@@ -110,39 +111,68 @@ public class MyPostPresenter implements View.OnClickListener{
             }
         }
     };
-    public void initFragment(FragmentManager manager,int resId){
-        myPost_fragment=new PostInfoFragment();
-        manager.beginTransaction().add(resId,myPost_fragment).show(myPost_fragment).commit();
+
+    public void initFragment(FragmentManager manager, int resId) {
+        myPost_fragment = new PostInfoFragment();
+        manager.beginTransaction().add(resId, myPost_fragment).show(myPost_fragment).commit();
     }
-    public void setPraise(boolean isLike,int pos){
-        myPost_fragment.setPraise(isLike,pos);
+
+    public void setPraise(boolean isLike, int pos) {
+        myPost_fragment.setPraise(isLike, pos);
     }
+
     //获取我的帖子
-    public void getMyPost(int st,int limit,IListener listener){
-        if (model==null){
-            model=new MyPostModel();
+    public void getMyPost(int st, int limit, IListener listener) {
+        if (model == null) {
+            model = new MyPostModel();
         }
-        model.getMyPost(st,limit,listener);
+        model.getMyPost(st, limit, listener);
     }
+
     //请求帖子详情
-    public void setPostId(int pos,String id){
-        myPost_fragment.setPostId(pos,id);
+    public void setPostId(int pos, String id) {
+        myPost_fragment.setPostId(pos, id);
     }
 
     public void showWindow(Activity acs, View parent, IListener listener) {
-        this.ac=acs;
-        this.listener=listener;
-        if (pop==null){
-            pop=new PopupWindow();
+        this.ac = acs;
+        this.listener = listener;
+        if (pop == null) {
+            pop = new PopupWindow();
         }
         //发帖弹框
         mPopView = LayoutInflater.from(ac).inflate(R.layout.post_card_layout, null);
         mPostBtn = mPopView.findViewById(R.id.post_btn);
         mPostBtn.setOnClickListener(this);
-         mTitle_Edit = mPopView.findViewById(R.id.title_edit);
-         mContent_Edit = mPopView.findViewById(R.id.content_edit);
-            mImg_GridView = mPopView.findViewById(R.id.img_gridview);
+        mTitle_Edit = mPopView.findViewById(R.id.title_edit);
+        mContent_Edit = mPopView.findViewById(R.id.content_edit);
+        mImg_GridView = mPopView.findViewById(R.id.img_gridview);
+//删除图片是的弹框
+        builder = new AlertDialog.Builder(ac);
+        mAlert = builder.create();
+        mAlertView = LayoutInflater.from(ac).inflate(R.layout.alert_box, null);
+        mAlert.setView(mAlertView);
+        mSure = (TextView) mAlertView.findViewById(R.id.sure);
+        mCancle = (TextView) mAlertView.findViewById(R.id.cancle);
+        mSure.setOnClickListener(new View.OnClickListener() {//确定删除图片
+            @Override
+            public void onClick(View view) {
 
+                mCardListImg.remove(mPosition);
+                mCardImgAda.setmList(mCardListImg);
+                mCardImgAda.notifyDataSetChanged();
+                mAlert.dismiss();
+
+            }
+        });
+        mCancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //取消
+                mAlert.dismiss();
+
+            }
+        });
         mCardImgAda = new PostCardAdapter(ac, mCardListImg);
         mImg_GridView.setAdapter(mCardImgAda);
         mImg_GridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -174,13 +204,14 @@ public class MyPostPresenter implements View.OnClickListener{
             }
         });
 
-        PopupSettings.getInstance().showWindowCenter(ac,pop,mPopView,parent);
+        PopupSettings.getInstance().showWindowCenter(ac, pop, mPopView, parent);
     }
 
-    public void setImgList(){
+    public void setImgList() {
         mCardImgAda.setmList(mCardListImg);
         mCardImgAda.notifyDataSetChanged();
     }
+
     //判断选择图片是的权限
     public void checkPermiss(Activity ac) {
         if (Build.VERSION.SDK_INT >= 23) {
@@ -215,22 +246,22 @@ public class MyPostPresenter implements View.OnClickListener{
             if (!Empty.notEmpty(mContent_Edit.getText().toString())) {
                 listener.onMakeCommentError("内容不能为空！");
             } else {
-                mHttptools=HttpTools.getHttpToolsInstance();
+                mHttptools = HttpTools.getHttpToolsInstance();
                 mPostBtn.setClickable(false);
                 MyDialog.showDialog(ac);
                 File[] files = new File[mCardListImg.size()];
                 AjaxParams ajaxParams = new AjaxParams();
                 ajaxParams.put("title", mTitle_Edit.getText().toString());
-                ajaxParams.put("content",mContent_Edit.getText().toString());
+                ajaxParams.put("content", mContent_Edit.getText().toString());
                 ajaxParams.put("token", User.token);
                 if (mCardListImg.size() == 0) {
                     Log.e("没有上传图片", "---");
                 } else {
                     for (int k = 0; k < mCardListImg.size(); k++) {
                         try {
-                            files[k] = transImage(ac,mCardListImg.get(k), ImgUitls.getWith(ac), ImgUitls.getHeight(ac), 90, "图片" + k);
+                            files[k] = transImage(ac, mCardListImg.get(k), ImgUitls.getWith(ac), ImgUitls.getHeight(ac), 90, "图片" + k);
                             pop.dismiss();
-                            ajaxParams.put("图片" + k, transImage(ac,mCardListImg.get(k), ImgUitls.getWith(ac), ImgUitls.getHeight(ac), 90, "图片" + k));
+                            ajaxParams.put("图片" + k, transImage(ac, mCardListImg.get(k), ImgUitls.getWith(ac), ImgUitls.getHeight(ac), 90, "图片" + k));
                         } catch (FileNotFoundException e) {
                             listener.onMakeCommentError("无法获取到图片！");
                             e.printStackTrace();
@@ -244,7 +275,7 @@ public class MyPostPresenter implements View.OnClickListener{
     }
 
 
-    public File transImage(Activity acs,String pathName, int width, int height, int quality, String fileName) {
+    public File transImage(Activity acs, String pathName, int width, int height, int quality, String fileName) {
         try {
             Bitmap bitmap = BitmapFactory.decodeFile(pathName);
             int bitmapWidth = bitmap.getWidth();
@@ -272,7 +303,7 @@ public class MyPostPresenter implements View.OnClickListener{
             } else {
                 file = new File(acs.getFilesDir(), fileName + ".jpg");
                 Log.e("图片名称：", fileName + ".jpg");
-                Log.e("图片文件夹名称：",acs.getFilesDir().toString());
+                Log.e("图片文件夹名称：", acs.getFilesDir().toString());
 
             }
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));

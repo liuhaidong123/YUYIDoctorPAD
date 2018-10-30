@@ -82,7 +82,6 @@ public class PostInfoFragment extends BaseFragment implements IPostInfo{
         listComment=new ArrayList<>();
         adapterComment=new PostCommentAdapter(getActivity(),listComment);
         card_comment_listview.setAdapter(adapterComment);
-
         myPost_edit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

@@ -24,6 +24,7 @@ import com.technology.yuyidoctorpad.activity.Message.MessageActivity;
 import com.technology.yuyidoctorpad.activity.MyPost.MyPostActivity;
 import com.technology.yuyidoctorpad.activity.MyPraise.MyPraiseActivity;
 import com.technology.yuyidoctorpad.activity.PaintData.PaintDataListActivity;
+import com.technology.yuyidoctorpad.activity.PatientActivity;
 import com.technology.yuyidoctorpad.activity.Registion.RegistionActivity;
 import com.technology.yuyidoctorpad.activity.Rong.RongConversationList_Activity;
 import com.technology.yuyidoctorpad.activity.Rong.UnRongListActivity;
@@ -91,17 +92,19 @@ public class MyFragment extends BaseFragment implements IListener{
                 startActivity(intent);
                 break;
 
-            case R.id.my_consulting://咨询
-                if (us!=null){
-                    if (User.hasvRongPri){
-                        intent.setClass(getActivity(), RongConversationList_Activity.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        intent.setClass(getActivity(), UnRongListActivity.class);
-                        startActivity(intent);
-                    }
-                }
+            case R.id.my_consulting://患者
+                intent.setClass(getActivity(), PatientActivity.class);
+                       startActivity(intent);
+//                if (us!=null){
+//                    if (User.hasvRongPri){
+//                        intent.setClass(getActivity(), RongConversationList_Activity.class);
+//                        startActivity(intent);
+//                    }
+//                    else {
+//                        intent.setClass(getActivity(), UnRongListActivity.class);
+//                        startActivity(intent);
+//                    }
+//                }
                 break;
 
             case R.id.my_data://查看数据
